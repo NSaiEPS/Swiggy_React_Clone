@@ -1,4 +1,16 @@
 .FirstPage_inside_Firstsection {
-    height: 500px;
+    height: 535px;
+   
+
+    /* border-bottom: 2px solid lightgray; */
+}
+
+.FirstPage_inside_SecondSection {
+    background: #2b1e16;
+    height: 403px;
+}
+
+.FirstPage_inside_ThirdSection {
+    height: 570px;
     border-bottom: 2px solid lightgray;
 }

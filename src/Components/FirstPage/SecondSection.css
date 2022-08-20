@@ -1,0 +1,21 @@
+.SecondSection_inside {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.SecondSection_inside >div{
+    /* background-color: red; */
+    width: 30%;
+     
+}
+
+.SecondSection_inside >div img{
+    height: 215px;
+
+}
+.SecondSection_inside p {
+    color: #e0cbc1;
+    font-size: 15px;
+    line-height: 1.3;
+ }

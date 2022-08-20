@@ -1,4 +1,5 @@
 import React from 'react'
+import { LocationCities } from '../../../LocationCities'
 import './Locationentering.css'
 const Locationentering = () => {
   return (
@@ -17,25 +18,38 @@ const Locationentering = () => {
 
 
       </div>
-      <div>
-        changing
+      <div className='Locationentering_inside_Changing'>
+        <h1> Changing ?</h1>
       </div>
-      <div>Order food from favourite restaurants near you.</div>
+      <div className='Locationentering_inside_info'>
+        <span>Order food from favourite restaurants near you.
+          </span>
+        </div>
       
-      <div>
+      <div className='Locationentering_inside_input'>
         
         <div>
-          input
-          & location
+          <input placeholder='Enter your delivery location' />
+          <span className='Locationentering_inside_inputLocation'>Locate Me</span>
         </div>
-        <div>Find food</div>
+        <div>
+          <button>Find food</button>
+          </div>
 
       </div>
 
       <div>Popular cities in India</div>
       
-      <div>
-        main cities & more
+      <div className='Locationentering_inside_cities'>
+        {LocationCities.Popular?.map((cities,indx)=>{
+          return(
+            <div key={indx}>
+              {cities}
+              </div>
+          )
+        })}
+        & more
+        
       </div>
       </div>
       </div>

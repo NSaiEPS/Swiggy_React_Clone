@@ -11,10 +11,10 @@ const FirstPage = () => {
             <div className='FirstPage_inside_Firstsection'>
                 <FirstSection/>
             </div>
-            <div>
+            <div className='FirstPage_inside_SecondSection'>
                 <SecondSection/>
             </div>
-            <div>
+            <div className='FirstPage_inside_ThirdSection'>
                 <ThirdSection/>
             </div>
             {/* <div></div> */}
