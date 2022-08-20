@@ -1,23 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import Signup from './Components/FirstPage/FirstSection/Signup';
+import FirstSection from './Components/FirstPage/FirstSection/FirstSection';
+import FirstPage from './Components/FirstPage/FirstPage';
+import CombineFooter from './Components/Footer/CombineFooter';
 
 function App() {
+
+  let signup=false;
+  let firstchange=true;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='App_inside'>
+
+      <div className='App_Maincontent'>
+      
+      <div>
+      {firstchange && <FirstPage/>}
+
+      </div>
+      
+      <div>{signup && <Signup/>}</div>
+
+      </div>
+
+         
+         <CombineFooter/>
+      </div>
+
     </div>
   );
 }

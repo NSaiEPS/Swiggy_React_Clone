@@ -1,0 +1,30 @@
+.FirstSection_inside {
+    height: 500px ;
+    /* background-color: red; */
+} 
+
+.FirstSection_inside {
+    display: flex;
+    width: 100%;
+}
+
+
+.FirstSection_inside_Locationpart {
+    width: 55%;
+    /* align-items: center; */
+}
+
+.FirstSection_inside_imgpart {
+    height: 500px;
+    /* background-image: url('https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch3-new_mkqxdb'); */
+    background-image: url('https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch2-new_xexpaz');
+    position: absolute;
+    left: calc(50% + 80px);
+    right: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100%;
+    top: 0;
+    /* width: 50%; */
+}
+
