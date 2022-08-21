@@ -1,0 +1,86 @@
+
+.Signup_Inside {
+    display: flex;
+    /* padding-top: 25px; */
+    height: 100%;
+    /* z-index: 10000000; */
+  /* overflow: hidden; */
+    
+    
+}
+
+.Signup_Inside_left{
+    /* background-color: red; */
+    width: 60%;
+
+}
+.Signup_Inside_right {
+    background-color: white;
+    width: 40%;
+    color: black;
+}
+
+.Signup_Inside_right_inside{
+    padding-top: 25px;
+    text-align: start;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.Signup_Inside_right_inside_signup {
+    display: flex;
+    flex-direction: column;
+    /* height: 55px; */
+
+
+}
+
+.Signup_Inside_right_inside_signup input{
+    height: 55px;
+
+
+}
+.Signup_Inside_right_inside_signup button{
+    background-color: #FC8019;
+    /* color: #FC8019; */
+    color: white;
+    height: 55px;
+    margin-top: 25px;
+
+
+}
+
+.Signup_Inside_right_inside div:nth-last-child(1){
+    margin-top: 10px;
+    color: red;
+}
+
+.Signup_Inside_right_inside img{
+    width: 100px;
+}
+
+.Signup_Inside_right_inside div:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.Signup_Inside_right_inside div:nth-child(2) button{
+    color: #FC8019;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+}
+
+.Signup_Inside_right_inside >div:nth-child(1) button{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    /* text-align: start; */
+    font-size: 20px;
+
+}

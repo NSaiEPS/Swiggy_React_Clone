@@ -7,7 +7,7 @@ import CombineFooter from './Components/Footer/CombineFooter';
 
 function App() {
 
-  let signup=false;
+  let signup=true;
   let firstchange=true;
   return (
     <div className="App">
@@ -20,10 +20,11 @@ function App() {
 
       </div>
       
-      <div>{signup && <Signup/>}</div>
+     
 
       </div>
-
+      <div className='App_inside_Signup'
+      >{signup && <Signup/>}</div>
          
          <CombineFooter/>
       </div>

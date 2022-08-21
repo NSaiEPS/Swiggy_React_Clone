@@ -1,3 +1,32 @@
 .Footer1 {
     display: flex;
+    justify-content: space-between;
+    text-align: start;
+    padding-top: 50px;
+    color: gray;
+    font-size: 15px;
+    /* text-transform: uppercase; */
+    font-weight: 600;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 25px;
+    
+}
+
+.Footer1_info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    /* flex: 1; */
+    /* width: 30%; */
+    color: white ;
+    /* font-weight: 300; */
+    font-weight: 500;
+    font-size: 17px;
+    /* font-family: ProximaNova,arial,Helvetica Neue,sans-serif; */
+
+
+}
+.Footer1_info span {
+    margin-top: 10px;
+
 }

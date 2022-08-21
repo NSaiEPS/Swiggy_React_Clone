@@ -6,7 +6,7 @@ const Footer1 = () => {
     <div className='Footer1'>
       <div>
         COMPANY
-        <div>
+        <div className='Footer1_info'>
         {Companyinfo.COMPANY.map((item,indx)=>{
           return(
             <span key={indx}>
@@ -20,7 +20,8 @@ const Footer1 = () => {
 
       <div>
         CONTACT
-        <div>
+        <div className='Footer1_info'>
+
         {Companyinfo.CONTACT.map((item,indx)=>{
           return(
             <span key={indx}>
@@ -34,7 +35,8 @@ const Footer1 = () => {
 
       <div>
         LEGAL
-        <div>
+        <div className='Footer1_info'>
+
         {Companyinfo.LEGAL.map((item,indx)=>{
           return(
             <span key={indx}>
@@ -43,6 +45,11 @@ const Footer1 = () => {
           )
         })}
         </div>
+      </div>
+
+      <div>
+        img
+        img
       </div>
 
     
