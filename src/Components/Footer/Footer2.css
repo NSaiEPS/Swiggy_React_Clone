@@ -1,0 +1,40 @@
+.Footer2_inside_names {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 5210px;
+    margin-top: 40px;
+
+}
+
+
+
+ .Footer2_inside {
+    text-align: start;
+    margin-top: 50px;
+
+ }
+
+ .Footer2_inside >span{
+    color: rgb(130, 125, 125);
+    font-weight: 500;
+    font-size: 16px;
+ 
+
+}
+
+.Footer2_inside_names span {
+
+    width: 25%;
+    margin-top: 15px;
+    text-align: start;
+    cursor: pointer;
+
+ }
+
+.Footer2_inside_names span:hover {
+    font-size: 16.5px;
+    font-weight: 500;
+
+
+ }

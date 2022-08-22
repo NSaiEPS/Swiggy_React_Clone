@@ -1,0 +1,32 @@
+.Footer3 {
+    border-top: 1px solid rgb(99, 96, 96);
+
+}
+
+.Footer3_inside {
+    display: flex;
+    margin-top: 35px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+
+}
+
+.Footer3_inside div:nth-child(1) img{
+    width: 150px;
+}
+
+
+.Footer3_inside div:nth-last-child(1) img{
+    width: 25px;
+    /* margin-right: 10px; */
+
+
+}
+
+.Footer3_inside >div:nth-last-child(1)> img:nth-child(1),img:nth-child(3){
+
+    margin-right: 25px;
+    margin-left: 25px;
+
+}

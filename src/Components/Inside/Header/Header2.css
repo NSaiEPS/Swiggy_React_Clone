@@ -1,0 +1,40 @@
+.Header2_inside {
+    width: 93%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    border-bottom: 1px solid lightgray;
+
+
+}
+
+.Header2_inside_left {
+    width: 25%;
+    text-align: start;
+}
+
+.Header2_inside_right {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+.Header2_inside_right span{
+    cursor: pointer;
+
+
+}
+
+.Header2_inside_right span:nth-child(1){
+    color: white;
+}
+
+.Header2_inside_right span:nth-child(1)::selection{
+    color:white;
+
+
+}

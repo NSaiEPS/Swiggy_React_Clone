@@ -1,7 +1,34 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { LocationCities } from '../../../LocationCities'
+import { logininfoAction } from '../../Redux_toolkit/Redux_Slice'
 import './Locationentering.css'
+// import MyLocationTwoToneIcon from '@mui/icons-material/MyLocationTwoTone';
 const Locationentering = () => {
+  let dispatch=useDispatch()
+ 
+  let handleLogin=()=>{
+    dispatch(
+      logininfoAction(
+        {name:'login',
+         status:true,
+      }
+      )
+    )
+
+  }
+
+  let handleSignup=()=>{
+
+    dispatch(
+      logininfoAction(
+        {name:'signup',
+         status:true,
+      }
+      )
+    )
+
+  }
   return (
     <div className='Locationentering'>
       <div className='Locationentering_inside'>
@@ -11,8 +38,12 @@ const Locationentering = () => {
         <img src='https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Swiggy_logo.svg/1200px-Swiggy_logo.svg.png' alt='Swiggyimg'/>
         </div>
        <div>
-        <button className='Locationentering_inside_top_loginbtn'>Login</button>
-        <button className='Locationentering_inside_top_signupbtn'>Sign up</button></div>
+        <button className='Locationentering_inside_top_loginbtn'
+        
+        onClick={handleLogin}>Login</button>
+
+        <button onClick={handleSignup}
+         className='Locationentering_inside_top_signupbtn'>Sign up</button></div>
 
 
 

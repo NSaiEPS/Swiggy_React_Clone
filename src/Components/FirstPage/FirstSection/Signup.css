@@ -5,25 +5,26 @@
     height: 100%;
     /* z-index: 10000000; */
   /* overflow: hidden; */
+  /* overflow-y:scroll; */
     
     
 }
 
 .Signup_Inside_left{
     /* background-color: red; */
-    width: 60%;
+    width: 65%;
 
 }
 .Signup_Inside_right {
     background-color: white;
-    width: 40%;
+    width: 35%;
     color: black;
 }
 
 .Signup_Inside_right_inside{
     padding-top: 25px;
     text-align: start;
-    width: 65%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -33,28 +34,41 @@
     display: flex;
     flex-direction: column;
     /* height: 55px; */
-
+margin-top: 45px;
+/* width: 100% !important; */
 
 }
 
 .Signup_Inside_right_inside_signup input{
-    height: 55px;
+    height: 71px;
+    border: 1px solid #d4d5d9;
+    outline:  1px solid #d4d5d9;
+    padding-left: 15px;
+    width: 100% !important;
+    box-sizing: border-box;
+
 
 
 }
-.Signup_Inside_right_inside_signup button{
+.Signup_Inside_right_inside_signup >div:nth-last-child(1){
     background-color: #FC8019;
     /* color: #FC8019; */
     color: white;
     height: 55px;
     margin-top: 25px;
+    border: none;
+    /* text-align: center; */
+    justify-content: center !important;
+    cursor: pointer;
 
 
 }
 
-.Signup_Inside_right_inside div:nth-last-child(1){
+.Signup_Inside_right_inside >div:nth-last-child(1){
     margin-top: 10px;
-    color: red;
+    /* color: red; */
+    font-size:12px;
+    color: rgb(96, 89, 89);
 }
 
 .Signup_Inside_right_inside img{
@@ -82,5 +96,51 @@
     cursor: pointer;
     /* text-align: start; */
     font-size: 20px;
-
+    /* width: 35px; */
+    color: rgb(86, 83, 83);
 }
+
+/* .Signup_Inside_right_inside_signup */
+
+.Signup_input_div {
+    position: relative;
+}
+
+/* .Signup_input_divphonespan,.Signup_input_divnamespan,.Signup_input_divemailspan,
+.Signup_input_divpasswordspan {
+    position: absolute;
+    top: 18px;
+    left: 13px;
+    color: rgb(139, 134, 134);
+} */
+
+.Signup_input_divspan {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    color: rgb(139, 134, 134);
+    pointer-events: none;
+}
+
+.Signup_input_divspanup {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    color: rgb(139, 134, 134);
+    pointer-events: none;   
+    font-size: small;
+}
+
+.referalspan {
+    padding-top: 30px !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #5d8ed5;
+    cursor: pointer;
+    font-size: medium;
+}
+
+/* .Signup_input_div:nth-last-child(1){
+    color: red !important;
+    margin-bottom: 50px;
+} */

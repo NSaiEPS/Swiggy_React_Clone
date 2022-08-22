@@ -48,8 +48,10 @@ const Footer1 = () => {
       </div>
 
       <div>
-        img
-        img
+        <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/play_ip0jfp'
+        alt='googleplay.png'/>
+        <img  src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/iOS_ajgrty'
+        alt='appstore.png'/>
       </div>
 
     
