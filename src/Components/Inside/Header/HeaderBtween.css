@@ -1,0 +1,31 @@
+
+.HeaderBtween {
+    
+background-color: #171a29;
+/* margin-top: 25px; */
+}
+
+.HeaderBtween_inside {
+    width: 93.5%;
+    display: flex;
+    justify-content: space-between !important;
+    margin-left: auto;
+    margin-right: auto;
+    /* justify-content: center; */
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.HeaderBtween_inside img{
+    /* width: 260px;
+   
+    height: 260px; */
+    width: 23%;
+    cursor: pointer;
+}
+
+.HeaderBtween_inside img:hover{
+transform: scale(1.1);
+transition: 1s;
+
+}

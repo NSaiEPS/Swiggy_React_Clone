@@ -7,6 +7,8 @@ import CombineFooter from './Components/Footer/CombineFooter';
 import { useSelector } from 'react-redux';
 import { Selectlogininfo } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
+import Header2 from './Components/Inside/Header/Header2';
+import { useEffect, useState } from 'react';
 
 function App() {
 
@@ -15,6 +17,18 @@ function App() {
   let selectLogininfo=useSelector(Selectlogininfo)
   
   let signup=selectLogininfo?.status;
+  // let specialheader=false;
+  let [specialheader,setSpecialheader]=useState(false)
+
+
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>=450) return setSpecialheader(true)
+    return setSpecialheader(false)
+  })
+
+//   useEffect(()=>{
+// w
+//   },[])
 
   return (
     <div className="App">
@@ -35,14 +49,21 @@ function App() {
       > <Signup/>
       </div>}
 
-      <div className='App_Maincontent_insid'>
+      <div className='App_Maincontent_inside'>
+        {specialheader &&
+        
+        <div className='App_Maincontent_inside_header2'>
+        <Header2/>
+        </div>
+        }
+       
 
         <InsideCombine/>
-
+       
 
       </div>
          
-         <CombineFooter/>
+      <CombineFooter/>
       </div>
 
     </div>

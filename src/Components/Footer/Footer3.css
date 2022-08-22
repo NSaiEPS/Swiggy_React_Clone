@@ -24,9 +24,15 @@
 
 }
 
-.Footer3_inside >div:nth-last-child(1)> img:nth-child(1),img:nth-child(3){
+.footer3_inside_divimg{
+    margin-right: 25px;
+
+
+}
+
+/* .Footer3_inside >div:nth-last-child(1)> img:nth-child(1),img:nth-child(3){
 
     margin-right: 25px;
     margin-left: 25px;
 
-}
+} */

@@ -19,3 +19,11 @@
   /* z-index: 1000; */
   /* overflow: hidden; */
 }
+
+.App_Maincontent_inside_header2 {
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0,0.5);
+  /* border: none !important; */
+}

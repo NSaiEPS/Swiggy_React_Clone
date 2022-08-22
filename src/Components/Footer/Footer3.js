@@ -15,15 +15,15 @@ const Footer3 = () => {
         © 2022 Swiggy
         </div>
         <div>
-        <img 
+        <img className='footer3_inside_divimg'
             src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/icon-facebook_tfqsuc'
              alt='swiigy.png'/>
 
-<img 
+<img className='footer3_inside_divimg'
             src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/icon-pinterest_kmz2wd'
              alt='swiigy.png'/>
 
-<img 
+<img className='footer3_inside_divimg'
             src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/icon-instagram_b7nubh'
              alt='swiigy.png'/>
 
