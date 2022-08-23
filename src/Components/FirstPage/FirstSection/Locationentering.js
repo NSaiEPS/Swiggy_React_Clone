@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { LocationCities } from '../../../LocationCities'
-import { logininfoAction } from '../../Redux_toolkit/Redux_Slice'
+import { cityAction, locationAction, logininfoAction } from '../../Redux_toolkit/Redux_Slice'
 import './Locationentering.css'
 // import MyLocationTwoToneIcon from '@mui/icons-material/MyLocationTwoTone';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import { toast } from 'react-toastify';
+
+import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom'
+
 const Locationentering = () => {
+
+  let [location,setLocation]=useState('')
+  let [locationfalseCheck,setLocationfalseCheck]=useState(false)
+  let [inputFocus,setInputFocus]=useState(false)
+
   let dispatch=useDispatch()
  
   let handleLogin=()=>{
@@ -29,6 +39,91 @@ const Locationentering = () => {
     )
 
   }
+
+  let handleLocationInput=(e)=>{
+    setLocation(e.target.value)
+setLocationfalseCheck(false)
+
+
+  }
+
+  let handleClearLocationInput=()=>{
+    setLocation('')
+
+setLocationfalseCheck(false)
+  }
+
+
+  let handleLocationCheck=()=>{
+let checkcap=location[0]
+let reqlocation=''
+    if(location && checkcap.toUpperCase()!==checkcap){
+    let reqlocationarr=location.split('')
+    reqlocationarr[0]=reqlocationarr[0].toUpperCase()
+    let reqlocationarrfirst=reqlocationarr
+  
+    
+    reqlocationarrfirst.map((item)=>{
+
+    reqlocation=reqlocation+item
+    })}
+
+ 
+    else{
+       reqlocation=location}
+
+
+    if((LocationCities.Popular.includes(reqlocation) )||(LocationCities.more.includes(reqlocation) )){
+      
+      setLocationfalseCheck(false)
+    dispatch(
+      locationAction(
+        {
+          active:true,
+          location:reqlocation
+        }
+      )
+    
+      )
+
+      toast.success(`checking for ${location} location`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+
+    }
+    else {
+     
+      setLocationfalseCheck(true)
+      toast.error(`Opps location not found`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+
+    }
+  
+    
+  }
+
+  // let dispatch=useDispatch()
+
+    let handleDispatchcity=(city)=>{
+      dispatch(cityAction(
+        city
+      ))
+  
+  
+    }
   return (
     <div className='Locationentering'>
       <div className='Locationentering_inside'>
@@ -59,13 +154,43 @@ const Locationentering = () => {
       
       <div className='Locationentering_inside_input'>
         
-        <div>
-          <input placeholder='Enter your delivery location' />
-          <span className='Locationentering_inside_inputLocation'>Locate Me</span>
+        <div className='Locationentering_inside_input_input'>
+          <input onChange={handleLocationInput} value={location}
+          placeholder='Enter your delivery location' 
+          onFocus={()=>setInputFocus(true)}
+          onBlur={()=>setInputFocus(false)}
+          className={inputFocus? 'focusClass':'noFocusClass'}
+          />
+         
+
+
+{location ? <button 
+className='Locationentering_inside_inputLocationclear'
+onClick={handleClearLocationInput}
+>Clear</button>:
+ <button className='Locationentering_inside_inputLocation'>
+         
+ <GpsFixedIcon className='Locationentering_inside_inputLocation_icon'/> 
+    <small>Locate Me</small>
+    
+  </button>
+
+}
+           
         </div>
-        <div>
-          <button>Find food</button>
+        <div className='Locationentering_inside_input_findfoodbtn'
+        onClick={handleLocationCheck}
+        >
+          <button 
+          >FIND FOOD</button>
           </div>
+
+          {locationfalseCheck &&
+           <div className='please_enter_drivng_location_div'>
+           <span>
+           Enter your delivery location</span>
+         </div> }
+         
 
       </div>
 
@@ -74,12 +199,26 @@ const Locationentering = () => {
       <div className='Locationentering_inside_cities'>
         {LocationCities.Popular?.map((cities,indx)=>{
           return(
-            <div key={indx}>
+            <div key={indx}
+            onClick={()=>{handleDispatchcity(cities)}}
+            >
+             
+              <Link to='city' >
+       {/* <Link to={`admindashboard`} > Admin DashBoard  </Link> */}
+
               {cities}
+
+              </Link>
               </div>
           )
         })}
-        & more
+
+        & 
+        
+        <a href='#city_deliver'>
+        more
+        </a>
+         
         
       </div>
       </div>

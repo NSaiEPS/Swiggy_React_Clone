@@ -3,7 +3,7 @@
     display: flex;
     /* padding-top: 25px; */
     height: 100%;
-    /* z-index: 10000000; */
+    z-index: 1;
   /* overflow: hidden; */
   /* overflow-y:scroll; */
     
@@ -19,6 +19,7 @@
     background-color: white;
     width: 35%;
     color: black;
+    /* transform: */
 }
 
 .Signup_Inside_right_inside{

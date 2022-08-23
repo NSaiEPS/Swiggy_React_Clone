@@ -28,6 +28,13 @@
 }
 .Footer1_info span {
     margin-top: 15px;
+    cursor: pointer;
+
+}
+
+.Footer1_info span:hover {
+    font-weight: 400;
+    /* font-size: 17px; */
 
 }
 
@@ -37,6 +44,14 @@
     border-radius: 10px ;
     margin-bottom: 25px;
     /* align-items: flex-end; */
+    cursor: pointer;
+
+}
+
+.Footer1 div:nth-last-child(1) img:hover{
+    transform:scaleX(1.1);
+    /* transform:scaleY(1.1); */
+    transition: 1s;
 
 }
 
@@ -48,4 +63,10 @@
     /* justify-content: end; */
     text-align: end !important;
 
+}
+
+.Footer1_info a {
+
+color: white;
+text-decoration: none;
 }

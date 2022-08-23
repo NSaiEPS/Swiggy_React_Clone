@@ -11,7 +11,7 @@
 
  .Footer2_inside {
     text-align: start;
-    margin-top: 50px;
+    padding-top: 50px;
 
  }
 
@@ -36,5 +36,11 @@
     font-size: 16.5px;
     font-weight: 500;
 
+
+ }
+ .Footer2_inside_names a{
+    /* color: rgb(130, 125, 125); */
+    color: white;
+    text-decoration: none;
 
  }

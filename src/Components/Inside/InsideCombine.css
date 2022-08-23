@@ -2,8 +2,12 @@
     position: sticky;
     top: 0px;
     background-color: white;
+    z-index: 1;
 }
 
 .InsideCombine_inside_Maincontent{
     height: 500px;
+}
+.InsideCombine_inside_headerpart_header2 {
+    z-index: 1;
 }

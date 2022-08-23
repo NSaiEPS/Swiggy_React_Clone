@@ -8,3 +8,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.CombineFooter_inside_showupdown {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}

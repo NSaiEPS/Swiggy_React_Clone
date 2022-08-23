@@ -11,10 +11,17 @@ const ThirdSection = () => {
         <p>Order from your favorite restaurants & track on the go, with the all-new Swiggy app.</p>
         </div> 
         <div>
+
+          <a  target='_blank'
+          href='https://apps.apple.com/in/app/id989540920?referrer=utm_source%3Dswiggy%26utm_medium%3Dhomepage'>
+
        <img  src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/play_ip0jfp'
-       alt='googleplayimg'/>
+       alt='googleplayimg'/></a>
+       <a href='https://play.google.com/store/apps/details?id=in.swiggy.android&referrer=utm_source%3Dswiggy%26utm_medium%3Dheader'
+       target='_blank'
+       >
        <img  src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/iOS_ajgrty'
-       alt='App Storeimg'/>
+       alt='App Storeimg'/></a>
 
         </div>
         </div>

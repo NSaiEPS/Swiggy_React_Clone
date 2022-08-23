@@ -93,6 +93,7 @@
     width: 100%;
     /* background-color: red; */
     /* height: 65px; */
+    position: relative;
 
  }
  .Locationentering_inside_input div:nth-child(1){
@@ -101,15 +102,9 @@
 
  }
 
-.Locationentering_inside_inputLocation {
-position: absolute;
-right: 10px;
-top: 20px;
-font-size: 14px;
-color: rgb(102, 96, 96);
-font-weight: 500;
 
-}
+
+
  .Locationentering_inside_input  input{
  
      font-size: 15px;
@@ -118,9 +113,19 @@ font-weight: 500;
     padding: 10px;
     padding-left: 15px;
     border: 1px solid lightgray;
-    outline: 1px solid #FC8019;
+    /* outline: 1px solid #FC8019; */
     /* border: none; */
     width: 455px;
+    
+
+}
+.focusClass {
+    outline: 1px solid #FC8019;
+
+
+}
+.noFocusClass {
+    border: 1px solid lightgray;
     
 
 }
@@ -131,7 +136,7 @@ font-weight: 500;
 
 } */
 
-.Locationentering_inside_input div:nth-last-child(1){
+.Locationentering_inside_input_findfoodbtn {
     background-color: #FC8019;
     width: 140px;
     /* border: 5px solid #FC8019; */
@@ -140,9 +145,21 @@ font-weight: 500;
    /* box-sizing: content-box; */
    display: flex;
    justify-content: center;
+   cursor: pointer;  
 }
 
-.Locationentering_inside_input div:nth-last-child(1) button{
+/* .Locationentering_inside_input div:nth-last-child(1){
+    background-color: #FC8019;
+    width: 140px;
+    height: 59px;
+    margin-top: -1.5px;
+   display: flex;
+   justify-content: center;
+   cursor: pointer;
+
+} */
+
+.Locationentering_inside_input_findfoodbtn button{
 background-color: #FC8019;
 border: none;
 font-size: 16px;
@@ -151,6 +168,8 @@ font-size: 16px;
     color: #fff;
     /* align-items: center; */
     line-height: 60px;
+   cursor: pointer;
+
     
 
  }
@@ -176,6 +195,7 @@ font-size: 16px;
     color: rgb(94, 87, 87);
     font-weight: 600;
     line-height: 1.5;
+    cursor: pointer;
 
  }
 
@@ -183,7 +203,103 @@ font-size: 16px;
     margin-right: 5px;
  
 }
-.Locationentering_inside_cities div:nth-child(2n){
-    color: rgb(163, 156, 156);
+.Locationentering_inside_cities div:nth-child(2n) a{
+    color: rgb(163, 156, 156) ;
 
 }
+
+.Locationentering_inside_cities a{
+    color: rgb(94, 87, 87);
+    text-decoration: none;
+
+}
+
+.Locationentering_inside_input_input {
+    position: relative;
+}
+
+
+.Locationentering_inside_inputLocation {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    font-size: 14px;
+    color: rgb(102, 96, 96);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: white;
+    width: 100px;
+    justify-content: space-between;
+    height: 35px;
+    }
+
+.Locationentering_inside_inputLocation:hover {
+    background-color: lightgray;
+
+ }
+
+
+.Locationentering_inside_inputLocation small:nth-last-child(1){
+    font-size: 12px !important;
+    font-weight: bolder;
+
+}
+
+
+    .Locationentering_inside_inputLocation_icon {
+        /* position: absolute;
+        right: 70px;
+        top: 0.01px; */
+        font-size: 15px !important;
+        /* color: rgb(102, 96, 96);
+        font-weight: 500; */
+    }
+
+    .Locationentering_inside_inputLocationclear {
+        position: absolute;
+        right: 10px;
+        top: 11px;
+        font-size: 13px;
+        color: #FC8019;
+
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border: none;
+        background-color: white;
+        /* width: 100px; */
+        justify-content: space-between;
+        height: 35px;
+
+
+    }
+
+.please_enter_drivng_location_div {
+    position: absolute;
+    top: 55px;
+    background-color:  #fa4a5b;
+    display: flex;
+    width: 88.7%;
+    height: 53px;
+    color: white;
+    align-items: center;
+    padding-left: 15px;
+    box-sizing: border-box;
+    /* right: 1%; */
+    left: -1.5px;
+    font-size: 13px;
+
+
+
+}
+
+/* .please_enter_drivng_location_div span{
+
+} */
+
+/* .Locationentering_inside_cities */
+
