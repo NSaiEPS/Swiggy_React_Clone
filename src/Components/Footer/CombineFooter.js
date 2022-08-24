@@ -52,6 +52,11 @@ const CombineFooter = () => {
 
     }
   }
+
+  
+// console.log(window.location.reload())
+
+
   return (
     <div className='CombineFooter'>
       {/* CombineFooter */}

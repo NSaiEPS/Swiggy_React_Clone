@@ -1,0 +1,47 @@
+.CitiesSearcher_inside {
+    text-align: start;
+    margin-left: 18px;
+  
+
+}
+
+.CitiesSearcher_inside_Input {
+    margin-top: 12px;
+    width: 370px;
+    height: 45px;
+    background-color: #fff;
+    margin-top: 16px;
+    color: #535665;
+    padding: 0 20px;
+    /* position: relative; */
+    cursor: pointer;
+    position: relative;
+
+}
+.CitiesSearcher_inside_Input>button {
+height: 100%;
+background-color: #fc8019;
+color: #fff;
+-ms-flex-pack: center;
+justify-content: center;
+text-transform: uppercase;
+width: 116px;
+font-weight: 600;
+cursor: pointer;
+position: absolute;
+border: none;
+
+
+}
+.CitiesSearcher_inside_Input input{
+width: 290px;
+height: 42px;
+background-color: #fff;
+/* margin-top: 16px; */
+color: #535665;
+/* padding: 0 20px; */
+border: none;
+outline: none;
+cursor: pointer;
+pointer-events: none;
+}

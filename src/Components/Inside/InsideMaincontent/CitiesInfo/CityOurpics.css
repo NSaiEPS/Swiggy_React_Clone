@@ -1,0 +1,69 @@
+.CityOurpics {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+     text-align: start;
+     margin-top: 22px;
+}
+.CityOurpics_inside span
+{    font-size: 32px;
+    margin-bottom: 22px;
+    font-weight: 600;
+    letter-spacing: -.4px;
+    color: #282c3f;}
+
+
+.CityOurpics_inside_imgpart {
+    margin-top: 15px;
+ display: flex;
+ flex-wrap: wrap;
+ /* background-color: red; */
+ justify-content: space-between;
+    }
+
+    .CityOurpics_inside_imgpart div{
+        max-width: 32%;
+        min-width: 250px;
+        position: relative;
+        max-height: 450px;
+        overflow: hidden;
+        /* background-color: red; */
+    margin-top: 25px;
+
+
+    
+    }
+
+.CityOurpics_inside_imgpart h1{
+    /* background-color: black; */
+    color: white;
+    /* width: 40%; */
+    position: absolute;
+    bottom: 15px;
+    /* justify-content: center; */
+    text-align: center !important;
+    cursor: pointer;
+    justify-self: center;
+    left: 0px;
+    font-size:xx-large;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+}
+.CityOurpics_inside_imgpart img {
+   max-width:  100%;
+    cursor: pointer;
+    /* margin-top: 20px; */
+    max-height: 380px;
+}
+
+.CityOurpics_inside_imgpart img:hover {
+    transform:scale(1.1);
+    /* overflow: hidden; */
+    transition: 0.1s;
+    /* z-index: 10; */
+    /* contain: strict; */
+
+
+}

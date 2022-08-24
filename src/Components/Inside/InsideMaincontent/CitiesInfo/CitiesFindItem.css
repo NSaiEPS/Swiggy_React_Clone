@@ -1,0 +1,40 @@
+.CitiesFindItem {
+    width: 94%;
+    text-align: start;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.CitiesFindItem_inside_locations {
+    /* width: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 250px;
+    cursor: pointer;
+    color: rgb(113, 108, 108);
+font-weight: 500;    
+}
+
+.CitiesFindItem_inside_locations span{
+
+    margin-top: 9.5px;
+
+
+}
+.CitiesFindItem_inside_locations a:hover{
+    color: black;
+
+ }
+
+ a {
+    text-decoration: none;
+    color: rgb(113, 108, 108);
+    /* color: ; */
+ }
+ a:hover{
+    color: black;
+
+ }

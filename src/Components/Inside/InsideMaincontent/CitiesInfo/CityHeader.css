@@ -1,0 +1,38 @@
+.CityHeader {
+    width: 94%;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0px;
+    /* height: 80px; */
+}
+
+.CityHeader_inside_left >img {
+    width: 160px;
+    cursor: pointer;
+    padding-left: 7px;
+
+}
+
+.CityHeader_inside_left >img:hover {
+    /* width: 180px; */
+    transform: scale(1.1);
+    transition: 1s;
+
+}
+
+.CityHeader_inside {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.CityHeader_inside_right {
+    display: flex;
+
+}
+
+.Header1_inside_right_divs:nth-child(1),.Header1_inside_right_divs:nth-child(2)  {
+    /* color: red; */
+    margin-right: 50px;
+}

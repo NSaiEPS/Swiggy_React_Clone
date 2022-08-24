@@ -1,5 +1,6 @@
 .ThirdSection_inside {
     display: flex;
+    /* background-color: red; */
 
 }
 
@@ -16,28 +17,32 @@
     justify-content: center;
     text-align: start ;
     padding-left:15px ;
-    width: 60% ;
+    width: 50% ;
     /* flex-grow: 2; */
     padding-right: 35px;
     padding-left: 20px;
     box-sizing: border-box;
-
+/* background-color: black; */
 }
+
+
 
 .ThirdSection_inside div:nth-child(1) >h1{
     font-size: 40px;
     font-weight: 600;
     width: 300px;
+    /* width: 200%; */
     line-height: 1;
     letter-spacing: -.45px;
     color: rgb(41, 39, 39);
+    /* background-color: red; */
 
 }
 
 .ThirdSection_inside div:nth-child(1) >div:nth-last-child(1) {
     display: flex;
     /* background-color: red; */
-    justify-content: space-around;
+    justify-content: space-between;
 
  }
 
@@ -50,10 +55,16 @@ padding-top: 20px;
 padding-bottom: 60px;
 color: #7e808c;
 line-height: 1.2;
+/* background-color: red; */
 
 
 }
 
+.ThirdSection_inside_appstorediv {
+    /* background-color: blue; */
+    width: 400px;
+    margin-left: 20px
+}
 
 .ThirdSection_inside div:nth-child(1) img{
     width: 180px;
@@ -62,7 +73,7 @@ line-height: 1.2;
 }
 
 
-.ThirdSection_inside div:nth-last-child(2) img{
+/* .ThirdSection_inside div:nth-last-child(2) img{
     height: 489px;
 
 }
@@ -71,4 +82,22 @@ line-height: 1.2;
     height: 489px;
     padding-top: 80px;
 
+} */
+
+.ThirdSection_inside_phoneimg1 ,
+    .ThirdSection_inside_phoneimg2 {
+    height: 489px;
+    width: 100%;
+    
+
 }
+
+.ThirdSection_inside_phoneimg2{
+    padding-top: 80px;
+
+
+}
+
+/* .ThirdSection_inside_phoneimgdiv{
+    width: 2%;
+} */

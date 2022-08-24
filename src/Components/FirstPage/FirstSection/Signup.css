@@ -20,6 +20,7 @@
     width: 35%;
     color: black;
     /* transform: */
+    min-width: 460px;
 }
 
 .Signup_Inside_right_inside{
@@ -42,12 +43,17 @@ margin-top: 45px;
 
 .Signup_Inside_right_inside_signup input{
     height: 71px;
-    border: 1px solid #d4d5d9;
-    outline:  1px solid #d4d5d9;
+    border: 0.2px solid #d4d5d9;
+    outline:  0.2px solid #d4d5d9;
     padding-left: 15px;
     width: 100% !important;
     box-sizing: border-box;
-
+    /* Change */
+    font-size: larger;
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(49, 47, 47);
+    padding-top: 19px;
 
 
 }
@@ -88,6 +94,9 @@ margin-top: 45px;
     background-color: white;
     border: none;
     cursor: pointer;
+    /* align-items: center; */
+    padding-top: 2px;
+    font-weight: 600;
 
 }
 
@@ -145,3 +154,48 @@ margin-top: 45px;
     color: red !important;
     margin-bottom: 50px;
 } */
+
+.Signup_input_divspanpasswordshow {
+    position: absolute;
+    right: 12px;
+    top: 28px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5d8ed5;
+}
+
+.invalidshow {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+   
+    pointer-events: none;   
+    font-size: small;
+    color: #fa4a5b;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+/* 
+.Signup_input_div input:nth-child(1){
+    color: red;
+
+} */
+
+/* .Signup_input_div_input_phone input::placeholder{
+    color: red !important;
+    display: none;
+    
+
+
+} */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.invalidshowup {
+    color: red !important;
+}

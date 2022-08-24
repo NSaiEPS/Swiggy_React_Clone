@@ -1,0 +1,21 @@
+.CitiesFoodculture {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.CitiesFoodculture p{
+font-size: 20px;
+    font-weight: 300;
+    line-height: 28px;
+    color: #686b78;
+    padding-right: 100px;
+    /* font-family: ProximaNova,arial,Helvetica Neue,sans-serif; */
+}
+.CitiesFoodculture h2
+{    font-size: 32px;
+    margin-bottom: 22px;
+    font-weight: 600;
+    letter-spacing: -.4px;
+    color: #282c3f;
+    /* font-family: ProximaNova,arial,Helvetica Neue,sans-serif; */
+}
