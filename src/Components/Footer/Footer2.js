@@ -14,6 +14,8 @@ const Footer2 = () => {
       city
     ))
 
+    window.scrollTo(0,0)
+
 
   }
   return (
@@ -27,7 +29,7 @@ const Footer2 = () => {
           return(
             <span key={item}
             >
-              <Link to='city'
+              <Link to={`city/${item}`}
               onClick={()=>handleDispatchcity(item)}
                >
       

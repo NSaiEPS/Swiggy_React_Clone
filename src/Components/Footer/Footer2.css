@@ -44,3 +44,10 @@
     text-decoration: none;
 
  }
+
+ .Footer2_inside_names a:hover {
+
+   color: white;
+   font-weight: 400;
+
+   }

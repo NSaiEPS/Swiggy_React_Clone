@@ -25,9 +25,16 @@
 
 }
 
-.Header1_inside_left >img {
+.Header1_inside_left img {
     width: 32px;
     /* align-self: center; */
+    cursor: pointer;
+}
+
+.Header1_inside_left img:hover {
+    transform: scale(1.1);
+    transition: 1s;
+
 }
 
 .Header1_inside_right {
@@ -49,6 +56,7 @@
     color: #5f6061;
     font-size: 15.5px;
     font-weight: 500;
+    /* margin-right: 7px; */
 }
 
 .Header1_inside_right_divs:hover {
@@ -66,3 +74,11 @@
     width: 70px;
 
 }
+
+/* .Header1_inside_right div:nth-last-child(2){ */
+    /* color: red; */
+    /* margin-right: 25px; */
+
+
+/* } */
+

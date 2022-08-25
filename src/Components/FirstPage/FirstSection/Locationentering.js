@@ -124,8 +124,20 @@ let reqlocation=''
   
   
     }
+
+    let handleLocationcheckkey=(e)=>{
+      if(e.charCode === 13){
+        handleLocationCheck()
+
+        
+     }
+
+
+    }
   return (
-    <div className='Locationentering'>
+    <div className='Locationentering'
+    
+    >
       <div className='Locationentering_inside'>
       <div className='Locationentering_inside_top'>
         <div>
@@ -160,6 +172,10 @@ let reqlocation=''
           onFocus={()=>setInputFocus(true)}
           onBlur={()=>setInputFocus(false)}
           className={inputFocus? 'focusClass':'noFocusClass'}
+
+    onKeyPress={handleLocationcheckkey}
+    autoFocus
+
           />
          
 
@@ -203,7 +219,7 @@ onClick={handleClearLocationInput}
             onClick={()=>{handleDispatchcity(cities)}}
             >
              
-              <Link to='city' >
+              <Link to={`city/${cities}`} >
        {/* <Link to={`admindashboard`} > Admin DashBoard  </Link> */}
 
               {cities}

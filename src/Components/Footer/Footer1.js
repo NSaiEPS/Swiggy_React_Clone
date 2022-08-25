@@ -11,6 +11,8 @@ let handlemoreinfo=(moreinfo)=>{
     moreinfo
   ))
 
+  window.scroll(0,0)
+
 }
 
   return (
@@ -24,7 +26,7 @@ let handlemoreinfo=(moreinfo)=>{
             onClick={()=>{handlemoreinfo(item)}}
 
             >
-              <Link to='moreinfo' 
+              <Link to={`moreinfo`}
               > {item}</Link>
            
             </span>

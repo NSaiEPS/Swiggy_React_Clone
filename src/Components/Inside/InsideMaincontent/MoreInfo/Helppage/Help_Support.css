@@ -1,0 +1,80 @@
+.Help_Support {
+    background: #37718e;
+}
+
+.Help_Support_inside_FAQpart {
+    background-color: white;
+    width: 98.5%;
+    margin-left: auto;
+    display: flex;
+    /* margin-top: 35px; */
+}
+
+.Help_Support_inside_FAQpart_left {
+    padding: 40px;
+   
+}
+
+.Help_Support_inside_FAQpart_left_inside {
+    min-width: 260px;
+    background: #edf1f7;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    /* margin-top: 10px; */
+    box-sizing: border-box;
+}
+
+
+
+.Help_Support_inside_FAQpart_right {
+    padding: 40px 0px;
+
+
+}
+.Help_Support_inside_header {
+    height: 80px;
+    background-color: #37718e;
+    color: white;
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    /* align-items: center !important; */
+}
+
+.Help_Support_inside_header_inside {
+    width: 92.5%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: start;
+    padding-top: 0.1px;
+
+}
+
+.Help_Support_inside_header_inside >h2 {
+    margin-bottom: 2px;
+}
+
+.Help_Support_inside_FAQpart_left_inside >button {
+    border: none;
+    margin-top: 10px;
+    margin-left: 20px;
+    height: 70px;
+    font-weight: 700;
+    font-size: medium;
+    color: #656667;
+    /* background-color: white; */
+
+ }
+
+.Help_Support_inside_FAQpart_left_inside >button:hover {
+
+    color: black;
+    cursor: pointer;
+
+}
+
+.Help_support_FAQ_buttonselected {
+    background-color: white;
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { logininfoAction, Selectlogininfo } from '../../Redux_toolkit/Redux_Slice';
+import ClearIcon from '@mui/icons-material/Clear';
+
 import './Signup.css'
 
 const Signup = () => {
@@ -31,7 +33,7 @@ const Signup = () => {
     setreferlcode(false)
 
 
-    console.log(focus.referal)
+    // console.log(focus.referal)
   }
 
 
@@ -254,6 +256,17 @@ useEffect(()=>{
     referal:''
   })
 
+  setConditionCheck2({
+    conditionCheck2,
+
+    phonenumber:true,
+      email:true,
+      name:true,
+    password:true
+  })
+
+
+
 
 
   // setFocus({
@@ -275,95 +288,128 @@ useEffect(()=>{
 // })
 
 let handlesubmit=()=>{
-  // if(name==='phonenumber'){
-    // let check=true;
-  inputval.phonenumber.length<10 ?
+ 
+  if( !inputval.phonenumber || inputval.phonenumber.length<10 ){
     setConditionCheck2({
       ...conditionCheck2,
       phonenumber:false
     })
-    :
+  console.log('phone ',conditionCheck2.phonenumber)
+  }
+    else{
+    
     setConditionCheck2({
       ...conditionCheck2,
       phonenumber:true
     })
+  
+    console.log('phone true')
+  }
 
   // }
 
 
 // if (name==='email'){
-let email=inputval.email;
-let ear=email.split('@')
-  // console.log(ear)
+// let email=inputval.email;
+// let ear=email.split('@')
+//   // console.log(ear)
 
-if(ear.length!==2){
-  // console.log(ear)
-  setConditionCheck2({
-    ...conditionCheck2,
-    email:false
-  })
-}
+// if(ear.length!==2){
+//   // console.log(ear)
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     email:false
+//   })
+// }
 
-else {
-  // console.log(ear)
-  let emilcheck=ear[1].split('.')
+// else {
+//   // console.log(ear)
+//   let emilcheck=ear[1].split('.')
 
-  if(emilcheck.length!==2){
-    setConditionCheck2({
-      ...conditionCheck2,
-      email:false
-    })
-  }
+//   if(emilcheck.length!==2){
+//     setConditionCheck2({
+//       ...conditionCheck2,
+//       email:false
+//     })
+//   }
 
-  else {
+//   else {
 
-  (['com','org','info','de'].includes(emilcheck[1])) ? 
-   setConditionCheck2({
-    ...conditionCheck2,
-    email:true
-  })
-  // console.log('true')
+//   (['com','org','info','de'].includes(emilcheck[1])) ? 
+//    setConditionCheck2({
+//     ...conditionCheck2,
+//     email:true
+//   })
+//   // console.log('true')
   
-  :  
-  // console.log('false')
+//   :  
+//   // console.log('false')
   
-  setConditionCheck2({
-    ...conditionCheck2,
-    email:false
-  })
-}}
-//  .com, .org, .info, and .de
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     email:false
+//   })
+// }}
+// //  .com, .org, .info, and .de
+// // }
+
+
+
+
+
+
+//   // if(name==='password'){
+//    if (inputval.password.length<6){
+//     setConditionCheck2({
+//       ...conditionCheck2,
+//       password:false
+//     })}
+//     else {
+//     setConditionCheck2({
+//       ...conditionCheck2,
+//       password:true
+//     })
+//   }
+//   // }
+
+//   if(inputval.name.length<1){
+
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     name:false
+//   })}
+//   else{
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     name:true
+//   })}
+// console.log(conditionCheck2)
+
+
+
+
+
+
+// if( !inputval.password || inputval.password.length<6 ){
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     password:false
+//   })
+// console.log('password ',conditionCheck2.password)
+// }
+//   else{
+  
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     password:true
+//   })
+
+//   console.log('pass true')
 // }
 
 
-
-
-
-
-  // if(name==='password'){
-    inputval.password.length<6 ?
-    setConditionCheck2({
-      ...conditionCheck2,
-      password:false
-    }):
-    setConditionCheck2({
-      ...conditionCheck2,
-      password:true
-    })
-
-  // }
-
-  inputval.name.length<1 ?
-
-  setConditionCheck2({
-    ...conditionCheck2,
-    name:false
-  }):
-  setConditionCheck2({
-    ...conditionCheck2,
-    name:true
-  })
 }
+// console.log(conditionCheck2)
 
 
 
@@ -384,7 +430,10 @@ else {
                 <button
                 onClick={handleerasesignup}
                 
-                >X</button>
+                >X
+    {/* <ClearIcon /> */}
+                
+                </button>
               </div>
               <div >
                 <div> 
@@ -408,6 +457,7 @@ else {
                 </div>
               </div>
               <div className='Signup_Inside_right_inside_signup'>
+                <form>
                 
                <div>
                <div className='Signup_input_div  Signup_input_div_input_phone'>
@@ -416,8 +466,15 @@ else {
                 onChange={handleinputchange} value={inputval.phonenumber}
                 autoFocus
                 />
+                {!conditionCheck2.phonenumber && !inputval.phonenumber ? 
+                <span className='invalidshowdown'
+               
+                >Enter your phone numberddd</span>
+                
+                
+                :
 
-                {  (inputval.phonenumber && !conditionCheck.phonenumber) ?
+                  (inputval.phonenumber && !conditionCheck.phonenumber) ?
                 
                  
                  <span className='invalidshow'
@@ -431,7 +488,9 @@ else {
                  >Phone number</span>
 
                  
+                 
                  }
+
 
                
                 
@@ -478,7 +537,13 @@ else {
                  />
 
 
-{  (inputval.password && !conditionCheck.password) ?
+
+{!conditionCheck2.password && !inputval.password ? 
+                <span className='invalidshowdown'
+               
+                >Enter your password numberddd</span>:
+
+ (inputval.password && !conditionCheck.password) ?
                 
                  
                 <span className='invalidshow'
@@ -527,6 +592,7 @@ else {
                 </div>
                 <div 
                 onClick={handlesubmit}
+                className='Signup_btn_Submit'
                 >
              
                 {signup ? 
@@ -537,6 +603,7 @@ else {
               
               
                 </div>
+                </form>
               
               </div>
               <div> {signup? 'By creating an account':'By clicking on Login'} , I accept the <b>Terms & Conditions</b> & <b>Privacy Policy </b></div>

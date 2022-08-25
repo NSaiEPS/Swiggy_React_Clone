@@ -11,10 +11,10 @@ const Moreinfo = () => {
 
 
 
-    useEffect(()=>{
-      // No value in the redux navigate to '/'
-     !selectMoreInfo && navigate('/')
-    },[selectMoreInfo])
+    // useEffect(()=>{
+    //   // No value in the redux navigate to '/'
+    //  !selectMoreInfo && navigate('/')
+    // },[selectMoreInfo])
     
   return (
     <div>

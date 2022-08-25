@@ -5,7 +5,7 @@ import Signup from './Components/FirstPage/FirstSection/Signup';
 import FirstPage from './Components/FirstPage/FirstPage';
 import CombineFooter from './Components/Footer/CombineFooter';
 import { useSelector } from 'react-redux';
-import { Selectlocationinfo, Selectlogininfo } from './Components/Redux_toolkit/Redux_Slice';
+import { Selectcityinfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
 import Header2 from './Components/Inside/Header/Header2';
 import { useEffect, useState } from 'react';
@@ -14,11 +14,18 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom'
 import City from './Components/Inside/InsideMaincontent/CitiesInfo/City';
-import Moreinfo from './Components/Inside/InsideMaincontent/CitiesInfo/Moreinfo';
+import Moreinfo from './Components/Inside/InsideMaincontent/MoreInfo/Moreinfo';
+import Cart from './Components/Inside/InsideMaincontent/MoreInfo/Cart';
+import Help_Support from './Components/Inside/InsideMaincontent/MoreInfo/Helppage/Help_Support';
 
 
 
 function App() {
+
+  let selectCityInfo=useSelector(Selectcityinfo)
+  // console.log(selectCityInfo)
+  let navigate=useNavigate()
+let selectMoreInfo=useSelector(Selectmoreinfo)
 
 
 
@@ -51,6 +58,17 @@ let firstchange=false;
 // w
 //   },[])
 
+useEffect(()=>{
+
+  (!selectCityInfo) && navigate('/')
+
+},[selectCityInfo])
+
+// (!selectMoreInfo || !selectCityInfo) && navigate('/')
+
+// },[selectCityInfo,selectMoreInfo])
+
+// console.log(selectMoreInfo)
   return (
     <div className="App">
       <div className='App_inside'>
@@ -92,8 +110,11 @@ let firstchange=false;
       <InsideCombine/>:<FirstPage/>
     }/>
 
-        <Route path='city' element={<City/>}/>
-        <Route path='moreinfo' element={<Moreinfo/>}/>
+        <Route path={`city/${selectCityInfo}`} element={<City/>}/>
+        <Route path={`moreinfo`} element={<Moreinfo/>}/>
+        {/* <Route path={`moreinfo/${selectMoreInfo}`} element={<Moreinfo/>}/> */}
+        <Route path='support' element={<Help_Support/>}/>
+        <Route path='cart' element={<Cart/>}/>
       </Routes>
          
       <CombineFooter/>

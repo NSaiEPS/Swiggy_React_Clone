@@ -33,7 +33,7 @@ const CitiesFindItem = () => {
 'Hatibagan']
 
 // let arloc=locations.split(' ')
-console.log(locations)
+// console.log(locations)
   return (
     <div
     className='CitiesFindItem'

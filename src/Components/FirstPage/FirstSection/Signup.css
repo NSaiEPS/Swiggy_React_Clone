@@ -5,7 +5,7 @@
     height: 100%;
     z-index: 1;
   /* overflow: hidden; */
-  /* overflow-y:scroll; */
+  overflow-y:scroll;
     
     
 }
@@ -57,7 +57,19 @@ margin-top: 45px;
 
 
 }
-.Signup_Inside_right_inside_signup >div:nth-last-child(1){
+/* .Signup_Inside_right_inside_signup >div:nth-last-child(1){
+    background-color: #FC8019;
+    color: white;
+    height: 55px;
+    margin-top: 25px;
+    border: none;
+    justify-content: center !important;
+    cursor: pointer;
+
+
+} */
+
+.Signup_btn_Submit {
     background-color: #FC8019;
     /* color: #FC8019; */
     color: white;
@@ -67,7 +79,6 @@ margin-top: 45px;
     /* text-align: center; */
     justify-content: center !important;
     cursor: pointer;
-
 
 }
 
@@ -198,4 +209,19 @@ input[type="number"]::-webkit-calendar-picker-indicator {
 
 .invalidshowup {
     color: red !important;
+}
+
+.invalidshowdown {
+    position: absolute;
+    /* top: 19px; */
+    top: 30px;
+
+    left: 15px;
+   
+    pointer-events: none;   
+    font-size: small;
+    color: #fa4a5b;
+    font-size: 17px;
+    font-weight: 500;
+
 }
