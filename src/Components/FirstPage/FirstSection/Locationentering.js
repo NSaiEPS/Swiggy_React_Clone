@@ -156,9 +156,59 @@ let reqlocation=''
 
 
       </div>
+
+{/* 
       <div className='Locationentering_inside_Changing'>
-        <h1> Changing ?</h1>
-      </div>
+
+   
+
+        <h1
+        className='Locationentering_inside_Changing_1'
+        > Hungry ?</h1>
+
+<h1
+        className='Locationentering_inside_Changing_2'
+        > Unexpected guests ?</h1>
+
+<h1
+        className='Locationentering_inside_Changing_3'
+        > Cooking gone wrong ?</h1>
+
+<h1
+        className='Locationentering_inside_Changing_4'
+        > Movie marathon ?</h1>
+
+<h1
+        className='Locationentering_inside_Changing_5'
+        > Game night ?</h1>
+
+<h1
+        className='Locationentering_inside_Changing_6'
+        > Late night at office ?</h1>
+
+
+   
+      </div> */}
+
+
+
+
+
+
+<div className="Locationentering_inside_Changing">
+            <div className="i-title-wrapper">
+              <h1 className="i-title-item">Hungry ?</h1>
+              <h1 className="i-title-item">Unexpected guests  ?</h1>
+              <h1 className="i-title-item">Cooking gone wrong ?</h1>
+              <h1 className="i-title-item">Movie marathon ?</h1>
+              <h1 className="i-title-item"> Game night ?</h1>
+              <h1 className="i-title-item"> Late night at office ?</h1>
+            </div>
+          </div>
+
+
+
+
       <div className='Locationentering_inside_info'>
         <span>Order food from favourite restaurants near you.
           </span>

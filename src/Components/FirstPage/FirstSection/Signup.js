@@ -233,6 +233,10 @@ let handleerasesignup=()=>{
     }
     )
   )
+
+
+  document.body.style.overflowY = "scroll";
+
 }
 
 // console.log(inputval)
@@ -280,7 +284,7 @@ useEffect(()=>{
 
 },[signup])
 
-let [scrollbarset,setscrollbarset]=useState(false)
+// let [scrollbarset,setscrollbarset]=useState(false)
 
 useEffect(()=>{
   // document.body.style.overflow = "hidden";

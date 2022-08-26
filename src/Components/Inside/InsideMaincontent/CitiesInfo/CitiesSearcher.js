@@ -16,14 +16,19 @@ let [inputval,setInputval]=useState({
   location:''
 })
 
-let handleClick=()=>{
+let handleClicksearch=()=>{
   // alert('clicked')
   setNewsearch(true)
+  // window.document.body.scroll='hidden'
+  // document.body.
+  document.body.style.overflowY = "hidden";
 
 
 }
 let handleEracenewSeacrh=()=>{
   setNewsearch(false)
+  document.body.style.overflowY = "scroll";
+
 
 }
 
@@ -52,7 +57,7 @@ let handlefocus=(a)=>{
       <span>Set exact location to find the right restaurants near you.</span>
      
      <div className='CitiesSearcher_inside_Input'
-     onClick={handleClick}
+     onClick={handleClicksearch}
      >
       <input placeholder='Enter street name, area etc...' 
      

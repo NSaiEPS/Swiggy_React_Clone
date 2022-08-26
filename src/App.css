@@ -1,5 +1,8 @@
 .App {
+ 
   text-align: center;
+  /* overflow-y: overlay;
+  scrollbar-width: none */
 }
 
 

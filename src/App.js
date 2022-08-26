@@ -75,16 +75,16 @@ useEffect(()=>{
 
 // console.log(selectMoreInfo)
 
-useEffect(()=>{
-  // document.body.style.overflow = "hidden";
-  if(!selectLogininfo.status){
-      document.body.style.overflowY = "scroll";
+// useEffect(()=>{
+//   // document.body.style.overflow = "hidden";
+//   if(!selectLogininfo.status){
+//       document.body.style.overflowY = "scroll";
 
-  }
+//   }
  
 
 
-},[selectLogininfo])
+// },[selectLogininfo])
 
   return (
     <div className="App">
