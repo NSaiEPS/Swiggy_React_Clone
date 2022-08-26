@@ -7,22 +7,40 @@
     width: 98.5%;
     margin-left: auto;
     display: flex;
+    flex-direction: row;
     /* margin-top: 35px; */
+    height: fit-content;
 }
 
 .Help_Support_inside_FAQpart_left {
     padding: 40px;
-   
+    
+    /* background-color: #37718e;
+    color: white;
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    z-index: 1; */
 }
 
 .Help_Support_inside_FAQpart_left_inside {
     min-width: 260px;
     background: #edf1f7;
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
     min-height: 50vh;
     /* margin-top: 10px; */
     box-sizing: border-box;
+    position: sticky;
+    /* top: 550px; */
+    /* height: 150px; */
+    /* z-index: 1; */
+   /* top: 50; */
+top: 80px;
+    /* height: 150px; */
+
+  
 }
 
 
@@ -58,13 +76,15 @@
 
 .Help_Support_inside_FAQpart_left_inside >button {
     border: none;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 20px;
     height: 70px;
     font-weight: 700;
     font-size: medium;
     color: #656667;
     /* background-color: white; */
+    background: #edf1f7;
+
 
  }
 
@@ -72,11 +92,12 @@
 
     color: black;
     cursor: pointer;
+    /* background-color: white; */
 
 }
 
 .Help_support_FAQ_buttonselected {
-    background-color: white;
+    background-color: white !important;
 }
 
 .Help_Support_inside_FAQpart_right h2 {

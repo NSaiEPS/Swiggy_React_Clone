@@ -72,11 +72,15 @@ const CombineFooter = () => {
         onClick={handleGp}>
           {!goupicon?  <KeyboardDoubleArrowUpIcon
           // onClick={handleGoUp}
+
+          className='CombineFooter_inside_showup_icon'
           />
           
           :
           <KeyboardDoubleArrowDownIcon
           // onClick={handleGoDown}
+          className='CombineFooter_inside_showdown_icon'
+
           /> }
          
 
