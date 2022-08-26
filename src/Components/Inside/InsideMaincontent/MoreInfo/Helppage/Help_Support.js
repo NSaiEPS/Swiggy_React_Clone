@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CityHeader from '../../CitiesInfo/CityHeader'
+import FAQ1 from './FAQ1'
+import FAQ2 from './FAQ2'
+import FAQ3 from './FAQ3'
 import HelpContainer from './HelpContainer'
 import './Help_Support.css'
 
@@ -112,53 +115,28 @@ let handleclickbtn=(e)=>{
       
 
       </div>
+      
       <div className='Help_Support_inside_FAQpart_right'>
         {selectSection.first &&
         <div>
-      artner Onboarding
-I want to partner my restaurant with Swiggy
-What are the mandatory documents needed to list my restaurant on Swiggy?
-After I submit all documents, how long will it take for my restaurant to go live on Swiggy?
-What is this one time Onboarding fees? Do I have to pay for it while registering?
-Who should I contact if I need help & support in getting onboarded?
-How much commission will I be charged by Swiggy?
-I don’t have an FSSAI licence for my restaurant. Can it still be onboarded?
-</div>}
+          <h2>Partner Onboarding</h2>
+      <FAQ1/>
+      </div>}
 
 {selectSection.second &&
 
-      <div>Legal
-Terms of Use
-Privacy Policy
-Cancellations and Refunds
-Terms of Use for Swiggy ON-TIME / Assured</div>
+      <div>
+          <h2>Legal</h2>
+
+        {<FAQ2/>}
+</div>
 }
 
 {selectSection.third &&
 <div>
-FAQs
-What is Swiggy Customer Care Number?
-I want to explore career opportunities with Swiggy
-I want to provide feedback
-Can I edit my order?
-I want to cancel my order
-Will Swiggy be accountable for quality/quantity?
-Is there a minimum order value?
-Do you charge for delivery?
-How long do you take to deliver?
-What are your delivery hours?
-Can I order from any location?
-Is single order from many restaurants possible?
-Do you support bulk orders?
-Can I order in advance?
-Can I change the address / number?
-Did not receive OTP?
-Did not receive referral coupon?
-Deactivate my account
-Unable to view the details in my profile
-What is Swiggy Money?
-Do you accept Sodexo, Ticket Restaurant etc.?
-I want an invoice for my order
+<h2>FAQs</h2>
+
+<FAQ3/>
 </div>}
 </div>
      </div>

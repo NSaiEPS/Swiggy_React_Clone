@@ -34,7 +34,7 @@ const Header1 = () => {
 
 
   }
-
+let location='location'
   return (
     <div className='Header1'>
 
@@ -44,10 +44,12 @@ const Header1 = () => {
           <img  src='https://anujbansal16.github.io/images/logos/swiggy.svg'
           alt='swiggy.png'/>
           </Link>
-           <span>Location</span>
+
+           <span>{location}</span>
            </div>
         <div className='Header1_inside_right'>
-
+        <Link to='/search'>
+        
            <div className='Header1_inside_right_divs'>
             <span>
             <SearchRoundedIcon/>
@@ -55,6 +57,7 @@ const Header1 = () => {
            
             <span>Search</span>
             </div>
+            </Link>
 
 
            <div className=' Header1_inside_right_divs '>

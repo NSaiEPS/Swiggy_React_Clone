@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { logininfoAction } from '../../../Redux_toolkit/Redux_Slice'
 import SupportIcon from '@mui/icons-material/Support';
@@ -21,21 +21,75 @@ const CityHeader = () => {
     )
 
   }
+
+  let onClickhelp=()=>{
+    window.scrollTo(0,0)
+  }
+
+  let path=window.location.pathname.split('/')
+  let [cityfinder,setCityfinder]=useState(true)
+  console.log(path)
+  // let disname=''
+let [disname,setDisname]=useState('')
+  useEffect(()=>{
+
+  if(path.includes('city')){
+    setCityfinder(true)
+  }
+
+  else {
+    setCityfinder(false)
+
+    if(path[1]==='support'){
+      setDisname("HELP")
+      // disname="HELP"
+    }
+    if(path[1]==='cart'){
+      setDisname("SECURE CHECKOUT")
+
+      // disname="SECURE CHECKOUT"
+
+    }
+
+
+  }
+},[])
+
   return (
     <div className='CityHeader'>
       
       <div className='CityHeader_inside'>
       <div className='CityHeader_inside_left'>
         <Link to='/'>
-        <img src='https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Swiggy_logo.svg/1200px-Swiggy_logo.svg.png'
-        alt='swiigy.img'
-       
-        />
+
+          {cityfinder ?
+            <img src='https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Swiggy_logo.svg/1200px-Swiggy_logo.svg.png'
+            alt='swiigy.img'
+           
+            />: 
+            
+            
+<img  src='https://anujbansal16.github.io/images/logos/swiggy.svg'
+          alt='swiggy.png'
+          className='CityHeader_inside_left_img_new'
+          />
+            }
+      
+
         </Link>
+
+        {!cityfinder && <span 
+        className='CityHeader_inside_left_nameindicate'
+        >
+          {/* {path[1].toUpperCase()} */}
+          {disname}
+        </span>}
       </div>
 
       <div className='CityHeader_inside_right'>
-      <Link to='/support' >
+      <Link to='/support' 
+      onClick={onClickhelp}
+      >
       <div className='Header1_inside_right_divs Header1_inside_right_divs_small CityHeader_inside_right_help'>
             <span><SupportIcon/></span>
             <span>
@@ -51,7 +105,9 @@ const CityHeader = () => {
             <span><PersonOutlineIcon/></span>
             <span>Sign In</span>
            </div>
-           <Link to='support'>
+
+           {}
+           <Link to='/cart'>
 
            <div className='Header1_inside_right_divs Header1_inside_right_divs_small'>
             <span>

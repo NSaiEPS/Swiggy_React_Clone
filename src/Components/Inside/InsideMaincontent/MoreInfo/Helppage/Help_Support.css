@@ -20,7 +20,7 @@
     background: #edf1f7;
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    min-height: 50vh;
     /* margin-top: 10px; */
     box-sizing: border-box;
 }
@@ -77,4 +77,16 @@
 
 .Help_support_FAQ_buttonselected {
     background-color: white;
+}
+
+.Help_Support_inside_FAQpart_right h2 {
+    text-align: start !important;
+}
+
+
+
+.Help_FAQ_summary:hover  .Help_FAQ_Typography{
+    /* background-color: black !important; */
+    color: #fc8019;
+
 }

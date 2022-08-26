@@ -6,9 +6,18 @@
     z-index: 1;
   /* overflow: hidden; */
   overflow-y:scroll;
+   /* scrollbar-color: ;  */
+   /* -ms-overflow-style: none; */
+   /* scrollbar-width: none; */
+ }
+ 
+ /* hide scrollbar for chrome, safari and opera */
+ /* .App_inside::-webkit-scrollbar {
+   display: none;
+ } */
+ 
     
-    
-}
+
 
 .Signup_Inside_left{
     /* background-color: red; */

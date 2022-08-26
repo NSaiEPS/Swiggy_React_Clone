@@ -21,6 +21,11 @@
 
 }
 
+.CityHeader_inside_left_img_new {
+    width: 33px !important;
+    
+}
+
 .CityHeader_inside {
     display: flex;
     justify-content: space-between;
@@ -41,4 +46,19 @@
 
 .CityHeader_inside_right_help {
     margin-right: 50px;
+}
+
+.CityHeader_inside_left_nameindicate {
+    /* align-items: center !important; */
+    /* margin-bottom: 5px !important; */
+    margin-left: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(70, 68, 68);
+}
+
+.CityHeader_inside_left {
+    display: flex;
+    align-items: center !important;
+
 }

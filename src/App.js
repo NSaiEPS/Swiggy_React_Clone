@@ -17,6 +17,7 @@ import City from './Components/Inside/InsideMaincontent/CitiesInfo/City';
 import Moreinfo from './Components/Inside/InsideMaincontent/MoreInfo/Moreinfo';
 import Cart from './Components/Inside/InsideMaincontent/MoreInfo/Cart';
 import Help_Support from './Components/Inside/InsideMaincontent/MoreInfo/Helppage/Help_Support';
+import Search from './Components/Inside/InsideMaincontent/MoreInfo/Search';
 
 
 
@@ -40,6 +41,10 @@ let selectMoreInfo=useSelector(Selectmoreinfo)
 
   let selectLogininfo=useSelector(Selectlogininfo)
   let selectLocationInfo=useSelector(Selectlocationinfo)
+  // console.log(selectLogininfo)
+  // if(selectLocationInfo.status){
+  //   console.log('yes')
+  // }
 
 let firstchange=false;
   firstchange=selectLocationInfo?.active
@@ -69,6 +74,18 @@ useEffect(()=>{
 // },[selectCityInfo,selectMoreInfo])
 
 // console.log(selectMoreInfo)
+
+useEffect(()=>{
+  // document.body.style.overflow = "hidden";
+  if(!selectLogininfo.status){
+      document.body.style.overflowY = "scroll";
+
+  }
+ 
+
+
+},[selectLogininfo])
+
   return (
     <div className="App">
       <div className='App_inside'>
@@ -115,6 +132,7 @@ useEffect(()=>{
         {/* <Route path={`moreinfo/${selectMoreInfo}`} element={<Moreinfo/>}/> */}
         <Route path='support' element={<Help_Support/>}/>
         <Route path='cart' element={<Cart/>}/>
+        <Route path='search' element={<Search/>}/>
       </Routes>
          
       <CombineFooter/>

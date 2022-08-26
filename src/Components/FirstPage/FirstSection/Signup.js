@@ -265,6 +265,8 @@ useEffect(()=>{
     password:true
   })
 
+  // document.body.style.overflow = "scroll";
+
 
 
 
@@ -278,7 +280,22 @@ useEffect(()=>{
 
 },[signup])
 
+let [scrollbarset,setscrollbarset]=useState(false)
 
+useEffect(()=>{
+  // document.body.style.overflow = "hidden";
+  if(selectLogininfo.status){
+      document.body.style.overflow = "hidden";
+
+  }
+ 
+
+
+},[selectLogininfo])
+
+// signupname
+// selectLogininfo
+// console.log()
 // let [conditionCheck2,setConditionCheck2]=useState({
 
 //   phonenumber:true,
