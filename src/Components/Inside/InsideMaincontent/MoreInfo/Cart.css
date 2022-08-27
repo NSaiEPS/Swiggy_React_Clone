@@ -4,13 +4,14 @@
     height: fit-content;
     /* justify-content: center; */
     /* align-items: center; */
-    padding-top: 85px;
+    padding-top: 95px;
+    /* background-color: red; */
 }
 
 .Cart_inside_section1_img {
     /* background-image: url(`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0); */
-   height: 250px;
-   width: 250px;
+   height: 255px;
+   width: 255px;
    /* justify-self: center; */
    /* align-items: center; */
   /* align-self: center; */
@@ -47,7 +48,7 @@
     padding: 12px;
     font-weight: 700;
     margin-top: 35px;
-    font-size: medium;
+    font-size: 14px;
     cursor: pointer;
 
  }

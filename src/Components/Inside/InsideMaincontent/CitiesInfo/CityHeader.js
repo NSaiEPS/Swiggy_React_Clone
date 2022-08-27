@@ -28,7 +28,7 @@ const CityHeader = () => {
 
   let path=window.location.pathname.split('/')
   let [cityfinder,setCityfinder]=useState(true)
-  console.log(path)
+  // console.log(path)
   // let disname=''
 let [disname,setDisname]=useState('')
   useEffect(()=>{
@@ -90,7 +90,11 @@ let [disname,setDisname]=useState('')
       <Link to='/support' 
       onClick={onClickhelp}
       >
-      <div className='Header1_inside_right_divs Header1_inside_right_divs_small CityHeader_inside_right_help'>
+      <div className='Header1_inside_right_divs Header1_inside_right_divs_small CityHeader_inside_right_help'
+       style={{
+        color: path[1]==='support' && '#FC8019'
+       }}
+      >
             <span><SupportIcon/></span>
             <span>
          
@@ -106,7 +110,7 @@ let [disname,setDisname]=useState('')
             <span>Sign In</span>
            </div>
 
-           {}
+           {path[1]!=='cart' &&
            <Link to='/cart'>
 
            <div className='Header1_inside_right_divs Header1_inside_right_divs_small'>
@@ -115,7 +119,7 @@ let [disname,setDisname]=useState('')
             </span>
             <span>Cart</span>
            </div>
-           </Link>
+           </Link>}
       </div>
       </div>
     </div>

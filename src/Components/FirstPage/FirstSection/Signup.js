@@ -4,6 +4,7 @@ import { logininfoAction, Selectlogininfo } from '../../Redux_toolkit/Redux_Slic
 import ClearIcon from '@mui/icons-material/Clear';
 
 import './Signup.css'
+import { toast } from 'react-toastify';
 
 const Signup = () => {
   // let signup=false;
@@ -13,6 +14,8 @@ const Signup = () => {
   
   let signupname=selectLogininfo?.name;
   let dispatch=useDispatch()
+  let [checkloginbtn,setCheckloginbtn]=useState(false)
+  let [otpCondition,setOTPcondition]=useState(false)
 
   
 
@@ -24,6 +27,7 @@ const Signup = () => {
   )
 
   let handlebtnclick=()=>{
+    // if(otpCondition)
     setSignup(!signup)
     setFocus({
       ...focus,
@@ -42,7 +46,8 @@ const Signup = () => {
     name:false,
     email:false,
     password:false,
-    referal:false
+    referal:false,
+    otp:false
 
 
 
@@ -53,23 +58,24 @@ const Signup = () => {
     name:'',
     email:'',
     password:'',
-    referal:''
+    referal:'',
+    otp:''
   })
 
   let [conditionCheck,setConditionCheck]=useState({
 
-    phonenumber:true,
-      email:true,
-    password:true
+    phonenumber:false,
+      email:false,
+    password:false
   })
 
-  let [conditionCheck2,setConditionCheck2]=useState({
+  // let [conditionCheck2,setConditionCheck2]=useState({
 
-    phonenumber:true,
-      email:true,
-      name:true,
-    password:true
-  })
+  //   phonenumber:true,
+  //     email:true,
+  //     name:true,
+  //   password:true
+  // })
 
 
   let handleinputchange=(e)=>{
@@ -134,7 +140,7 @@ const Signup = () => {
     
     if(name==='phonenumber'){
       // let check=true;
-    inputval.phonenumber.length<10 ?
+    inputval.phonenumber.length!==10 ?
       setConditionCheck({
         ...conditionCheck,
         phonenumber:false
@@ -165,7 +171,7 @@ const Signup = () => {
     // console.log(ear)
     let emilcheck=ear[1].split('.')
 
-    if(emilcheck.length!==2){
+    if(emilcheck.length===1){
       setConditionCheck({
         ...conditionCheck,
         email:false
@@ -174,7 +180,7 @@ const Signup = () => {
 
     else {
 
-    (['com','org','info','de'].includes(emilcheck[1])) ? 
+    (['com','org','info','de','ac','in'].includes(emilcheck[1])) ? 
      setConditionCheck({
       ...conditionCheck,
       email:true
@@ -257,17 +263,18 @@ useEffect(()=>{
     name:'',
     email:'',
     password:'',
-    referal:''
+    referal:'',
+    otp:''
   })
 
-  setConditionCheck2({
-    conditionCheck2,
+  // setConditionCheck2({
+  //   conditionCheck2,
 
-    phonenumber:true,
-      email:true,
-      name:true,
-    password:true
-  })
+  //   phonenumber:true,
+  //     email:true,
+  //     name:true,
+  //   password:true
+  // })
 
   // document.body.style.overflow = "scroll";
 
@@ -280,6 +287,7 @@ useEffect(()=>{
   //   phonenumber:true
   // })
 
+  setCheckloginbtn(false)
 
 
 },[signup])
@@ -308,26 +316,103 @@ useEffect(()=>{
 //   password:true
 // })
 
+// let phonenumCheck=()=>{
+//   // alert('here phone')
+
+//   if( !inputval.phonenumber || inputval.phonenumber.length<10 ){
+//     setConditionCheck2({
+//       ...conditionCheck2,
+//       phonenumber:false
+//     })
+//   // console.log('phone ',conditionCheck2.phonenumber)
+//   }
+//     else{
+    
+//     setConditionCheck2({
+//       ...conditionCheck2,
+//       phonenumber:true
+//     })
+  
+//     // console.log('phone true')
+//   }
+
+// }
+
+// let nameCheck=()=>{
+//   // alert('here name')
+//     if(inputval.name.length<1){
+
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     name:false
+//   })}
+//   else{
+//   setConditionCheck2({
+//     ...conditionCheck2,
+//     name:true
+//   })}
+// }
+
 let handlesubmit=()=>{
  
-  if( !inputval.phonenumber || inputval.phonenumber.length<10 ){
-    setConditionCheck2({
-      ...conditionCheck2,
-      phonenumber:false
-    })
-  console.log('phone ',conditionCheck2.phonenumber)
-  }
-    else{
+  // phonenumCheck()
+  // nameCheck()
+  setCheckloginbtn(true)
+
+//  signup?( (conditionCheck.email&& conditionCheck.password && conditionCheck.phonenumber && inputval.name.length>0 )?
+//     alert('condition  satisfied'):
+//     alert('condition not satisfied!')):
+//    ( ( conditionCheck.phonenumber )?
+//     alert('condition not satisfied!'):
+//     alert('condition  satisfied'))
     
-    setConditionCheck2({
-      ...conditionCheck2,
-      phonenumber:true
-    })
+
+
+  if(signup){
+   
+  if((conditionCheck.email&& conditionCheck.password && conditionCheck.phonenumber && inputval.name.length>0 )){
+    toast.success(`OTP sent to the ${inputval.phonenumber}`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      // pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
+
+      setOTPcondition(true)
+
+  }
+  else {
+    alert('condition not satisfied')
+    setOTPcondition(false)
+  }
+  }
+  else{
+    if(( conditionCheck.phonenumber )){
+      toast.success(`OTP sent to the ${inputval.phonenumber}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
+      setOTPcondition(true)
+
   
-    console.log('phone true')
+    }
+    else {
+      alert('condition not satisfied')
+    setOTPcondition(false)
+
+    }
   }
 
-  // }
+
+  
 
 
 // if (name==='email'){
@@ -456,6 +541,8 @@ let handlesubmit=()=>{
                 
                 </button>
               </div>
+
+
               <div >
                 <div> 
                   <div> <h2>
@@ -463,7 +550,8 @@ let handlesubmit=()=>{
                     
                     </h2></div>
                   <div> or <button onClick={handlebtnclick}
-                  >{signup? 'login to your account':'create an account'}
+                  >{
+                  signup? 'login to your account':'create an account'}
                     
                     </button></div>
                   
@@ -487,10 +575,10 @@ let handlesubmit=()=>{
                 onChange={handleinputchange} value={inputval.phonenumber}
                 autoFocus
                 />
-                {!conditionCheck2.phonenumber && !inputval.phonenumber ? 
+                {checkloginbtn && !inputval.phonenumber ? 
                 <span className='invalidshowdown'
                
-                >Enter your phone numberddd</span>
+                >Enter your phone number</span>
                 
                 
                 :
@@ -517,16 +605,75 @@ let handlesubmit=()=>{
                 
                 </div>
 
-                {signup && <>
+
+{/* OTP Condition */}
+
+               {otpCondition?
+
+<div className='Signup_input_div  Signup_input_div_input_phone'>
+                <input placeholder='' name='otp' type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" minLength={10} maxLength={10}
+                onFocus={handlefocus} onBlur={handleblur}
+                onChange={handleinputchange} value={inputval.otp}
+                autoFocus
+                />
+
+<span className={focus.name || inputval.name ? 'Signup_input_divspanup':'Signup_input_divspan'}
+                
+                >OTP</span>
+
+                {/* {checkloginbtn && !inputval.phonenumber ? 
+                <span className='invalidshowdown'
+               
+                >Enter your phone number</span>
+                
+                
+                :
+
+                  (inputval.phonenumber && !conditionCheck.phonenumber) ?
+                
+                 
+                 <span className='invalidshow'
+               
+                 >Enter your phone number</span>
+                 :
+                 <span className={focus.phonenumber || inputval.phonenumber? 'Signup_input_divspanup':
+                
+                 'Signup_input_divspan'}
+               
+                 >Phone number</span>
+
+                 
+                 
+                 } */}
+
+
+               
+                
+                </div>
+
+:
+               
+              
+
+
+
+
+                (signup && <>
                   <div className='Signup_input_div'>
                 <input placeholder='' name='name' type='text'
                 onFocus={handlefocus} onBlur={handleblur}
                 onChange={handleinputchange} value={inputval.name}
                 />
+{checkloginbtn && inputval.name<1 ?
+  <span className='invalidshowdown'
+               
+  >name must be greater than 1 char</span>:
 
                 <span className={focus.name || inputval.name ? 'Signup_input_divspanup':'Signup_input_divspan'}
                 
-                >Name</span>
+                >Names</span>
+                
+                }
                 </div>
 
                 <div className='Signup_input_div'>
@@ -535,7 +682,16 @@ let handlesubmit=()=>{
                 onChange={handleinputchange} value={inputval.email}
                  />
                 
-                {  (inputval.email && !conditionCheck.email) ?
+
+                {checkloginbtn && !inputval.email ? 
+                <span className='invalidshowdown'
+               
+                >invalid email address</span>
+                
+                
+                :
+
+                   (inputval.email && !conditionCheck.email) ?
                 
                  
                 <span className='invalidshow'
@@ -559,10 +715,10 @@ let handlesubmit=()=>{
 
 
 
-{!conditionCheck2.password && !inputval.password ? 
+{checkloginbtn && !inputval.password ? 
                 <span className='invalidshowdown'
                
-                >Enter your password numberddd</span>:
+                >Password should be min 6 chars</span>:
 
  (inputval.password && !conditionCheck.password) ?
                 
@@ -609,7 +765,7 @@ let handlesubmit=()=>{
                 
 
                 
-                </>}
+                </>)}
                 </div>
                 <div 
                 onClick={handlesubmit}

@@ -76,8 +76,10 @@ margin-top: 45px;
 
 .Signup_Inside_right_inside_signup input{
     height: 71px;
-    border: 0.2px solid #d4d5d9;
-    outline:  0.2px solid #d4d5d9;
+    border: 0.1px solid #d4d5d9;
+    /* outline:  0.2px solid #d4d5d9; */
+    border-bottom: none;
+    outline: none;
     padding-left: 15px;
     width: 100% !important;
     box-sizing: border-box;
@@ -90,6 +92,19 @@ margin-top: 45px;
 
 
 }
+.Signup_Inside_right_inside_signup form div div:nth-last-child(1) input{
+    border-bottom: 0.1px solid #d4d5d9 !important;
+    /* background-color: red !important; */
+}
+.Signup_Inside_right_inside_signup form div div:nth-last-child(2) input{
+    border-bottom: 0.1px solid #d4d5d9 !important;
+
+}
+
+/* .Signup_Inside_right_inside_signup input:nth-last-child(2){
+    
+
+} */
 /* .Signup_Inside_right_inside_signup >div:nth-last-child(1){
     background-color: #FC8019;
     color: white;

@@ -18,6 +18,7 @@ import Moreinfo from './Components/Inside/InsideMaincontent/MoreInfo/Moreinfo';
 import Cart from './Components/Inside/InsideMaincontent/MoreInfo/Cart';
 import Help_Support from './Components/Inside/InsideMaincontent/MoreInfo/Helppage/Help_Support';
 import Search from './Components/Inside/InsideMaincontent/MoreInfo/Search';
+import Offers from './Components/Inside/InsideMaincontent/MoreInfo/Offers';
 
 
 
@@ -133,6 +134,10 @@ useEffect(()=>{
         <Route path='support' element={<Help_Support/>}/>
         <Route path='cart' element={<Cart/>}/>
         <Route path='search' element={<Search/>}/>
+        <Route path='offers' element={<Offers/>}/>
+    
+    {/* offers */}
+    
       </Routes>
          
       <CombineFooter/>

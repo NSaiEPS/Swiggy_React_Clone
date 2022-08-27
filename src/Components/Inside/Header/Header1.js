@@ -5,14 +5,15 @@ import SupportIcon from '@mui/icons-material/Support';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { useDispatch } from 'react-redux';
-import { logininfoAction, moreInfoAction } from '../../Redux_toolkit/Redux_Slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { logininfoAction, moreInfoAction, Selectlocationinfo } from '../../Redux_toolkit/Redux_Slice';
 import { Link } from 'react-router-dom';
 
 
 
 const Header1 = () => {
   let dispatch=useDispatch()
+  let selectLocationInfo=useSelector(Selectlocationinfo)
  
   let handleSignin=()=>{
     dispatch(
@@ -34,7 +35,9 @@ const Header1 = () => {
 
 
   }
-let location='location'
+let location=selectLocationInfo?.location
+let path=(window.location.pathname.split('/'))
+let a=false;
   return (
     <div className='Header1'>
 
@@ -45,12 +48,17 @@ let location='location'
           alt='swiggy.png'/>
           </Link>
 
-           <span>{location}</span>
+           <span>{path[1]==='support'? 'HELP': 
+            location}</span>
            </div>
         <div className='Header1_inside_right'>
         <Link to='/search'>
         
-           <div className='Header1_inside_right_divs'>
+           <div className='Header1_inside_right_divs'
+           
+           style= { {
+            color:path.includes('search') &&'#FC8019'
+           }}>
             <span>
             <SearchRoundedIcon/>
             </span>
@@ -59,17 +67,33 @@ let location='location'
             </div>
             </Link>
 
+            <Link to='/offers'>
 
-           <div className=' Header1_inside_right_divs '>
+           <div className=' Header1_inside_right_divs '
+             style= { {
+            color:path.includes('offers') &&'#FC8019',
+            position:'relative'
+           }}
+           >
             <span>
             <LocalOfferIcon/>
             </span>
             <span>Offers</span>
+           
+           
+           {!path.includes('offers') && <span
+            className='Header1_inside_right_divs_offernew'
+            >NEW</span>} 
            </div>
+           </Link>
            
            <Link to='/support'>
            <div onClick={()=>handleDispatchcity('support')}
-           className='Header1_inside_right_divs Header1_inside_right_divs_small'>
+           className='Header1_inside_right_divs Header1_inside_right_divs_small'
+           style= { {
+            color:path.includes('support') &&'#FC8019'
+           }}
+           >
             
             <span><SupportIcon/></span>
             <span>Help</span>
@@ -78,6 +102,8 @@ let location='location'
             <span><SupportIcon/></span>
             <span>Help</span>
             </Link> */}
+
+           
            </div>
            </Link> 
            <div className='Header1_inside_right_divs'
@@ -86,6 +112,7 @@ let location='location'
             <span><PersonOutlineIcon/></span>
             <span>Sign In</span>
            </div>
+           <Link to='/cart'>
 
            <div className='Header1_inside_right_divs Header1_inside_right_divs_small'>
             <span>
@@ -93,6 +120,7 @@ let location='location'
             </span>
             <span>Cart</span>
            </div>
+           </Link>
         </div>
 
       </div>

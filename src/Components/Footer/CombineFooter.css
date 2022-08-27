@@ -28,11 +28,11 @@
 .CombineFooter_inside_showdown_icon {
     position: relative;
     top: -5px;
-    animation: ani 1s infinite;
+    animation: gotodownaniamtion 1s infinite;
 
 }
 
-@keyframes ani{
+@keyframes gotodownaniamtion{
     0% {
         top: -5px;
 
@@ -44,15 +44,15 @@
 .CombineFooter_inside_showup_icon {
     position: relative;
     top: -5px;
-    animation: ani 1s infinite;
+    animation: gototopaniamtion 1s infinite;
 
 }
 
-@keyframes ani{
+@keyframes gototopaniamtion{
     0% {
         top: 5px;
 
     }
-    50% {top: 0px;}
+    50% {top: -5px;}
     100% {top: -5px;}
 }

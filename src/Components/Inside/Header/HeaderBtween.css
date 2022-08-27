@@ -1,8 +1,14 @@
+/* .HeaderBtween_1 {
 
+} */
 .HeaderBtween {
     
 background-color: #171a29;
 /* margin-top: 25px; */
+position: relative;
+overflow-x: hidden;
+
+
 }
 
 .HeaderBtween_inside {
@@ -14,18 +20,111 @@ background-color: #171a29;
     /* justify-content: center; */
     padding-top: 45px;
     padding-bottom: 45px;
+    /* transform: translateX(-360px); */
+    /* z-index: 1; */
+    transition: 1s;
+
 }
 
 .HeaderBtween_inside img{
     /* width: 260px;
    
     height: 260px; */
-    width: 23%;
+    width: 260px;
     cursor: pointer;
+    margin-right: 50px ;
 }
 
 .HeaderBtween_inside img:hover{
 transform: scale(1.1);
 transition: 1s;
+
+}
+
+/* .HeaderBtween_inside {
+
+} */
+
+.HeaderBtween_inside_gorightbtn {
+    position: absolute;
+    left:  94%;
+        top: 150px;
+
+
+
+}
+
+.HeaderBtween_inside_gorightbtn button {
+  
+    width: 50px;
+height: 50px;
+border-radius: 50%;
+border: none;
+cursor: pointer;
+box-shadow: 0px 0px 5px 3px rgba(0, 0,0,0.5);
+position: relative;
+
+
+
+}
+
+.HeaderBtween_inside_goleftbtn {
+    position: absolute;
+    left:  1%;
+        top: 150px;
+
+
+
+}
+
+.HeaderBtween_inside_goleftbtn button {
+  
+    width: 50px;
+height: 50px;
+border-radius: 50%;
+border: none;
+cursor: pointer;
+box-shadow: 0px 0px 5px 3px rgba(0, 0,0,0.5);
+position: relative;
+
+
+
+}
+
+.HeaderBtween_inside_1 {
+    transform: translateX(-315px);
+    transition: 1s;
+
+}
+
+.HeaderBtween_inside_2 {
+    transform: translateX(-625px);
+    transition: 1s;
+
+
+}
+
+.HeaderBtween_inside_gorightbtn_icon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+
+}
+.HeaderBtween_inside_goleftbtn_icon {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+}
+
+
+.HeaderBtween_inside_gorightbtn button:hover .HeaderBtween_inside_gorightbtn_icon{
+    left: 45%;
+    transition: 1s;
+
+}
+
+.HeaderBtween_inside_goleftbtn button:hover .HeaderBtween_inside_goleftbtn_icon{
+    left: 10%;
+    transition: 1s;
 
 }

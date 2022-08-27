@@ -1,0 +1,93 @@
+.Search_inside_header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+
+}
+
+.Search_inside{
+    position: sticky;
+    top: 0;
+    /* z-index: 1; */
+    background-color: white;
+}
+/* .Search_inside_main_input {
+    position: sticky;
+    top: 0px;
+} */
+
+.Search_inside_main {
+    width: 100%;
+    padding-top: 47px;
+    height: 70px;
+
+}
+
+.Search_inside_main_input {
+    position: relative;
+    width: 67%;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: red; */
+}
+
+.Search_inside_main_input input {
+    width: 96%;
+    padding: 15px;
+    border:0.1px solid rgb(179, 176, 176);
+    /* outline:0.px solid lightgray; */
+    outline: none;
+    /* outline: none; */
+    border-radius: 3px;
+    /* color: red !important; */
+    font-weight:700;
+    font-size: 15px;
+    /* box-sizing: border-box; */
+
+
+}
+
+.Search_inside_main_input_icon {
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    /* z-index: 1; */
+    color: #37383a;
+    /* font-size: large !important; */
+    /* height: 30px !important; */
+}
+
+.Search_outside_main_cuisines {
+    text-align: start ;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 35px;
+}
+
+.Search_outside_main_cuisines_imgpart img {
+    width: 65px;
+    margin-right: 10px;
+
+}
+
+
+
+
+
+.Search_outside_main_cuisines h2{
+    color: #37383a;
+    font-size: large;
+    
+}
+
+.Search_outside_main_cuisines_imgpart {
+    padding-top: 15px;
+}
+
+.Search_outside_main {
+    /* border-bottom: 10px solid lightblue; */
+    /* padding-bottom: 25px; */
+    min-height: 590px;
+}

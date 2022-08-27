@@ -1,0 +1,56 @@
+.Offers_inside_header{
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.Offers_inside_section1 {
+    min-height: 300px;
+background-color: #005062;
+box-sizing: border-box;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+.Offers_inside_section1_left {
+    color: white;
+    /* float: left; */
+    /* padding-top: 80px; */
+    padding-left: 40px;
+    text-align: start;
+    padding-bottom: 40px;
+
+}
+
+.Offers_inside_section1_left h1 {
+    font-size:50px;
+    margin-bottom: 0px;
+    font-size: 600;
+}
+
+.Offers_inside_section1_left span{
+    padding-top: 10px  !important;
+    font-size: 20px;
+    color: rgb(211, 199, 199);
+}
+
+.Offers_inside_section1_right {
+    /* float: right; */
+    /* padding-top: 47px; */
+    padding-right: 42px;
+
+}
+
+.Offers_inside_section1_right img{
+
+width: 270px;
+align-items: center;
+
+}
+
+
+.Offers_inside_section2 {
+    min-height: 150px;
+    
+}
