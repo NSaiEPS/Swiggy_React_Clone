@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getAuth, signInWithPhoneNumber ,RecaptchaVerifier} from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCOBy9_DiiF7U8_HRgh6563dN1OwQQ_Q2k",

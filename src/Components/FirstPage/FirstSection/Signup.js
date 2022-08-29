@@ -2,9 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { logininfoAction, Selectlogininfo } from '../../Redux_toolkit/Redux_Slice';
 import ClearIcon from '@mui/icons-material/Clear';
+import firebase from 'firebase/compat/app';
 
 import './Signup.css'
 import { toast } from 'react-toastify';
+
+
+import { auth,db } from '../../../Firebase';
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { getAuth, signInWithPhoneNumber ,RecaptchaVerifier} from "firebase/auth";
+// import { getAuth,  } from "firebase/auth";
+
+
 
 const Signup = () => {
   // let signup=false;
@@ -69,13 +78,8 @@ const Signup = () => {
     password:false
   })
 
-  // let [conditionCheck2,setConditionCheck2]=useState({
+  
 
-  //   phonenumber:true,
-  //     email:true,
-  //     name:true,
-  //   password:true
-  // })
 
 
   let handleinputchange=(e)=>{
@@ -129,14 +133,7 @@ const Signup = () => {
       ...focus,
       [name]:false
     })
-    // if(name===inputval.name){
-    //   console.log('name')
-    // }
-    // phonenumber:'',
-    // name:'',
-    // email:'',
-    // password:'',
-    // referal:''
+  
     
     if(name==='phonenumber'){
       // let check=true;
@@ -160,7 +157,6 @@ const Signup = () => {
     // console.log(ear)
 
   if(ear.length!==2){
-    // console.log(ear)
     setConditionCheck({
       ...conditionCheck,
       email:false
@@ -168,7 +164,7 @@ const Signup = () => {
   }
 
   else {
-    // console.log(ear)
+    
     let emilcheck=ear[1].split('.')
 
     if(emilcheck.length===1){
@@ -185,10 +181,10 @@ const Signup = () => {
       ...conditionCheck,
       email:true
     })
-    // console.log('true')
+   
     
     :  
-    // console.log('false')
+   
     
     setConditionCheck({
       ...conditionCheck,
@@ -218,8 +214,6 @@ const Signup = () => {
 
 
 
-
-
   }
 
 
@@ -245,7 +239,7 @@ let handleerasesignup=()=>{
 
 }
 
-// console.log(inputval)
+
 
 let [passwordShow,setPasswordshow]=useState(false)
 let handlePassshow=()=>{
@@ -267,27 +261,10 @@ useEffect(()=>{
     otp:''
   })
 
-  // setConditionCheck2({
-  //   conditionCheck2,
-
-  //   phonenumber:true,
-  //     email:true,
-  //     name:true,
-  //   password:true
-  // })
-
-  // document.body.style.overflow = "scroll";
-
-
-
-
-
-  // setFocus({
-  //   ...focus,
-  //   phonenumber:true
-  // })
+ 
 
   setCheckloginbtn(false)
+  setOTPcondition(false)
 
 
 },[signup])
@@ -371,17 +348,11 @@ let handlesubmit=()=>{
   if(signup){
    
   if((conditionCheck.email&& conditionCheck.password && conditionCheck.phonenumber && inputval.name.length>0 )){
-    toast.success(`OTP sent to the ${inputval.phonenumber}`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      // pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      })
+  
 
       setOTPcondition(true)
+      // captchafunction()
+      otpfunction()
 
   }
   else {
@@ -391,17 +362,10 @@ let handlesubmit=()=>{
   }
   else{
     if(( conditionCheck.phonenumber )){
-      toast.success(`OTP sent to the ${inputval.phonenumber}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        // pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        })
-      setOTPcondition(true)
 
+      setOTPcondition(true)
+      // captchafunction()
+      otpfunction()
   
     }
     else {
@@ -517,10 +481,130 @@ let handlesubmit=()=>{
 }
 // console.log(conditionCheck2)
 
+// for otp verificaation
+// const auth = getAuth();
+// const phoneNumber = getPhoneNumberFromUserInput();
 
+
+
+
+let [captchacheck,setCapchacheck]=useState(false)
+let [checkotp,setcheckOtp]=useState(false)
+// if(otpCondition)
+let captchafunction=()=>
+{
+  // alert('captcha cameS')
+
+// window.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
+//   'size': 'normal',
+//   'callback': (response) => {
+//     // reCAPTCHA solved, allow signInWithPhoneNumber.
+//     // ...
+//     console.log(response)
+//     alert('captcha completed')
+//     setCapchacheck(true)
+//     otpfunction()
+//   },
+//   'expired-callback': () => {
+//     // Response expired. Ask user to solve reCAPTCHA again.
+//     // ...
+//     alert('Oops captcha not completed')
+
+//   }
+// }, auth);
+
+window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
+  'size': 'invisible',
+  'callback': (response) => {
+    // reCAPTCHA solved, allow signInWithPhoneNumber.
+    console.log(response)
+    otpfunction();
+  }
+}, auth);
+  
+
+// const auth = getAuth();
+// after captcha check
+
+}
+
+let otpfunction =()=>  {
+
+  const phoneNumber ="+91" +(inputval.phonenumber);
+// const appVerifier = window.recaptchaVerifier;
+const appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha');
+  signInWithPhoneNumber(auth,phoneNumber,appVerifier  )
+  .then((confirmationResult) => {
+    // SMS sent. Prompt user to type the code from the message, then sign the
+    // user in with confirmationResult.confirm(code).
+    toast.success(`OTP sent to the ${inputval.phonenumber} `, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      // pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
+
+
+  console.log(confirmationResult)
+
+    window.confirmationResult = confirmationResult;
+    // ...
+    setcheckOtp(true)
+  }).catch((error) => {
+    alert('otp not sent')
+    console.log(error)
+  });
+}
+
+const code = inputval.otp;
+let veryfycode=()=>{
+window.confirmationResult.confirm(code).then((result) => {
+  // User signed in successfully.
+  const user = result.user;
+ 
+  console.log(user)
+
+  toast.success(`number: ${inputval.phonenumber} is verified successfuly `, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    // pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    })
+
+    window.location.reload()
+    
+
+  auth.user.updateProfile({
+    displayName:inputval.name,
+    email:inputval.email,
+    password:inputval.password
+  })
+
+   
+  //     result.user.updateProfile({
+       
+        
+  //     })
+  //  .catch(error=>alert(error))
+
+
+  // ...
+}).catch((error) => {
+  // User couldn't sign in (bad verification code?)
+  // ...
+  alert('please enter proper otp')
+});}
 
   return (
     <div className='Signup'>
+  
+      
       <div className='Signup_Inside'>
 
         <div  onClick={handleerasesignup}
@@ -529,9 +613,11 @@ let handlesubmit=()=>{
         </div>
 
         <div className='Signup_Inside_right'>
+       
           <div className='Signup_Inside_right_inside'>
+            
               
-              <div>
+              <div >
 
                 <button
                 onClick={handleerasesignup}
@@ -565,7 +651,8 @@ let handlesubmit=()=>{
                   alt='img'/>
                 </div>
               </div>
-              <div className='Signup_Inside_right_inside_signup'>
+              <div  id='recaptcha-container' 
+              className='Signup_Inside_right_inside_signup'>
                 <form>
                 
                <div>
@@ -617,9 +704,9 @@ let handlesubmit=()=>{
                 autoFocus
                 />
 
-<span className={focus.name || inputval.name ? 'Signup_input_divspanup':'Signup_input_divspan'}
+<span className={focus.otp || inputval.otp ? 'Signup_input_divspanup':'Signup_input_divspan'}
                 
-                >OTP</span>
+                >One time password</span>
 
                 {/* {checkloginbtn && !inputval.phonenumber ? 
                 <span className='invalidshowdown'
@@ -645,6 +732,8 @@ let handlesubmit=()=>{
                  
                  
                  } */}
+
+
 
 
                
@@ -767,6 +856,13 @@ let handlesubmit=()=>{
                 
                 </>)}
                 </div>
+               
+                {checkotp ?
+ <div onClick={veryfycode}
+ className='Signup_btn_Submit'
+ >
+  Confirm OTP
+ </div>:
                 <div 
                 onClick={handlesubmit}
                 className='Signup_btn_Submit'
@@ -779,12 +875,26 @@ let handlesubmit=()=>{
                 {/* <button>{signup ? 'CONTINUE':'LOGIN'}</button> */}
               
               
-                </div>
+                </div>}
                 </form>
               
               </div>
-              <div> {signup? 'By creating an account':'By clicking on Login'} , I accept the <b>Terms & Conditions</b> & <b>Privacy Policy </b></div>
+              <div
+              
+              id='sign-in-button'
+              > {signup? 'By creating an account':'By clicking on Login'} , I accept the <b>Terms & Conditions</b> & <b>Privacy Policy </b></div>
+              {/* <div
+      id="sign-in-button"
+
+ >fdsfd</div>  */}
+
+       
         </div>
+
+<div id='recaptcha'>
+
+</div>
+        
         </div>
 
       </div>
