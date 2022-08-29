@@ -50,6 +50,18 @@ let a=false;
 
            <span>{path[1]==='support'? 'HELP': 
             location}</span>
+
+            <button
+            className='Header1_inside_left_dasboard'
+            >
+              <Link to='/dashboard'
+              className='Header1_inside_left_dasboard_link'
+              >
+              DashBoard
+
+
+              </Link>
+              </button>
            </div>
         <div className='Header1_inside_right'>
         <Link to='/search'>

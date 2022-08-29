@@ -22,6 +22,7 @@ import Offers from './Components/Inside/InsideMaincontent/MoreInfo/Offers';
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { auth } from './Firebase';
 import Spinner from 'react-spinkit'
+import Dashboard from './Components/Dashboard/Dashboard';
 
 
 function App() {
@@ -153,6 +154,7 @@ if(loading){
         <Route path='cart' element={<Cart/>}/>
         <Route path='search' element={<Search/>}/>
         <Route path='offers' element={<Offers/>}/>
+        <Route path='dashboard' element={<Dashboard/>}/>
     
     {/* offers */}
     

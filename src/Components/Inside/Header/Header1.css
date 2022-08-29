@@ -110,3 +110,28 @@
     font-weight: 600;
 
 }
+
+.Header1_inside_left_dasboard {
+    margin-left: 25px;
+    /* width: fit-content !important; */
+    cursor: pointer;
+    background-color: blue;
+    border: none;
+    /* color: white !important; */
+    border-radius: 5px;
+    height: 35px;
+    align-self: center;
+}
+
+.Header1_inside_left_dasboard_link {
+    /* background-color: blue; */
+    
+
+    color: white;
+    font-weight: 700;
+}
+
+.Header1_inside_left_dasboard:hover {
+
+background-color: rgb(217, 41, 223);
+}

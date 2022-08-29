@@ -1,0 +1,39 @@
+.Dashboard_inside_adminselectbtn {
+    min-height: 75px;
+    background-color: #051b30 ;
+    position: sticky;
+    top: 0;
+    /* align-items: center; */
+    display: flex;
+    justify-content: center;
+
+}
+
+.Dashboard_inside_adminselectbtn button {
+    background-color: white;
+    border: 2px solid white;
+    align-self: center;
+    padding: 7px;
+    margin-right: 10px;
+    cursor: pointer;
+    width: 75px;
+    font-weight: 700;
+    font-size: medium;
+
+}
+
+.Dashboard_inside_adminselectbtn button:hover {
+    background-color: black;
+    color: white;
+
+}
+
+.btnselected {
+    background-color: blueviolet !important;
+    color: white;
+}
+
+.btnselected:hover {
+    background-color: green !important;
+
+}

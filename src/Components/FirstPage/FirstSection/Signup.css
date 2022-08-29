@@ -273,3 +273,10 @@ input[type="number"]::-webkit-calendar-picker-indicator {
     font-weight: 500;
 
 }
+
+.Signup_captchashow {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}

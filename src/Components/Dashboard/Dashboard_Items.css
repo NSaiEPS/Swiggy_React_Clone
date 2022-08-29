@@ -1,0 +1,52 @@
+.Dashboard_Items_inside {
+    min-height: 275px;
+}
+
+.Dashboard_Items_inside_additem_btn {
+    margin-top: 15px;
+    background-color: black;
+    color: white;
+    border: 2px solid rgb(213, 60, 60);
+    padding: 7px;
+    width: 100px;
+    cursor: pointer;
+    font-size: medium;
+/* text-decoration: underline; */
+}
+
+.Dashboard_Items_addItemForm {
+    background-color: black;
+    color: white;
+}
+
+.Dashboard_Items_addItemForm form{
+    display: flex;
+    flex-direction: column;
+
+
+}
+.Dashboard_Items_addItemForm_div {
+    position: relative;
+    margin-top: 7px;
+    /* background-color: red; */
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Dashboard_Items_addItemForm_div input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.Dashboard_Items_addItemForm_div_span {
+    position: absolute;
+    left: 9px;
+    color: black;
+    top: 8px;
+    pointer-events: none;
+}

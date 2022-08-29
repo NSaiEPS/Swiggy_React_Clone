@@ -577,13 +577,13 @@ window.confirmationResult.confirm(code).then((result) => {
     progress: undefined,
     })
 
-    window.location.reload()
+    // window.location.reload()
     
 
-  auth.user.updateProfile({
+  auth.updateProfile({
     displayName:inputval.name,
     email:inputval.email,
-    password:inputval.password
+    
   })
 
    
@@ -891,7 +891,7 @@ window.confirmationResult.confirm(code).then((result) => {
        
         </div>
 
-<div id='recaptcha'>
+<div id='recaptcha' className='Signup_captchashow'>
 
 </div>
         
