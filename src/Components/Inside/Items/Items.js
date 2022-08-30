@@ -1,19 +1,78 @@
 import React from 'react'
 import './Items.css'
+import StarIcon from '@mui/icons-material/Star';
+const Items = ({id,imgurl,name,type,rating,discount,price,numofpeople,minites,cuponcode,freedelivery,promoted,index}) => {
 
-const Items = ({id,imgurl,name}) => {
-
-    // id={item.id}
-    // imgurl={item.data.imgurl} name={item.data.name} type={item.data.type}
-    // rating={item.data.rating} discount={item.data.discount} price={item.data.price}
-    // numofpeople={item.data.numofpeople}  minites={item.data.minites}
-    // cuponcode={item.data.cuponcode}  freedelivery={item.data.freedelivery}
-    // promoted={item.data.promoted} index={indx}
-
+   
+// console.log(typeof(name))
+// let ratingreq=rating;
+// ratingreq= (parseFloat(ratingreq))
 
   return (
-    <div>{name}</div>
+  <div className='Items'>
+    <div className='Items_inside'>
+{/* {name} */}
+
+
+ <div>
+    <img src={imgurl}
+    className='Items_inside_IMG'
+    alt='img.pmg'/>
+ </div>
+
+
+ <div className='Items_inside_names_div'>
+    <span>{name}</span> <br/>
+    <small>{type}</small>
+ </div>
+
+
+ <div className='Items_inside_rating_div_'>
+<button>
+    <StarIcon className='Items_inside_rating_div_StarIcon'/>
+    {parseFloat(rating)!==0 ? `${rating}`:'__'}
+
+
+ </button>
+<span>{minites} MINS</span>
+<span>₹ {price} for {numofpeople}</span>
+
+ </div>
+
+ {parseInt(discount)!==0 &&
+ <div className='Items_inside_offers_div_'>
+  
+     {cuponcode?
+    (`${parseInt(discount)} % off | Use ${cuponcode} `)
+:
+(`${parseInt(discount)} % off on all orders `)}
+
+ </div>}
+ {freedelivery==='true' &&
+ 
+ <div className='Items_inside_freedilivery_div_'>
+   FREE DELIVERY
+ </div>
+ }
+
+
+ <div className='Items_inside_quickview_div_'>
+    QUICK VIEW
+ </div>
+
+
+{promoted==='true' && 
+ <div
+ className='Items_inside_promoted_div_'
+ >
+    <span>PROMOTED</span>
+ </div>
+}
+    </div>
+
+  </div>
   )
+
 }
 
 export default Items

@@ -9,12 +9,22 @@ export const Input_Selectors={
         "West Indian",
         "Chinees",
         "Fast Foods",
-        "Cool drinks & Ice Creams",
+        "Cool drinks",
+        "Ice Creams",
         "VEG",
         "NON-VEG",
         "Chucken-Biryani",
         "Egg-Biryani",
         "veg-Biryani",
+        "Sweets",
+        "Hots",
+        "Pizzas",
+        "Burger",
+        "Fish",
+        "Cofee",
+        "Tea",
+        "Bakery",
+        "American"
     ],
     
 }

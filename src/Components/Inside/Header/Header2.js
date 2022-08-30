@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+
 import './Header2.css'
 
-const Header2 = () => {
+const Header2 = ({show}) => {
   let num=10;
   return (
     <div className='Header2'>
@@ -12,9 +14,19 @@ const Header2 = () => {
         </div>
 
         <div className='Header2_inside_right'>
-          <Link to='/search'>
-         
-          <span>Search</span>
+          <Link to='/search'
+          className='Header2_inside_right_searchLink'
+          >
+          <span
+          className={!show && 'Header2_inside_right_search'}
+          
+          >
+         <SearchRoundedIcon
+         className='Header2_inside_right_searchIcon'
+         />
+
+            
+            Search</span>
           </Link>
           <span>Relevance</span>
           <span>Delivery Time</span>

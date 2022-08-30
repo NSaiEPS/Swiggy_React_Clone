@@ -25,11 +25,24 @@
 
 .Header2_inside_right span{
     cursor: pointer;
+    display: flex;
+    align-items: flex-end;
 
 
 }
 
-.Header2_inside_right span:nth-child(1){
+.Header2_inside_right_search {
+    color: white;
+    
+}
+
+.Header2_inside_right_search::selection {
+
+    color:white;
+
+}
+
+/* .Header2_inside_right span:nth-child(1){
     color: white;
 }
 
@@ -37,4 +50,14 @@
     color:white;
 
 
+} */
+
+.Header2_inside_right_searchLink {
+    color: black;
+}
+
+.Header2_inside_right_searchIcon {
+    margin-bottom: -4px !important;
+    /* align-self: center !important; */
+    
 }

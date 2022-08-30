@@ -167,6 +167,7 @@ db.collection('items').add({
     draggable: true,
     progress: undefined,
     })
+    document.body.style.overflowY = "scroll";
 
     }
 

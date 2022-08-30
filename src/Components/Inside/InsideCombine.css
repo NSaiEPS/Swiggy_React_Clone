@@ -5,9 +5,9 @@
     z-index: 1;
 }
 
-.InsideCombine_inside_Maincontent{
-    height: 500px;
-}
+/* .InsideCombine_inside_Maincontent{ */
+    /* height: 500px; */
+/* } */
 .InsideCombine_inside_headerpart_header2 {
     z-index: 1;
    
@@ -16,6 +16,20 @@
 .App_Maincontent_inside_header2 {
     position: sticky;
     top: 0px;
-    background-color: red;
-    height: 150px;
+    /* background-color: red;
+    height: 150px; */
+}
+
+.App_Maincontent_inside_items_map {
+    margin-top: 25px;
+   
+}
+
+.App_Maincontent_inside_items_map_inside {
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
 }
