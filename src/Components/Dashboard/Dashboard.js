@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Dashboard_Items from './Dashboard_Items'
 import Dashboard_users from './Dashboard_users'
 import './Dashboard.css'
+import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
     let [adminselet,setAdminselect]=useState({
@@ -67,6 +68,19 @@ const Dashboard = () => {
 
             </div>
 
+       
+       <button className='Dashboard_inside_gobackBtn'
+      //  onClick={handleGobackbtn}
+       >
+        <Link to='/' 
+        className='Dashboard_inside_gobackBtn_link'>
+        Back
+        </Link>
+       
+       
+       
+       
+        </button>
 
         </div>
 

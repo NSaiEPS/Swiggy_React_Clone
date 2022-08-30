@@ -600,6 +600,7 @@ window.confirmationResult.confirm(code).then((result) => {
   // ...
   alert('please enter proper otp')
 });}
+// console.log(auth.displayName)
 
   return (
     <div className='Signup'>

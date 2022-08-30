@@ -15,21 +15,33 @@
 }
 
 .Dashboard_Items_addItemForm {
-    background-color: black;
+    
     color: white;
+    display: grid;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    /* z-index: 1; */
+    background-color: rgba(0,0,0,0.5);
 }
 
 .Dashboard_Items_addItemForm form{
     display: flex;
     flex-direction: column;
+    /* background-color: red; */
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 
 
 }
 .Dashboard_Items_addItemForm_div {
     position: relative;
-    margin-top: 7px;
+    margin-top: 2px;
     /* background-color: red; */
-    width: 35%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -38,15 +50,63 @@
     width: 100%;
     border: none;
     outline: none;
-    padding: 10px;
+    padding: 18.5px;
     border-radius: 5px;
+    font-size: medium;
 
 }
 
 .Dashboard_Items_addItemForm_div_span {
     position: absolute;
-    left: 9px;
+    left: 18px;
     color: black;
-    top: 8px;
+    top: 18px;
     pointer-events: none;
+   font-weight: 500;
+
+}
+.Dashboard_Items_addItemForm_form {
+    position: relative;
+    background-color: rgb(24, 24, 90);
+    border-radius: 15px;
+    /* padding-top: 15px; */
+}
+
+.Dsashboard_items_form_cancel_btn {
+    width: fit-content;
+    position: absolute;
+    top: 0px;
+    right:  0px;
+    cursor: pointer;
+}
+
+.Dashboard_Items_addItemForm_div_span_focus {
+    position: absolute;
+    top: 3.5px ;
+    font-size: small;
+    left: 18px;
+   color: green;
+   font-weight: 500;
+   pointer-events: none;
+
+}
+
+.Dashboard_Items_addItemForm_form_submitbtn {
+    width: 75px;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 5px;
+   cursor: pointer;
+   background-color: green;
+   color: white;
+   border: 2px solid white;
+   margin-top: 2px;
+}
+
+.DashBoard_items_selection {
+    position: absolute;
+    right: 0px;
+    top: 12px;
+    height: 30px;
+    width: 75px;
 }

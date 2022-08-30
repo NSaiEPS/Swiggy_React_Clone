@@ -13,7 +13,7 @@ import { auth } from '../../../Firebase'
 
 const Locationentering = () => {
   const [userss,loading]=useAuthState(auth)
-  console.log(userss)
+  // console.log(userss)
 
   let [location,setLocation]=useState('')
   let [locationfalseCheck,setLocationfalseCheck]=useState(false)

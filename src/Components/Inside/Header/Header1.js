@@ -8,12 +8,16 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logininfoAction, moreInfoAction, Selectlocationinfo } from '../../Redux_toolkit/Redux_Slice';
 import { Link } from 'react-router-dom';
+import { auth } from '../../../Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 
 const Header1 = () => {
   let dispatch=useDispatch()
   let selectLocationInfo=useSelector(Selectlocationinfo)
+const [userss,loading]=useAuthState(auth)
+
  
   let handleSignin=()=>{
     dispatch(
@@ -37,7 +41,9 @@ const Header1 = () => {
   }
 let location=selectLocationInfo?.location
 let path=(window.location.pathname.split('/'))
-let a=false;
+// let a=false;
+
+// console.log(userss.phoneNumber)
   return (
     <div className='Header1'>
 
@@ -51,6 +57,11 @@ let a=false;
            <span>{path[1]==='support'? 'HELP': 
             location}</span>
 
+           {userss?.phoneNumber==='+919705442192'
+           
+           &&
+           
+           
             <button
             className='Header1_inside_left_dasboard'
             >
@@ -61,7 +72,8 @@ let a=false;
 
 
               </Link>
-              </button>
+              </button>}
+
            </div>
         <div className='Header1_inside_right'>
         <Link to='/search'>

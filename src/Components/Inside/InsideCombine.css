@@ -10,4 +10,12 @@
 }
 .InsideCombine_inside_headerpart_header2 {
     z-index: 1;
+   
+}
+
+.App_Maincontent_inside_header2 {
+    position: sticky;
+    top: 0px;
+    background-color: red;
+    height: 150px;
 }
