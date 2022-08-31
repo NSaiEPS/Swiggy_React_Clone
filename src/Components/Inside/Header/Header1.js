@@ -49,7 +49,13 @@ let path=(window.location.pathname.split('/'))
 
       <div className='Header1_inside'>
         <div className='Header1_inside_left'>
-           <Link to='/'>
+           <Link to='/'
+           onClick={()=>{
+    window.scrollTo(0,0)
+            
+           }}
+           
+           >
           <img  src='https://anujbansal16.github.io/images/logos/swiggy.svg'
           alt='swiggy.png'/>
           </Link>

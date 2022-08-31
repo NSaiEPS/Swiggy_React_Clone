@@ -10,6 +10,7 @@
     /* align-items: center; */
     display: flex;
     justify-content: center;
+    z-index: 1;
 
 }
 
@@ -48,14 +49,18 @@
     top: 22px;
     right: 25px;
     cursor: pointer;
-    background-color: red;
+    background-color: red !important;
     border: 2px solid white;
     padding: 7px;
     border-radius: 3px;
     width: 75px;
+    z-index: 1;
 }
 
 .Dashboard_inside_gobackBtn_link {
     color: white;
 
 }
+/* .Dashboard_inside_adminselectbtn_display {
+    z-index: 2;
+} */

@@ -6,6 +6,7 @@
     justify-content: space-between;
     margin-top: 25px;
     border-bottom: 1px solid lightgray;
+    height: 75px;
 
 
 }
@@ -27,6 +28,9 @@
     cursor: pointer;
     display: flex;
     align-items: flex-end;
+    color: rgb(97, 95, 95);
+    font-size: 16px;
+    font-weight: 300;
 
 
 }
@@ -60,4 +64,9 @@
     margin-bottom: -4px !important;
     /* align-self: center !important; */
     
+}
+
+.Header2_inside_right_span {
+    border-bottom: 1px solid black !important;
+    color: black !important;
 }

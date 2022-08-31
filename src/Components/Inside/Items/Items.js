@@ -28,7 +28,14 @@ const Items = ({id,imgurl,name,type,rating,discount,price,numofpeople,minites,cu
 
 
  <div className='Items_inside_rating_div_'>
-<button>
+<button
+
+className={parseFloat(rating)>=4.5 ? 'Items_inside_rating_div_GoldBtn':
+(parseFloat(rating)<4.5 && parseFloat(rating)>=3.5)? '':
+(parseFloat(rating)<3.5 && parseFloat(rating)>=2.5)?'Items_inside_rating_div_Avgbtn':
+parseFloat(rating)<2.5 && 'Items_inside_rating_div_BelowAvgbtn'
+}
+>
     <StarIcon className='Items_inside_rating_div_StarIcon'/>
     {parseFloat(rating)!==0 ? `${rating}`:'__'}
 

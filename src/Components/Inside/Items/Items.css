@@ -160,3 +160,22 @@ border-width: 9px 0 0 9px;
 .Items_inside_rating_div_StarIcon {
     font-size: small;
 }
+
+
+.Items_inside_rating_div_GoldBtn {
+    background-color: #FFD700 !important;
+    /* color: black; */
+}
+/* {#FFD700}
+{#b9f2ff} */
+
+
+.Items_inside_rating_div_Avgbtn {
+background-color: #db7c38 !important;
+
+
+}
+
+.Items_inside_rating_div_BelowAvgbtn {
+    background-color: #e1b055 !important;
+}

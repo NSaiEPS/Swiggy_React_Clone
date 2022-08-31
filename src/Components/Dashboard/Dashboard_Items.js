@@ -217,7 +217,7 @@ db.collection('items').add({
             <div className='Dashboard_Items_addItemForm_div'>
                 <input name='type' value={inputval.type}
                 onChange={handleInputChange}  required
-                onFocus={handlefocus}  onBlur={handleBlur}
+                onFocus={handlefocus}  onBlur={handleBlur} multiple
 
                 />
                 <span
@@ -227,7 +227,8 @@ db.collection('items').add({
                 >Enter type of resiepe</span>
 
 
-                <select   name='type' onChange={handleSelection}
+                <select  
+                 name='type' onChange={handleSelection}
                                 className='DashBoard_items_selection'>
             {Input_Selectors.typeofResipe.map((item,indx)=>{
                 return(

@@ -8,12 +8,20 @@ import './InsideCombine.css'
 // import Maincontent from './InsideMaincontent/Maincontent'
 import Items from './Items/Items'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import { useSelector } from 'react-redux'
+import { SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
 
 
 const InsideCombine = () => {
   let [items,setItems]=useState([])
   let [specialheader,setSpecialheader]=useState(false)
   let [filteredData,setFilteredData]=useState([])
+  // let [reqData,setReqData]=useState([])
+  let selectReqFilter=useSelector(SelectreqFilter)
+  let selectFilterInfo=useSelector(SelectFilterInfo)
+
+
+
 useEffect(()=>{
   window.addEventListener('scroll',()=>{
     if(window.scrollY>=535) return setSpecialheader(true)
@@ -28,31 +36,85 @@ useEffect(()=>{
       data:data.data()
 
     }))))
-    setFilteredData(items)
 
   })
+  // setFilteredData(items)
 
 
 },[])
 
 
 let [filtering,setFiltering]=useState(0)
-let handlefilter=()=>{
-  setFiltering(filtering+1)
-  console.log(filtering)
-}
+// let handlefilter=()=>{
+//   setFiltering(filtering+1)
+//   // console.log(filtering)
+// }
 
-let handleFilters=()=>
+
+useEffect(()=>
 {
-  setFilteredData(items?.filter((item)=>parseFloat(item.data?.rating)
-  >=4))
+  // if(req==='rating'){
+  // setFilteredData(items?.filter((item)=>parseFloat(item.data?.rating)
+  // >=4))
+  // }
+  // console.log(filteredData)
  
-  console.log(filteredData)
- 
- }
+  if(selectReqFilter==='rating'){
+    db.collection('items').orderBy('rating','desc').onSnapshot((item)=>{
+      setFilteredData((item.docs.map((data)=>({
+        id:data.id,
+        data:data.data()
   
-  console.log(filteredData)
+      }))))
+  
+    })
+  
+   }
 
+ if(selectReqFilter==='costLowtoHign'){
+  db.collection('items').orderBy('price','asc').onSnapshot((item)=>{
+    setFilteredData((item.docs.map((data)=>({
+      id:data.id,
+      data:data.data()
+
+    }))))
+
+  })
+
+ }
+
+ if(selectReqFilter==='costHightoLow'){
+  db.collection('items').orderBy('price','desc').onSnapshot((item)=>{
+    setFilteredData((item.docs.map((data)=>({
+      id:data.id,
+      data:data.data()
+
+    }))))
+
+  })
+
+ }
+
+ if(selectReqFilter==='deliveryTime'){
+  db.collection('items').orderBy('minites','asc').onSnapshot((item)=>{
+    setFilteredData((item.docs.map((data)=>({
+      id:data.id,
+      data:data.data()
+
+    }))))
+
+  })
+
+ }
+
+ if(selectReqFilter===''){
+  setFilteredData([])
+ }
+
+ 
+  
+  // console.log(filteredData)
+},[selectReqFilter])
 
 // useEffect(()=>{
 
@@ -69,7 +131,9 @@ let handleFilters=()=>
 
 // },[filtering])
 
-let num=10;
+
+
+// let num=10;
   return (
     <div className='InsideCombine'>
         
@@ -84,11 +148,16 @@ let num=10;
             </div>
             <div className='InsideCombine_inside_headerpart_header2'>
 
-
+{/* 
             <div className='Header2'>
       <div className='Header2_inside'>
         <div className='Header2_inside_left'>
-          <h2>{num} restaurants</h2>
+        <h2>
+            {filteredData.length>0 ?
+          `${filteredData.length} `  : `${items.length}  `  
+          }
+          Restaurants
+              </h2>
         </div>
 
         <div className='Header2_inside_right'>
@@ -107,16 +176,38 @@ let num=10;
             Search</span>
           </Link>
           <span>Relevance</span>
-          <span>Delivery Time</span>
-          <span>Rating</span>
-          <span>Cost: Low To High</span>
-          <span>Cost: High To Low</span>
           <span
-          onClick={handleFilters}
+          onClick={()=>handleFilters('deliveryTime')}
+          
+          >Delivery Time</span>
+          <span
+          onClick={()=>handleFilters('rating')}
+          
+          
+          >Rating</span>
+          <span
+          onClick={()=>handleFilters('costLowtoHign')}
+
+          
+          
+          >Cost: Low To High</span>
+          <span
+          onClick={()=>handleFilters('costHightoLow')}
+
+          
+          >Cost: High To Low</span>
+          <span
+    
           >Filters</span>
         </div>
       </div>
-    </div>
+    </div> */}
+
+    <Header2
+    show={false} lenght=
+    {filteredData.length>0 ?
+      filteredData.length  : items.length} 
+    />
   
             </div>
           
@@ -136,38 +227,11 @@ let num=10;
 
 
 
-        <div className='Header2'>
-      <div className='Header2_inside'>
-        <div className='Header2_inside_left'>
-          <h2>{num} restaurants</h2>
-        </div>
-
-        <div className='Header2_inside_right'>
-          <Link to='/search'
-          className='Header2_inside_right_searchLink'
-          >
-          <span
-          
-          
-          >
-         <SearchRoundedIcon
-         className='Header2_inside_right_searchIcon'
-         />
-
-            
-            Search</span>
-          </Link>
-          <span>Relevance</span>
-          <span>Delivery Time</span>
-          <span>Rating</span>
-          <span>Cost: Low To High</span>
-          <span>Cost: High To Low</span>
-          <span
-          onClick={handleFilters}
-          >Filters</span>
-        </div>
-      </div>
-    </div>
+        <Header2
+    show={true} lenght=
+    {filteredData.length>0 ?
+      filteredData.length  : items.length} 
+    />
 
 
 
@@ -178,18 +242,40 @@ let num=10;
          <InsideCombine/> } */}
 
 {/* <Maincontent/> */}
-<button
+{/* <button
 onClick={handlefilter}
->filter</button>
+>filter</button> */}
 
 <div className='App_Maincontent_inside_items_map'>
 
 
      <div className='App_Maincontent_inside_items_map_inside'>
 
-{Array.isArray(filteredData)&&
- 
+{filteredData.length>0 ?
  filteredData?.map((item,indx)=>{
+  return(
+    <div  key={indx}
+    className='App_Maincontent_inside_items_map_item'>
+<Items id={item.id}
+imgurl={item.data.imgurl} name={item.data.name} type={item.data.type}
+rating={item.data.rating} discount={item.data.discount} price={item.data.price}
+numofpeople={item.data.numofpeople}  minites={item.data.minites}
+cuponcode={item.data.cuponcode}  freedelivery={item.data.freedelivery}
+promoted={item.data.promoted} index={indx}
+
+
+/>
+
+      </div>
+  )
+ })
+ :
+
+
+
+// {Array.isArray(filteredData)&&
+ 
+ items?.map((item,indx)=>{
   return(
     <div  key={indx}
     className='App_Maincontent_inside_items_map_item'>
@@ -218,6 +304,10 @@ promoted={item.data.promoted} index={indx}
             </div>
 
         </div>
+{selectFilterInfo.active &&
+        <div>
+cfdjk
+        </div>}
       
     </div>
   )
