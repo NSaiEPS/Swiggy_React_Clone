@@ -2,10 +2,9 @@
 .Signup_Inside {
     display: flex;
     /* padding-top: 25px; */
-    height: 100%;
+    /* height: 100%; */
     z-index: 1;
   /* overflow: hidden; */
-  overflow-y:scroll;
    /* scrollbar-color: ;  */
    /* -ms-overflow-style: none; */
    /* scrollbar-width: none; */
@@ -17,11 +16,14 @@
  } */
  
     
+.Signup_Inside_right {
+    overflow-y:scroll;
 
+}
 
 .Signup_Inside_left{
     /* background-color: red; */
-    width: 65%;
+    width: calc(100% - 460px);
     /* min-width: ; */
 
 }
@@ -33,7 +35,7 @@
     min-width: 460px;
     /* color: black !important; */
     /* display: none; */
-    animation: rightanimation 1s ;
+    animation: rightanimation 1s linear;
     margin-left: auto;
 }
 
@@ -41,13 +43,13 @@
     0%{
         min-width: 0px;
     }
-    25% {
+    /* 25% {
         min-width: 50px;
     }
     50% {
         min-width: 150px;
 
-    }
+    } */
     100% {
     min-width: 460px;
 

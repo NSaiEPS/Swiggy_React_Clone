@@ -356,7 +356,7 @@ let handlesubmit=()=>{
 
   }
   else {
-    alert('condition not satisfied')
+    // alert('condition not satisfied')
     setOTPcondition(false)
   }
   }
@@ -369,7 +369,7 @@ let handlesubmit=()=>{
   
     }
     else {
-      alert('condition not satisfied')
+      // alert('condition not satisfied')
     setOTPcondition(false)
 
     }
@@ -613,7 +613,12 @@ window.confirmationResult.confirm(code).then((result) => {
 
         </div>
 
-        <div className='Signup_Inside_right'>
+        <div className='Signup_Inside_right'
+        style={{
+ 
+          height:`${(window.innerHeight)}px`
+        }}
+        >
        
           <div className='Signup_Inside_right_inside'>
             

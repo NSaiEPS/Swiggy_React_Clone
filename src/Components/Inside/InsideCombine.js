@@ -8,8 +8,9 @@ import './InsideCombine.css'
 // import Maincontent from './InsideMaincontent/Maincontent'
 import Items from './Items/Items'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { useSelector } from 'react-redux'
-import { SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { filterInfoAction, SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
+import Filters from './Filters/Filters'
 
 
 const InsideCombine = () => {
@@ -18,6 +19,7 @@ const InsideCombine = () => {
   let [filteredData,setFilteredData]=useState([])
   // let [reqData,setReqData]=useState([])
   let selectReqFilter=useSelector(SelectreqFilter)
+  let dispatch=useDispatch()
   let selectFilterInfo=useSelector(SelectFilterInfo)
 
 
@@ -44,7 +46,7 @@ useEffect(()=>{
 },[])
 
 
-let [filtering,setFiltering]=useState(0)
+// let [filtering,setFiltering]=useState(0)
 // let handlefilter=()=>{
 //   setFiltering(filtering+1)
 //   // console.log(filtering)
@@ -116,24 +118,26 @@ useEffect(()=>
   // console.log(filteredData)
 },[selectReqFilter])
 
-// useEffect(()=>{
 
 
-// let filters=()=>{
-//   // console.log('getr')
-//  setFilteredData(items?.filter((item)=>item.data?.discount!=='0'))
+if(selectFilterInfo.active){
+  document.body.style.overflow='hidden'
+}
+
+let handleEraseFilteringPage=()=>{
+
  
-//  console.log(filteredData)
+    dispatch(filterInfoAction({
+      active:false
+    }))
+  document.body.style.overflowY='scroll'
 
-// }
-//  filters()
-//  console.log(filteredData)
+  
+}
 
-// },[filtering])
+let h='660'
 
-
-
-// let num=10;
+// console.log(window.innerHeight)
   return (
     <div className='InsideCombine'>
         
@@ -305,8 +309,28 @@ promoted={item.data.promoted} index={indx}
 
         </div>
 {selectFilterInfo.active &&
-        <div>
-cfdjk
+        <div className='InsideCombine_Filtering_page'>
+          <div className='InsideCombine_Filtering_page_inside'>
+
+
+
+<div className='InsideCombine_Filtering_page_inside_left'
+onClick={handleEraseFilteringPage}
+
+>
+
+</div>
+<div className='InsideCombine_Filtering_page_inside_right'
+style={{
+ 
+  height:`${(window.innerHeight)}px`
+}}
+>
+<Filters/>
+</div>
+
+
+            </div>
         </div>}
       
     </div>

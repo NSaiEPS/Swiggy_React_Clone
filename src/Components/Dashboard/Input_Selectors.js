@@ -17,7 +17,7 @@ export const Input_Selectors={
         "Egg-Biryani",
         "veg-Biryani",
         "Sweets",
-        "Hots",
+        "Hot",
         "Pizzas",
         "Burger",
         "Fish",
@@ -26,5 +26,16 @@ export const Input_Selectors={
         "Bakery",
         "American"
     ],
+    ratings:[
+        '5.0',
+        '>4.5',
+        '>4.0',
+        '>3.5',
+        '>3.0',
+        '>2.5',
+        '>2.0',
+        '>1.5',
+        '>1.0',
+    ]
     
 }

@@ -1,0 +1,140 @@
+.Filters_inside {
+    width: 92%;
+    /* background-color: red; */
+    margin-left: auto;
+    /* margin-right: auto; */
+}
+
+.Filters_Inside_Top {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.Filters_Inside_Top button {
+    height: 25px;
+    align-self: center;
+    background-color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px;
+    /* font-weight: 200; */
+   
+
+
+}
+
+.Filters_inside_middle_resipre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: start ;
+ 
+}
+
+.Filters_inside_middle_resipre div {
+    width: 40%;
+    margin-top: 10px;
+    color: rgb(81, 79, 79);
+    cursor: pointer;
+
+
+}
+
+.Filters_inside_middle_resipre div span {
+    font-size: 15px;
+
+}
+
+.Filters_inside_middle_resipre div:hover span{
+    color: black;
+    font-size: 15.2px ;
+
+
+}
+
+.Filters_inside_middle >h4{
+    text-align: start ;
+}
+
+.Filters_inside_middle_ratings {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+.Filters_inside_middle_ratings div {
+
+width: 40%;
+    margin-top: 5px;
+    color: rgb(81, 79, 79);
+    text-align: start;
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+
+.Filters_inside_middle_ratings div span {
+    font-size: 15px;
+
+}
+
+.Filters_inside_middle_ratings div:hover span{
+    color: black;
+    cursor: pointer;
+    font-size: 15.2px ;
+
+
+}
+
+.Filters_Inside_Bottom {
+   height: 72px;
+   border-top: 1px solid lightgray;
+   display: flex;
+   align-items: center;
+   margin-top: -75px;
+   background-color: white;
+   /* background-color: red; */
+}
+
+/* .Filters_Inside_Bottom button:nth-child(1) { */
+
+
+.Filters_Inside_Bottom button:nth-child(1) {
+    border: 1px solid black;
+    background-color: white;
+    width: 101px;
+    height: 50px;
+    margin-right: 10px;
+    cursor: pointer;
+
+}
+
+.Filters_Inside_Bottom button:nth-child(2) {
+    border: 1px solid #fc8019;
+    background-color: #fc8019;
+    color: white;
+    font-weight: 800;
+    width: 245px;
+    height: 50px;
+    cursor: pointer;
+
+}
+
+.Filters_inside_middle_freeDelivery {
+    display: flex;
+    padding-bottom: 65px;
+}
+
+.Filters_inside input {
+    color: #fc8019 !important;
+    cursor: pointer;
+    background-color: #fc8019 !important;
+    /* accent-color: rgb(167, 126, 12); */
+    accent-color: rgb(189, 140, 5);
+    /* accent-color: #fc8019; */
+    /* width: 75px; */
+}
