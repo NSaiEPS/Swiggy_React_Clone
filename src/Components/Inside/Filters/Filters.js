@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Input_Selectors } from '../../Dashboard/Input_Selectors'
-import { filterInfoAction } from '../../Redux_toolkit/Redux_Slice'
+import { filterDataInfoAction, filterInfoAction, SelectDataFilterInfo } from '../../Redux_toolkit/Redux_Slice'
 import './Filters.css'
 
 const Filters = () => {
   let dispatch=useDispatch()
-  let [items,setItems]=useState(
+  // let [items,setItems]=useState(
    
-    Input_Selectors.typeofResipe.map((item)=>({
+  //   Input_Selectors.typeofResipe.map((item)=>({
      
 
 
-     item
+  //    item
 
       
-    }))
-   )
+  //   }))
+  //  )
+
+  // let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
   
-    
+  //   console.log(selectDataFilterInfo)
   
 
   // console.log(items)
@@ -29,38 +31,173 @@ const Filters = () => {
     dispatch(filterInfoAction({
       active:false
     }))
+  document.body.style.overflowY='scroll'
+
 
   
 }
-let [ar,setAr]=useState([])
+let [cuisinesName,setCuisinesName]=useState([])
+let [rating,setRating]=useState([])
 
-let [itm,setItem]=useState('')
+// let [itm,setItem]=useState('')
 
-let handleChange=(item)=>{
-  // console.log(item.target.checked)
-  console.log(item)
-
-  setItem(item)
+let handleChangeCuisines=(e)=>{
  
+  // console.log(e.target.checked)
+  // console.log(e.target.name)
+ 
+  let check=(e.target.checked)
+  let name=(e.target.name)
+if(check && !cuisinesName.includes(name))
+setCuisinesName([
+...cuisinesName,name
+ ])
+
+ if(!check){
+  let requnCheckname=cuisinesName.indexOf(name)
+  cuisinesName.splice(requnCheckname,1)
+ }
 
 }
 
-useEffect(()=>{
-  if(itm!=='' && !ar.includes(itm)){
-  setAr(
-    [
-      ...ar,itm
-    ]
-  )
-  }
 
-},[itm])
+let handleChangeRating=(e)=>{
+  // console.log(e.target.checked)
+  // console.log(e.target.name)
+ 
+  let check=(e.target.checked)
+  let name=(e.target.name)
+if(check && !rating.includes(name))
+setRating([
+...rating,name
+ ])
 
-console.log(ar)
+ if(!check){
+  let requnCheckname=cuisinesName.indexOf(name)
+  rating.splice(requnCheckname,1)
+ }
+}
 
-// console.log(ar)
+
+
+
+
+
+
+let [filterremData,setfilterremData]=useState({
+  
+  freedelvery:false,
+  offers:false
+})
 
 let handleClearFilter=()=>{
+  dispatch(filterDataInfoAction())
+  dispatch(filterInfoAction({
+    active:false
+  }))
+  document.body.style.overflowY='scroll'
+}
+
+let handleChangeRemain=(e)=>{
+  // console.log(e.target.name)
+  // console.log(e.target.checked)
+  let nam=(e.target.name)
+  let check=(e.target.checked)
+
+   if(nam==='freedelvery'){
+    if(check){
+      setfilterremData({
+        ...filterremData,
+        freedelvery:true
+      })
+    }
+    else {
+      setfilterremData({
+        ...filterremData,
+        freedelvery:false
+      })
+
+    }
+   }
+
+
+   if(nam==='offers'){
+    if(check){
+      setfilterremData({
+        ...filterremData,
+        offers:true
+      })
+    }
+    else {
+      setfilterremData({
+        ...filterremData,
+        offers:false
+      })
+
+    }
+   }
+
+
+
+// if(nam!=='offers' && nam!=='freedelvery'){
+// if(check)
+// {
+//   setfilterremData({
+//     ...filterremData,
+//     rating:nam
+//   })
+// }
+// else{
+//   setfilterremData({
+//     ...filterremData,
+//     rating:''
+//   })
+// }
+
+
+// }
+
+}
+
+// console.log(filterremData)
+// console.log(rating)
+
+
+let handleSubmitFilter=()=>{
+  let reqrating=rating[(rating.length-1)]
+
+  dispatch(filterInfoAction({
+    active:false
+  }))
+  document.body.style.overflowY='scroll'
+
+// console.log(reqrating)
+   if(reqrating){
+
+  dispatch(filterDataInfoAction({
+    cuisines:cuisinesName,
+    freedelvery:(filterremData.freedelvery),
+    offers:(filterremData.offers),
+    rating:reqrating
+
+  }
+
+  ))
+
+}
+
+  else {
+    dispatch(filterDataInfoAction({
+      cuisines:cuisinesName,
+      freedelvery:(filterremData.freedelvery),
+      offers:(filterremData.offers)
+   
+    }
+  
+    ))
+
+  }
+// console.log(cuisinesName)
 
 }
   return (
@@ -86,8 +223,12 @@ onClick={handleEraseFilteringPage}
           return(
             <div key={item}>
               <input  type='checkbox'
-              //  onChange={handleChange}/>
-               onChange={()=>handleChange(item)}/>
+              name={item}
+               onChange={handleChangeCuisines}
+               
+               />
+
+               {/* onChange={()=>handleChange(item)}/> */}
              <span> {item}</span>
 
               </div>
@@ -104,7 +245,10 @@ onClick={handleEraseFilteringPage}
  {Input_Selectors.ratings.map((item,indx)=>{
           return(
             <div key={item}>
-              <input  type='checkbox'/>
+              <input  type='checkbox'
+               name={item}
+               onChange={handleChangeRating}
+              />
             <span>  {item}</span>
 
               </div>
@@ -120,9 +264,15 @@ onClick={handleEraseFilteringPage}
        <input
       
        
-       type='checkbox'/><h4>FREE DElivery</h4>
+       type='checkbox'
+       name='freedelvery'
+       onChange={handleChangeRemain}
+
+
+       /><h4>FREE DElivery</h4>
          <input
-       
+       name='offers'
+       onChange={handleChangeRemain}
        
        type='checkbox'/><h4>OFFERS</h4>
 
@@ -146,7 +296,9 @@ style={{
     <button
     onClick={handleClearFilter}
     >CLEAR</button>
-    <button>SHOW RESTAURANTS</button>
+    <button
+    onClick={handleSubmitFilter}
+    >SHOW RESTAURANTS</button>
 
   </div>
 

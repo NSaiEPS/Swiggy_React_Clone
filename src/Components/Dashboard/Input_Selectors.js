@@ -13,7 +13,7 @@ export const Input_Selectors={
         "Ice Creams",
         "VEG",
         "NON-VEG",
-        "Chucken-Biryani",
+        "Chicken-Biryani",
         "Egg-Biryani",
         "veg-Biryani",
         "Sweets",

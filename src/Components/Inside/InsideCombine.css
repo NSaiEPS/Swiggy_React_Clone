@@ -75,3 +75,7 @@ width: calc(100% - 460px);
         min-width: 460px;
     }
 }
+
+.InsideCombine_NoResipeIndicator {
+    color: red;
+}

@@ -7,31 +7,26 @@ import HeaderBtween from './Header/HeaderBtween'
 import './InsideCombine.css'
 // import Maincontent from './InsideMaincontent/Maincontent'
 import Items from './Items/Items'
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+// import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useDispatch, useSelector } from 'react-redux'
-import { filterInfoAction, SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
+import { filterInfoAction, SelectDataFilterInfo, SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
 import Filters from './Filters/Filters'
 
 
 const InsideCombine = () => {
   let [items,setItems]=useState([])
   let [specialheader,setSpecialheader]=useState(false)
-  let [filteredData,setFilteredData]=useState([])
-  // let [reqData,setReqData]=useState([])
+  // let [filteredData,setFilteredData]=useState([])
+ 
   let selectReqFilter=useSelector(SelectreqFilter)
   let dispatch=useDispatch()
   let selectFilterInfo=useSelector(SelectFilterInfo)
+  let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
+
+console.log(selectDataFilterInfo)
 
 
-
-useEffect(()=>{
-  window.addEventListener('scroll',()=>{
-    if(window.scrollY>=535) return setSpecialheader(true)
-    return setSpecialheader(false)
-  })
-
-  // console.log('render')
-
+let getDataFunction=()=>{
   db.collection('items').onSnapshot((item)=>{
     setItems((item.docs.map((data)=>({
       id:data.id,
@@ -40,17 +35,23 @@ useEffect(()=>{
     }))))
 
   })
-  // setFilteredData(items)
+
+}
+useEffect(()=>{
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>=535) return setSpecialheader(true)
+    return setSpecialheader(false)
+  })
+
+  // console.log('render')
+
+  getDataFunction()
 
 
 },[])
 
 
-// let [filtering,setFiltering]=useState(0)
-// let handlefilter=()=>{
-//   setFiltering(filtering+1)
-//   // console.log(filtering)
-// }
+
 
 
 useEffect(()=>
@@ -63,7 +64,7 @@ useEffect(()=>
  
   if(selectReqFilter==='rating'){
     db.collection('items').orderBy('rating','desc').onSnapshot((item)=>{
-      setFilteredData((item.docs.map((data)=>({
+      setItems((item.docs.map((data)=>({
         id:data.id,
         data:data.data()
   
@@ -75,7 +76,7 @@ useEffect(()=>
 
  if(selectReqFilter==='costLowtoHign'){
   db.collection('items').orderBy('price','asc').onSnapshot((item)=>{
-    setFilteredData((item.docs.map((data)=>({
+    setItems((item.docs.map((data)=>({
       id:data.id,
       data:data.data()
 
@@ -87,7 +88,7 @@ useEffect(()=>
 
  if(selectReqFilter==='costHightoLow'){
   db.collection('items').orderBy('price','desc').onSnapshot((item)=>{
-    setFilteredData((item.docs.map((data)=>({
+    setItems((item.docs.map((data)=>({
       id:data.id,
       data:data.data()
 
@@ -99,7 +100,7 @@ useEffect(()=>
 
  if(selectReqFilter==='deliveryTime'){
   db.collection('items').orderBy('minites','asc').onSnapshot((item)=>{
-    setFilteredData((item.docs.map((data)=>({
+    setItems((item.docs.map((data)=>({
       id:data.id,
       data:data.data()
 
@@ -109,11 +110,11 @@ useEffect(()=>
 
  }
 
- if(selectReqFilter===''){
-  setFilteredData([])
- }
+//  if(selectReqFilter===''){
+//   getDataFunction()
+//  }
 
- 
+
   
   // console.log(filteredData)
 },[selectReqFilter])
@@ -135,9 +136,95 @@ let handleEraseFilteringPage=()=>{
   
 }
 
-let h='660'
+// let h='660'
 
 // console.log(window.innerHeight)
+// let [ch,setch]=useState(2)
+// useEffect(()=>{
+//   // let [items,setItems]=useState([])
+//   let ar=['Pizzas','South Indian']
+
+//   // setItems(items?.filter((item)=>parseFloat(item.data?.rating)
+//   // >=ch))
+
+//   setItems(items?.filter((item)=>
+  
+//   ar.includes(item.data.type)
+  
+  
+//   ))
+// },[ch])
+
+  
+  // console.log(ch)
+
+
+
+
+useEffect(()=>{
+  // let [items,setItems]=useState([])
+  // console.log('rendered')
+
+  // setItems(items?.filter((item)=>parseFloat(item.data?.rating)
+  // >=ch))
+
+  if(selectDataFilterInfo?.cuisines?.length>0)
+{
+  // setItems(items?.filter((item)=>(
+  
+  // selectDataFilterInfo?.cuisines.includes(item.data.type)))
+
+  
+  // .filter((data)=>parseFloat(data.data?.rating)
+  // >=val
+  // ))
+  setItems(items?.filter((item)=>(
+  
+    selectDataFilterInfo?.cuisines.includes(item.data.type)))
+    )
+
+
+
+
+
+}
+// console.log(val)
+
+if( selectDataFilterInfo?.rating ){
+  let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
+
+  if(val===NaN){
+    setItems(items?.filter((data)=>parseFloat(data.data?.rating)
+    >=val[0])
+      )
+  }
+  else {
+  setItems(items?.filter((data)=>parseFloat(data.data?.rating)
+  >=val)
+    )}
+}
+
+
+// freedelvery:(filterremData.freedelvery),
+// offers:(filterremData.offers),
+if(selectDataFilterInfo?.freedelvery){
+  setItems(items?.filter((data)=>(data.data?.freedelivery)
+  ==='true'))
+}
+
+
+if(selectDataFilterInfo?.offers){
+  setItems(items?.filter((data)=>
+  parseInt(data.data?.discount)!==0 ))
+ 
+}
+
+if(!selectDataFilterInfo){
+  getDataFunction()
+}
+
+},[selectDataFilterInfo])
+
   return (
     <div className='InsideCombine'>
         
@@ -207,10 +294,15 @@ let h='660'
       </div>
     </div> */}
 
-    <Header2
+{/* <Header2
     show={false} lenght=
     {filteredData.length>0 ?
       filteredData.length  : items.length} 
+    /> */}
+
+<Header2
+    show={false} lenght=
+   {items.length}
     />
   
             </div>
@@ -233,8 +325,7 @@ let h='660'
 
         <Header2
     show={true} lenght=
-    {filteredData.length>0 ?
-      filteredData.length  : items.length} 
+    {items.length} 
     />
 
 
@@ -254,7 +345,7 @@ onClick={handlefilter}
 
 
      <div className='App_Maincontent_inside_items_map_inside'>
-
+{/* 
 {filteredData.length>0 ?
  filteredData?.map((item,indx)=>{
   return(
@@ -273,11 +364,11 @@ promoted={item.data.promoted} index={indx}
       </div>
   )
  })
- :
+ : */}
 
 
 
-// {Array.isArray(filteredData)&&
+ {items.length>0?
  
  items?.map((item,indx)=>{
   return(
@@ -295,7 +386,14 @@ promoted={item.data.promoted} index={indx}
 
       </div>
   )
- })
+ }):
+ (navigator.onLine)?
+ <h1 className='InsideCombine_NoResipeIndicator'>
+ OOps No Reciepe! for the required filter!  Try with another filter.</h1> :
+ <h1
+ className='InsideCombine_NoResipeIndicator'
+ >
+ OOps No Reciepe! due to Network isuue!! </h1>
 
 }
 
@@ -308,6 +406,14 @@ promoted={item.data.promoted} index={indx}
             </div>
 
         </div>
+
+{/* <button
+onClick={()=>{
+  setch(ch+1)
+}}
+
+>ckl</button> */}
+
 {selectFilterInfo.active &&
         <div className='InsideCombine_Filtering_page'>
           <div className='InsideCombine_Filtering_page_inside'>
