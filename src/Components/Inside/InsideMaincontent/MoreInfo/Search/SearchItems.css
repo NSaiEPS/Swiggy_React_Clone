@@ -1,0 +1,27 @@
+.SeacheItems {
+    cursor: pointer;
+    color: #282c3f;
+    /* height: 70px; */
+}
+
+.SeacheItems:hover {
+    background: #f2f6fc;
+
+}
+.SeacheItems_Inside img {
+    width: 64px;
+    height: 64px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.SeacheItems_Inside {
+    display: flex;
+    align-items: center;
+}
+
+.SeacheItems_Inside_namesPart {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}

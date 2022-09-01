@@ -4,8 +4,8 @@ import Signup from './Components/FirstPage/FirstSection/Signup';
 // import FirstSection from './Components/FirstPage/FirstSection/FirstSection';
 import FirstPage from './Components/FirstPage/FirstPage';
 import CombineFooter from './Components/Footer/CombineFooter';
-import { useSelector } from 'react-redux';
-import { Selectcityinfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo } from './Components/Redux_toolkit/Redux_Slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterInfoAction, Selectcityinfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
 import Header2 from './Components/Inside/Header/Header2';
 import { useEffect, useState } from 'react';
@@ -17,17 +17,20 @@ import City from './Components/Inside/InsideMaincontent/CitiesInfo/City';
 import Moreinfo from './Components/Inside/InsideMaincontent/MoreInfo/Moreinfo';
 import Cart from './Components/Inside/InsideMaincontent/MoreInfo/Cart';
 import Help_Support from './Components/Inside/InsideMaincontent/MoreInfo/Helppage/Help_Support';
-import Search from './Components/Inside/InsideMaincontent/MoreInfo/Search';
+import Search from './Components/Inside/InsideMaincontent/MoreInfo/Search/Search';
 import Offers from './Components/Inside/InsideMaincontent/MoreInfo/Offers';
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { auth } from './Firebase';
 import Spinner from 'react-spinkit'
 import Dashboard from './Components/Dashboard/Dashboard';
+import Filters from './Components/Inside/Filters/Filters';
 
 
 function App() {
 
   let selectCityInfo=useSelector(Selectcityinfo)
+  let dispatch=useDispatch()
+
   // console.log(selectCityInfo)
   let navigate=useNavigate()
 let selectMoreInfo=useSelector(Selectmoreinfo)
@@ -35,38 +38,18 @@ let selectMoreInfo=useSelector(Selectmoreinfo)
 const [userss,loading]=useAuthState(auth)
 
 
-  // let city='Barsi'
-
-  // if(LocationCities.more.includes(city)){
-  //   alert('city found')
-  // }
-  // else {
-  //   alert('city not found')}
+let selectFilterInfo=useSelector(SelectFilterInfo)
+  
   
 
   let selectLogininfo=useSelector(Selectlogininfo)
   let selectLocationInfo=useSelector(Selectlocationinfo)
-  // console.log(selectLogininfo)
-  // if(selectLocationInfo.status){
-  //   console.log('yes')
-  // }
-
+  
 let firstchange=false;
   firstchange=selectLocationInfo?.active
-  // console.log(!firstchange)
+ 
   let signup=selectLogininfo?.status;
-  // let specialheader=false;
-  // let [specialheader,setSpecialheader]=useState(false)
 
-
-  // window.addEventListener('scroll',()=>{
-  //   if(window.scrollY>=450) return setSpecialheader(true)
-  //   return setSpecialheader(false)
-  // })
-
-//   useEffect(()=>{
-// w
-//   },[])
 
 useEffect(()=>{
 
@@ -74,22 +57,17 @@ useEffect(()=>{
 
 },[selectCityInfo])
 
-// (!selectMoreInfo || !selectCityInfo) && navigate('/')
 
-// },[selectCityInfo,selectMoreInfo])
+let handleEraseFilteringPage=()=>{
 
-// console.log(selectMoreInfo)
-
-// useEffect(()=>{
-//   // document.body.style.overflow = "hidden";
-//   if(!selectLogininfo.status){
-//       document.body.style.overflowY = "scroll";
-
-//   }
  
+  dispatch(filterInfoAction({
+    active:false
+  }))
+document.body.style.overflowY='scroll'
 
 
-// },[selectLogininfo])
+}
 
 if(loading){
   return(
@@ -163,6 +141,31 @@ if(loading){
       <CombineFooter/>
     
       </div>
+
+      {selectFilterInfo.active &&
+        <div className='InsideCombine_Filtering_page'>
+          <div className='InsideCombine_Filtering_page_inside'>
+
+
+
+<div className='InsideCombine_Filtering_page_inside_left'
+onClick={handleEraseFilteringPage}
+
+>
+
+</div>
+<div className='InsideCombine_Filtering_page_inside_right'
+style={{
+ 
+  height:`${(window.innerHeight)}px`
+}}
+>
+<Filters/>
+</div>
+
+
+            </div>
+        </div>}
 
     </div>
   );

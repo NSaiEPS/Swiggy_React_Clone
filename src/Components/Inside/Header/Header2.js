@@ -19,10 +19,10 @@ const Header2 = ({show,lenght}) => {
 }
   
 
-  useEffect(()=>{
-    dispatch(reqFilterAction(''))
+  // useEffect(()=>{
+  //   dispatch(reqFilterAction(''))
 
-  },[])
+  // },[])
 
 
   let handleFiltersPageClick=()=>{
@@ -40,6 +40,12 @@ const Header2 = ({show,lenght}) => {
         <div className='Header2_inside_right'>
           <Link to='/search'
           className='Header2_inside_right_searchLink'
+
+          onClick={()=>{
+            window.scrollTo(0,0)
+                    
+                   }}
+                   
           >
           <span
           className={!show && 'Header2_inside_right_search'}

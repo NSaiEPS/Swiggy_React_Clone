@@ -170,7 +170,7 @@ let handleSubmitFilter=()=>{
     active:false
   }))
   document.body.style.overflowY='scroll'
-
+window.scrollTo(0,0)
 // console.log(reqrating)
    if(reqrating){
 

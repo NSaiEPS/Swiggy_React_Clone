@@ -24,7 +24,8 @@ export const Input_Selectors={
         "Cofee",
         "Tea",
         "Bakery",
-        "American"
+        "American",
+        "Indian Snacks"
     ],
     ratings:[
         '5.0',

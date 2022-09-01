@@ -8,7 +8,7 @@ import './HelpContainer.css'
 function HelpContainer() {
   let selectLocationInfo=useSelector(Selectlocationinfo)
   // active:true,
-  console.log(selectLocationInfo.active)
+  // console.log(selectLocationInfo.active)
 
   return (
     <div className='HelpContainer'>

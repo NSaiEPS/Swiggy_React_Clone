@@ -82,13 +82,25 @@ let path=(window.location.pathname.split('/'))
 
            </div>
         <div className='Header1_inside_right'>
-        <Link to='/search'>
+        <Link to='/search'
+        
+        onClick={()=>{
+          window.scrollTo(0,0)
+                  
+                 }}
+                 
+        >
         
            <div className='Header1_inside_right_divs'
            
            style= { {
-            color:path.includes('search') &&'#FC8019'
-           }}>
+            color:path.includes('search') &&'#FC8019',
+            pointerEvents:'none'
+           }
+          
+          }
+           
+           >
             <span>
             <SearchRoundedIcon/>
             </span>

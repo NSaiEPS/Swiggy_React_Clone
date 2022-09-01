@@ -19,11 +19,12 @@ const InsideCombine = () => {
   // let [filteredData,setFilteredData]=useState([])
  
   let selectReqFilter=useSelector(SelectreqFilter)
-  let dispatch=useDispatch()
+  // let dispatch=useDispatch()
   let selectFilterInfo=useSelector(SelectFilterInfo)
   let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
+  // console.log(selectDataFilterInfo)
 
-console.log(selectDataFilterInfo)
+// console.log(selectDataFilterInfo)
 
 
 let getDataFunction=()=>{
@@ -46,6 +47,7 @@ useEffect(()=>{
   // console.log('render')
 
   getDataFunction()
+  // alert('rendered')
 
 
 },[])
@@ -56,11 +58,41 @@ useEffect(()=>{
 
 useEffect(()=>
 {
-  // if(req==='rating'){
-  // setFilteredData(items?.filter((item)=>parseFloat(item.data?.rating)
-  // >=4))
-  // }
-  // console.log(filteredData)
+
+  console.log('renderd')
+
+  if(selectDataFilterInfo && Object.keys(selectDataFilterInfo).length !== 0){
+  console.log('renderd inside object')
+
+  if(selectReqFilter==='rating'){
+  console.log('renderd inside object rating')
+
+  
+ setItems(items.sort((a,b)=>parseFloat(a.data.rating) -parseFloat(b.data.rating) ).reverse())
+  
+  }
+  
+ if(selectReqFilter==='costLowtoHign'){
+  
+  items.sort((a,b)=>parseFloat(a.data.price) -parseFloat(b.data.price) )
+
+}
+
+if(selectReqFilter==='costHightoLow'){
+  
+  items.sort((a,b)=>parseFloat(a.data.price) -parseFloat(b.data.price) ).reverse()
+
+}
+if(selectReqFilter==='deliveryTime'){
+  items.sort((a,b)=>parseFloat(a.data.minites) -parseFloat(b.data.minites) )
+
+  
+}
+
+ 
+  }
+
+  else {
  
   if(selectReqFilter==='rating'){
     db.collection('items').orderBy('rating','desc').onSnapshot((item)=>{
@@ -108,15 +140,9 @@ useEffect(()=>
 
   })
 
- }
-
-//  if(selectReqFilter===''){
-//   getDataFunction()
-//  }
+ }}
 
 
-  
-  // console.log(filteredData)
 },[selectReqFilter])
 
 
@@ -125,16 +151,16 @@ if(selectFilterInfo.active){
   document.body.style.overflow='hidden'
 }
 
-let handleEraseFilteringPage=()=>{
+// let handleEraseFilteringPage=()=>{
 
  
-    dispatch(filterInfoAction({
-      active:false
-    }))
-  document.body.style.overflowY='scroll'
+//     dispatch(filterInfoAction({
+//       active:false
+//     }))
+//   document.body.style.overflowY='scroll'
 
   
-}
+// }
 
 // let h='660'
 
@@ -162,33 +188,18 @@ let handleEraseFilteringPage=()=>{
 
 
 useEffect(()=>{
-  // let [items,setItems]=useState([])
-  // console.log('rendered')
 
-  // setItems(items?.filter((item)=>parseFloat(item.data?.rating)
-  // >=ch))
 
   if(selectDataFilterInfo?.cuisines?.length>0)
 {
-  // setItems(items?.filter((item)=>(
-  
-  // selectDataFilterInfo?.cuisines.includes(item.data.type)))
 
-  
-  // .filter((data)=>parseFloat(data.data?.rating)
-  // >=val
-  // ))
   setItems(items?.filter((item)=>(
   
     selectDataFilterInfo?.cuisines.includes(item.data.type)))
     )
 
-
-
-
-
 }
-// console.log(val)
+
 
 if( selectDataFilterInfo?.rating ){
   let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
@@ -205,8 +216,6 @@ if( selectDataFilterInfo?.rating ){
 }
 
 
-// freedelvery:(filterremData.freedelvery),
-// offers:(filterremData.offers),
 if(selectDataFilterInfo?.freedelvery){
   setItems(items?.filter((data)=>(data.data?.freedelivery)
   ==='true'))
@@ -239,66 +248,7 @@ if(!selectDataFilterInfo){
             </div>
             <div className='InsideCombine_inside_headerpart_header2'>
 
-{/* 
-            <div className='Header2'>
-      <div className='Header2_inside'>
-        <div className='Header2_inside_left'>
-        <h2>
-            {filteredData.length>0 ?
-          `${filteredData.length} `  : `${items.length}  `  
-          }
-          Restaurants
-              </h2>
-        </div>
 
-        <div className='Header2_inside_right'>
-          <Link to='/search'
-          className='Header2_inside_right_searchLink'
-          >
-          <span
-          className={ 'Header2_inside_right_search'}
-          
-          >
-         <SearchRoundedIcon
-         className='Header2_inside_right_searchIcon'
-         />
-
-            
-            Search</span>
-          </Link>
-          <span>Relevance</span>
-          <span
-          onClick={()=>handleFilters('deliveryTime')}
-          
-          >Delivery Time</span>
-          <span
-          onClick={()=>handleFilters('rating')}
-          
-          
-          >Rating</span>
-          <span
-          onClick={()=>handleFilters('costLowtoHign')}
-
-          
-          
-          >Cost: Low To High</span>
-          <span
-          onClick={()=>handleFilters('costHightoLow')}
-
-          
-          >Cost: High To Low</span>
-          <span
-    
-          >Filters</span>
-        </div>
-      </div>
-    </div> */}
-
-{/* <Header2
-    show={false} lenght=
-    {filteredData.length>0 ?
-      filteredData.length  : items.length} 
-    /> */}
 
 <Header2
     show={false} lenght=
@@ -313,13 +263,13 @@ if(!selectDataFilterInfo){
 
 
             <div className='InsideCombine_inside_Maincontent'>
-              {/* To be check */}
+           
            
       <div className='App_Maincontent_inside'>
         {specialheader &&
         
         <div className='App_Maincontent_inside_header2'>
-        {/* <Header2 show={true}/> */}
+
 
 
 
@@ -333,13 +283,7 @@ if(!selectDataFilterInfo){
        
           </div>
         }
-       {/* {firstchange &&
-         <InsideCombine/> } */}
-
-{/* <Maincontent/> */}
-{/* <button
-onClick={handlefilter}
->filter</button> */}
+      
 
 <div className='App_Maincontent_inside_items_map'>
 
@@ -407,37 +351,8 @@ promoted={item.data.promoted} index={indx}
 
         </div>
 
-{/* <button
-onClick={()=>{
-  setch(ch+1)
-}}
-
->ckl</button> */}
-
-{selectFilterInfo.active &&
-        <div className='InsideCombine_Filtering_page'>
-          <div className='InsideCombine_Filtering_page_inside'>
 
 
-
-<div className='InsideCombine_Filtering_page_inside_left'
-onClick={handleEraseFilteringPage}
-
->
-
-</div>
-<div className='InsideCombine_Filtering_page_inside_right'
-style={{
- 
-  height:`${(window.innerHeight)}px`
-}}
->
-<Filters/>
-</div>
-
-
-            </div>
-        </div>}
       
     </div>
   )
