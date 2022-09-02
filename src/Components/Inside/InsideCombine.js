@@ -10,7 +10,7 @@ import Items from './Items/Items'
 // import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useDispatch, useSelector } from 'react-redux'
 import { filterInfoAction, SelectDataFilterInfo, SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
-import Filters from './Filters/Filters'
+// import Filters from './Filters/Filters'
 
 
 const InsideCombine = () => {
@@ -59,13 +59,13 @@ useEffect(()=>{
 useEffect(()=>
 {
 
-  console.log('renderd')
+  // console.log('renderd')
 
   if(selectDataFilterInfo && Object.keys(selectDataFilterInfo).length !== 0){
-  console.log('renderd inside object')
+  // console.log('renderd inside object')
 
   if(selectReqFilter==='rating'){
-  console.log('renderd inside object rating')
+  // console.log('renderd inside object rating')
 
   
  setItems(items.sort((a,b)=>parseFloat(a.data.rating) -parseFloat(b.data.rating) ).reverse())
@@ -88,6 +88,14 @@ if(selectReqFilter==='deliveryTime'){
 
   
 }
+
+
+
+
+
+
+
+
 
  
   }
@@ -190,51 +198,608 @@ if(selectFilterInfo.active){
 useEffect(()=>{
 
 
-  if(selectDataFilterInfo?.cuisines?.length>0)
+//   if(selectDataFilterInfo?.cuisines?.length>0)
+// {
+
+//   setItems(items?.filter((item)=>(
+  
+//     selectDataFilterInfo?.cuisines.includes(item.data.type)))
+//     )
+
+// }
+
+
+// if( selectDataFilterInfo?.rating ){
+//   console.log(selectDataFilterInfo?.rating )
+
+//   let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
+//   console.log(parseInt(selectDataFilterInfo?.rating))
+
+
+//   if(parseInt(selectDataFilterInfo?.rating)===5){
+//     console.log(parseInt(selectDataFilterInfo?.rating),'here if')
+//     setItems(items?.filter((data)=>parseFloat(data.data?.rating)
+//     ===parseInt(selectDataFilterInfo?.rating))
+//       )
+//   }
+//   else {
+//     console.log(parseInt(selectDataFilterInfo?.rating),'here else')
+
+//   setItems(items?.filter((data)=>parseFloat(data.data?.rating)
+//   >=val)
+//     )}
+// }
+
+
+// if(selectDataFilterInfo?.freedelvery){
+//   setItems(items?.filter((data)=>(data.data?.freedelivery)
+//   ==='true'))
+// }
+
+
+// if(selectDataFilterInfo?.offers){
+//   setItems(items?.filter((data)=>
+//   parseInt(data.data?.discount)!==0 )
+//   )
+ 
+// }
+
+// if(!selectDataFilterInfo){
+//   getDataFunction()
+// }
+
+
+// console.log(selectDataFilterInfo?.rating)
+console.log(selectDataFilterInfo)
+
+if(!selectDataFilterInfo ){
+  console.log('no data')
+
+  getDataFunction()
+
+
+}
+
+
+  let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
+  // console.log(val)
+
+
+if(selectDataFilterInfo?.cuisines?.length>0)
+{
+// When  causine , offers , freedeilvery & rating are clicked
+
+  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)&& (selectDataFilterInfo?.rating)  ){
+    if(parseInt(selectDataFilterInfo?.rating)===5){
+      console.log('rating 5')
+
+    
+  setItems(items?.filter((item)=>(
+    
+   
+    selectDataFilterInfo?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
+      ==='true'
+    )
+    
+    .filter(
+      (data)=>
+      parseInt(data.data?.discount)!==0 ).filter(   (data)=>
+        parseInt(data.data?.rating)===5
+          
+          )
+    )
+  }
+
+    else
+    {
+      console.log('rating less than 5')
+      setItems(items?.filter((item)=>(
+  
+        selectDataFilterInfo?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
+          ==='true'
+        ).filter((data)=>
+          parseInt(data.data?.discount)!==0 ).filter((data)=>parseFloat(data.data?.rating)
+            >=val)
+        )
+
+    }
+
+  }
+
+
+else  {
+
+  if(  ((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)) ||
+  
+  ((selectDataFilterInfo?.freedelvery)&& (selectDataFilterInfo?.rating)  )    ||
+  (
+    (selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating) 
+  )
+  )
+  {
+// When just causine , offers & freedilivery are clicked
+
+
+ if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)  ){
+   
+  
+    setItems(items?.filter((item)=>(
+  
+      selectDataFilterInfo?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
+        ==='true'
+      )
+      
+      .filter(
+        (data)=>
+        parseInt(data.data?.discount)!==0 )
+            
+      )
+
+
+
+  }
+// When just causine , freedelivery & rating are clicked
+
+  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.rating)){
+
+
+    if(parseInt(selectDataFilterInfo?.rating)===5){
+      console.log('rating 5')
+
+    
+  setItems(items?.filter((item)=>(
+    
+   
+    selectDataFilterInfo?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
+      ==='true'
+    ).filter(   (data)=>
+        parseInt(data.data?.rating)===5
+          
+          )
+    )
+  }
+
+    else
+    {
+      console.log('rating less than 5')
+      setItems(items?.filter((item)=>(
+  
+        selectDataFilterInfo?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
+          ==='true'
+        ).filter((data)=>parseFloat(data.data?.rating)
+            >=val)
+        )
+
+    }
+
+
+    
+
+  }
+
+
+// When just causine , offers & rating are clicked
+
+
+  if((selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating)){
+
+
+    if(parseInt(selectDataFilterInfo?.rating)===5){
+      console.log('rating 5')
+
+    
+  setItems(items?.filter((item)=>(
+    
+   
+    selectDataFilterInfo?.cuisines.includes(item.data.type))).filter(
+      (data)=>
+      parseInt(data.data?.discount)!==0 )
+    
+    .filter(   (data)=>
+        parseInt(data.data?.rating)===5
+          
+          )
+    )
+  }
+
+    else
+    {
+      // console.log('rating less than 5')
+      setItems(items?.filter((item)=>(
+  
+        selectDataFilterInfo?.cuisines.includes(item.data.type)))
+        
+        .filter(
+          (data)=>
+          parseInt(data.data?.discount)!==0 )
+        
+        .filter((data)=>parseFloat(data.data?.rating)
+            >=val)
+        )
+
+    }
+
+
+    
+
+  }
+
+
+
+
+
+  
+
+
+
+
+
+
+
+}
+
+else {
+
+
+if((selectDataFilterInfo?.offers) ||(selectDataFilterInfo?.rating) || (selectDataFilterInfo?.freedelvery) )
+{
+ // When just causine & freedelivery are clicked
+
+
+  if(selectDataFilterInfo?.freedelvery){
+  // console.log('free delivery')
+
+
+    setItems(items?.filter((item)=>(
+  
+      selectDataFilterInfo?.cuisines.includes(item.data.type))
+      ).filter((data)=>(data.data?.freedelivery)
+      ==='true'
+    )
+      
+      
+      )
+      
+  }
+
+// When just causine & offers are clicked
+
+  if(selectDataFilterInfo?.offers){
+    // console.log('free delivery')
+  
+  
+      setItems(items?.filter((item)=>(
+    
+        selectDataFilterInfo?.cuisines.includes(item.data.type))
+        ).filter(
+          (data)=>
+          parseInt(data.data?.discount)!==0 )
+      )
+        
+        
+        
+        
+    }
+
+// When just causine & rating are clicked
+
+    if((selectDataFilterInfo?.rating) )
 {
 
-  setItems(items?.filter((item)=>(
+
+  if(parseInt(selectDataFilterInfo?.rating)===5){
+    console.log('rating 5')
+
   
-    selectDataFilterInfo?.cuisines.includes(item.data.type)))
-    )
-
-}
-
-
-if( selectDataFilterInfo?.rating ){
-  let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
-
-  if(val===NaN){
-    setItems(items?.filter((data)=>parseFloat(data.data?.rating)
-    >=val[0])
-      )
-  }
-  else {
-  setItems(items?.filter((data)=>parseFloat(data.data?.rating)
-  >=val)
-    )}
-}
-
-
-if(selectDataFilterInfo?.freedelvery){
-  setItems(items?.filter((data)=>(data.data?.freedelivery)
-  ==='true'))
-}
-
-
-if(selectDataFilterInfo?.offers){
-  setItems(items?.filter((data)=>
-  parseInt(data.data?.discount)!==0 ))
+setItems(items?.filter((item)=>(
+  
  
+  selectDataFilterInfo?.cuisines.includes(item.data.type)))
+  
+  .filter(   (data)=>
+      parseInt(data.data?.rating)===5
+        
+        )
+  )
 }
 
-if(!selectDataFilterInfo){
-  getDataFunction()
+  else
+  {
+    // console.log('rating less than 5')
+    setItems(items?.filter((item)=>(
+
+      selectDataFilterInfo?.cuisines.includes(item.data.type)))
+
+      .filter((data)=>parseFloat(data.data?.rating)
+          >=val)
+      )
+
+  }
+
+
+
 }
+
+
+
+}
+
+// When just Causine are selected
+
+else {
+
+  setItems(items?.filter((item)=>(
+
+    selectDataFilterInfo?.cuisines.includes(item.data.type))))
+
+}
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+  
+}
+
+
+
+// When no causine is selected & remaining are selected
+
+
+
+else {
+
+  // WHen no causine selected & remiang are selected
+
+
+  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)&& (selectDataFilterInfo?.rating)  ){
+    if(parseInt(selectDataFilterInfo?.rating)===5){
+      console.log('rating 5')
+
+    
+  setItems(items?.filter( (data)=>(data.data?.freedelivery)
+      ==='true'
+    )
+    
+    .filter(
+      (data)=>
+      parseInt(data.data?.discount)!==0 ).filter(   (data)=>
+        parseInt(data.data?.rating)===5
+          
+          )
+    )
+  }
+
+    else
+    {
+      console.log('rating less than 5')
+      setItems(items?.filter((data)=>(data.data?.freedelivery)
+          ==='true'
+        ).filter((data)=>
+          parseInt(data.data?.discount)!==0 ).filter((data)=>parseFloat(data.data?.rating)
+            >=val)
+        )
+
+    }
+
+  }
+
+
+
+else {
+
+
+
+  if(  ((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)) ||
+  
+  ((selectDataFilterInfo?.freedelvery)&& (selectDataFilterInfo?.rating)  )    ||
+  (
+    (selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating) 
+  )
+  )
+  {
+// When no causine is selected , freedeivlery & offers are selected
+
+
+ if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)  ){
+   
+  
+    setItems(items?.filter( (data)=>(data.data?.freedelivery)
+        ==='true'
+      )
+      
+      .filter(
+        (data)=>
+        parseInt(data.data?.discount)!==0 )
+            
+      )
+
+
+
+  }
+// When no causine is selected , freedeivlery & rating are selected
+
+
+  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.rating)){
+
+
+    if(parseInt(selectDataFilterInfo?.rating)===5){
+      console.log('rating 5')
+
+    
+  setItems(items?.filter( (data)=>(data.data?.freedelivery)
+      ==='true'
+    ).filter(   (data)=>
+        parseInt(data.data?.rating)===5
+          
+          )
+    )
+  }
+
+    else
+    {
+      console.log('rating less than 5')
+      setItems(items?.filter((data)=>(data.data?.freedelivery)
+          ==='true'
+        ).filter((data)=>parseFloat(data.data?.rating)
+            >=val)
+        )
+
+    }
+
+
+    
+
+  }
+
+// When no causine is selected , offers & rating are selected
+
+
+
+  if((selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating)){
+
+
+    if(parseInt(selectDataFilterInfo?.rating)===5){
+      console.log('rating 5')
+
+    
+  setItems(items?.filter(
+      (data)=>
+      parseInt(data.data?.discount)!==0 )
+    
+    .filter(   (data)=>
+        parseInt(data.data?.rating)===5
+          
+          )
+    )
+  }
+
+    else
+    {
+      // console.log('rating less than 5')
+      setItems(items?.filter((item)=>(
+  
+        selectDataFilterInfo?.cuisines.includes(item.data.type)))
+        
+        .filter(
+          (data)=>
+          parseInt(data.data?.discount)!==0 )
+        
+        .filter((data)=>parseFloat(data.data?.rating)
+            >=val)
+        )
+
+    }
+
+
+    
+
+  }}
+
+  else{
+// WHen just Free delivery clicked
+    if(selectDataFilterInfo?.freedelvery){
+      // console.log('free delivery')
+    
+    
+        setItems(items?.filter((data)=>(data.data?.freedelivery)
+          ==='true'
+        )
+          
+          
+          )
+          
+      }
+    
+    // When just causine & offers are clicked
+    
+      if(selectDataFilterInfo?.offers){
+        // console.log('free delivery')
+      
+      
+          setItems(items?.filter(
+              (data)=>
+              parseInt(data.data?.discount)!==0 )
+          )
+            
+            
+            
+            
+        }
+    
+    // When just causine & rating are clicked
+    
+        if((selectDataFilterInfo?.rating) )
+    {
+    
+    
+      if(parseInt(selectDataFilterInfo?.rating)===5){
+        console.log('rating 5')
+    
+      
+    setItems(items?.filter(   (data)=>
+          parseInt(data.data?.rating)===5
+            
+            )
+      )
+    }
+    
+      else
+      {
+        // console.log('rating less than 5')
+        setItems(items?.filter((data)=>parseFloat(data.data?.rating)
+              >=val)
+          )
+    
+      }
+    
+    
+    
+    }
+
+  }
+
+
+
+
+
+  
+
+
+
+
+
+
+
+}
+
+
+
+
+
+  
+
+}
+
 
 },[selectDataFilterInfo])
 
-  return (
+
+
+
+
+
+
+
+return (
     <div className='InsideCombine'>
         
 

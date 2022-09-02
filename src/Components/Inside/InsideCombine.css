@@ -54,6 +54,7 @@
 /* width: 50%; */
 /* background-color: red; */
 width: calc(100% - 460px);
+/* width: 100%; */
 }
 
 .InsideCombine_Filtering_page_inside_right {
@@ -63,16 +64,21 @@ width: calc(100% - 460px);
     overflow-y: scroll !important;
     animation: widhtIncrease 1s linear ;
     /* height: 667px; */
+    /* transform: translateX(0px); */
 }
 
 @keyframes widhtIncrease{
     0%{
     width: 0px;
+    /* transform: translateX(460px); */
+
 
     }
    
     100%{
         min-width: 460px;
+    /* transform: translateX(0px); */
+
     }
 }
 
