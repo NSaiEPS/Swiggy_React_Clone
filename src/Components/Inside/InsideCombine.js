@@ -251,7 +251,7 @@ useEffect(()=>{
 
 
 // console.log(selectDataFilterInfo?.rating)
-console.log(selectDataFilterInfo)
+// console.log(selectDataFilterInfo)
 
 if(!selectDataFilterInfo ){
   console.log('no data')

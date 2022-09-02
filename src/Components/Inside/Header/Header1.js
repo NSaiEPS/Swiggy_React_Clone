@@ -40,7 +40,6 @@ let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
 
 
   }
-let location=selectLocationInfo?.location
 let path=(window.location.pathname.split('/'))
 // let a=false;
 

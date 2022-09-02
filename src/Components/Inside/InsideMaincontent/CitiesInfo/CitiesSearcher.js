@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { newLocationSearchAction, Selectcityinfo } from '../../../Redux_toolkit/Redux_Slice'
+import { locationAction, newLocationSearchAction, Selectcityinfo } from '../../../Redux_toolkit/Redux_Slice'
 import ClearIcon from '@mui/icons-material/Clear';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
@@ -53,6 +53,23 @@ let handlefocus=(a)=>{
 }
 
 
+let handleSubmitForm=()=>{
+  if((inputval.inptext)){
+    localStorage.setItem('Swiggy_Clone_location',JSON.stringify(inputval.inptext))
+window.location.reload()
+
+// dispatch(
+//   locationAction(
+//     {
+//       active:true,
+//       location:(inputval.inptext)
+//     }
+//   )
+
+//   )
+  }
+}
+
 // console.log(focus,inputval.inptext)
   return (
     <div className='CitiesSearcher'>
@@ -90,6 +107,11 @@ let handlefocus=(a)=>{
 
       <div className={focus? 'CitiesSearcher_newSearch_left_inside_input CitiesSearcher_newSearch_left_inside_input_focus':
       'CitiesSearcher_newSearch_left_inside_input'}>
+
+        <form
+        onSubmit={handleSubmitForm}
+        >
+
         <input placeholder='Search for area, street name..'
         
         onChange={
@@ -101,6 +123,8 @@ let handlefocus=(a)=>{
         onBlur={()=>handlefocus('blur')}
         autoFocus
         />
+        </form>
+
 {inputval.inptext &&
   <span
   onClick={()=>{

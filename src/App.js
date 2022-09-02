@@ -5,7 +5,7 @@ import Signup from './Components/FirstPage/FirstSection/Signup';
 import FirstPage from './Components/FirstPage/FirstPage';
 import CombineFooter from './Components/Footer/CombineFooter';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterInfoAction, newLocationSearchAction, Selectcityinfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
+import { filterInfoAction, locationAction, newLocationSearchAction, Selectcityinfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
 import Header2 from './Components/Inside/Header/Header2';
 import { useEffect, useState } from 'react';
@@ -26,6 +26,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Filters from './Components/Inside/Filters/Filters';
 import ClearIcon from '@mui/icons-material/Clear';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import { ControlPointDuplicate } from '@mui/icons-material';
 
 function App() {
 
@@ -54,15 +55,38 @@ let selectFilterInfo=useSelector(SelectFilterInfo)
   let selectLocationInfo=useSelector(Selectlocationinfo)
   let selectnewLocationSearch=useSelector(SelectnewLocationSearch)
   
-let firstchange=false;
-  firstchange=selectLocationInfo?.active
+let reqlocation=false;
+  reqlocation=selectLocationInfo?.location
   // localStorage.setItem('Swiggy_Clone_location', JSON.stringify(reqlocation))
  
 let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
 // console.log(locationEntered)
 
   let signup=selectLogininfo?.status;
+  let location=selectLocationInfo?.location
+  // console.log(location)
 
+useEffect(()=>{
+let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
+// console.log(locationEntered,'after refresh')
+dispatch(
+  locationAction(
+    {
+      active:true,
+      location:(locationEntered)
+    }
+  )
+
+  )
+
+  // return ()=>{
+  //   if(reqlocation){
+  //   localStorage.setItem('Swiggy_Clone_location',JSON.stringify(reqlocation))}
+  // }
+
+
+
+},[])
 
 useEffect(()=>{
 
@@ -103,7 +127,25 @@ let handleInputChange=(e)=>{
     inptext:(e.target.value)
     
           })
+
 }
+
+let handleSubmitForm=()=>{
+  if((inputval.inptext)){
+    // dispatch(
+    //   locationAction(
+    //     {
+    //       active:true,
+    //       location:(inputval.inptext)
+    //     }
+    //   )
+    
+    //   )
+    localStorage.setItem('Swiggy_Clone_location',JSON.stringify(inputval.inptext))
+window.location.reload()
+  }
+}
+
 
 if(loading){
   return(
@@ -128,7 +170,7 @@ if(loading){
       <div className='App_Maincontent'>
       
       <div>
-      {/* {!firstchange && <FirstPage/>} */}
+      {/* {!reqlocation && <FirstPage/>} */}
 
       </div>
       
@@ -141,7 +183,7 @@ if(loading){
       </div>}
 
       {/* <div className='App_Maincontent_inside'>
-        {specialheader && firstchange &&
+        {specialheader && reqlocation &&
         
         <div className='App_Maincontent_inside_header2'>
         <Header2/>
@@ -153,11 +195,11 @@ if(loading){
        
 
       </div> */}
-       {/* {firstchange &&
+       {/* {reqlocation &&
          <InsideCombine/> } */}
       <Routes>
       <Route path='/' element={
-       (locationEntered|| firstchange) ?
+       (locationEntered|| reqlocation) ?
       <InsideCombine/>:<FirstPage/>
     }/>
 
@@ -227,6 +269,11 @@ style={{
 
       <div className={focus? 'CitiesSearcher_newSearch_left_inside_input CitiesSearcher_newSearch_left_inside_input_focus':
       'CitiesSearcher_newSearch_left_inside_input'}>
+        
+        <form onSubmit={handleSubmitForm}
+        
+        
+        >
         <input placeholder='Search for area, street name..'
         
         onChange={
@@ -237,7 +284,7 @@ style={{
         onFocus={()=>handlefocus('focus')}
         onBlur={()=>handlefocus('blur')}
         autoFocus
-        />
+        /></form>
 {inputval.inptext &&
   <span
   onClick={()=>{

@@ -48,7 +48,7 @@ const Header2 = ({show,lenght}) => {
                    
           >
           <span
-          className={!show && 'Header2_inside_right_search'}
+          className={!show ? 'Header2_inside_right_search': undefined}
           
           >
          <SearchRoundedIcon
@@ -60,7 +60,7 @@ const Header2 = ({show,lenght}) => {
 Search</span>
           </Link>
           <span
-          className= {selectReqFilter==='' &&  'Header2_inside_right_span'}
+          className= {selectReqFilter==='' ?  'Header2_inside_right_span' : undefined}
 
           onClick={()=>handleFilters('')}
          
@@ -69,7 +69,7 @@ Search</span>
 
           <span
 
-className= {selectReqFilter==='deliveryTime' &&  'Header2_inside_right_span'}
+className= {selectReqFilter==='deliveryTime' ?  'Header2_inside_right_span':undefined}
 
           onClick={()=>handleFilters('deliveryTime')}
           
@@ -78,7 +78,7 @@ className= {selectReqFilter==='deliveryTime' &&  'Header2_inside_right_span'}
 
 
           <span
-className= {selectReqFilter==='rating' &&  'Header2_inside_right_span'}
+className= {selectReqFilter==='rating' ?  'Header2_inside_right_span': undefined}
 
           onClick={()=>handleFilters('rating')}
           
@@ -88,14 +88,14 @@ className= {selectReqFilter==='rating' &&  'Header2_inside_right_span'}
 
 
           <span
-className= {selectReqFilter==='costLowtoHign' &&  'Header2_inside_right_span'}  
+className= {selectReqFilter==='costLowtoHign' ?  'Header2_inside_right_span' : undefined}  
           onClick={()=>handleFilters('costLowtoHign')}
           >Cost: Low To High</span>
 
 
 
           <span
-className= {selectReqFilter==='costHightoLow' &&  'Header2_inside_right_span'}
+className= {selectReqFilter==='costHightoLow' ? 'Header2_inside_right_span' :undefined}
 
           onClick={()=>handleFilters('costHightoLow')}
 
