@@ -12,9 +12,8 @@ export const Redux_Slice=createSlice({
         moreinfo:'',
         reqFilter:'',
         filtersInfo:{},
-        filterData:{
-            
-        }
+        filterData:{},
+        newLocationSearch:false
 
     }),
 
@@ -40,6 +39,9 @@ export const Redux_Slice=createSlice({
         },
         filterDataInfoAction:(state,action)=>{
             state.filterData=action.payload
+        },
+        newLocationSearchAction:(state,action)=>{
+            state.newLocationSearch=action.payload
         }
     }),
 
@@ -47,7 +49,8 @@ export const Redux_Slice=createSlice({
 })
 
 export const {logininfoAction,locationAction,cityAction,
-    moreInfoAction,reqFilterAction,filterInfoAction,filterDataInfoAction}=Redux_Slice.actions
+    moreInfoAction,reqFilterAction,filterInfoAction,filterDataInfoAction,
+    newLocationSearchAction}=Redux_Slice.actions
 
 export const Selectlogininfo=(store)=>store.redux_store.logininfo
 export const Selectlocationinfo=(store)=>store.redux_store.locationinfo
@@ -56,6 +59,7 @@ export const Selectmoreinfo=(store)=>store.redux_store.moreinfo
 export const SelectreqFilter=(store)=>store.redux_store.reqFilter
 export const SelectFilterInfo=(store)=>store.redux_store.filtersInfo
 export const SelectDataFilterInfo=(store)=>store.redux_store.filterData
+export const SelectnewLocationSearch=(store)=>store.redux_store.newLocationSearch
 
 
 

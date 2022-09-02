@@ -89,6 +89,8 @@ let reqlocation=''
       )
     
       )
+    localStorage.setItem('Swiggy_Clone_location', JSON.stringify(reqlocation))
+
 
       toast.success(`checking for ${location} location`, {
         position: "top-right",

@@ -27,6 +27,7 @@ const InsideCombine = () => {
 // console.log(selectDataFilterInfo)
 
 
+
 let getDataFunction=()=>{
   db.collection('items').onSnapshot((item)=>{
     setItems((item.docs.map((data)=>({

@@ -135,3 +135,28 @@
 
 background-color: rgb(217, 41, 223);
 }
+
+.Header1_clear_location {
+    position: relative;
+    cursor: pointer;
+    /* background-color: red; */
+}
+
+.Header1_clear_location_indicator {
+    position: absolute;
+    background-color: black;
+    color: white;
+    width: 155px;
+    padding: 5px;
+    /* align-self: center; */
+    left: 0px;
+    bottom: 22px;
+    display: none;
+    border-radius: 10px;
+}
+
+
+.Header1_clear_location:hover .Header1_clear_location_indicator {
+    display: block;
+
+ }

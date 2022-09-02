@@ -6,7 +6,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { useDispatch, useSelector } from 'react-redux';
-import { logininfoAction, moreInfoAction, Selectlocationinfo } from '../../Redux_toolkit/Redux_Slice';
+import { logininfoAction, moreInfoAction, newLocationSearchAction, Selectlocationinfo } from '../../Redux_toolkit/Redux_Slice';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -18,6 +18,7 @@ const Header1 = () => {
   let selectLocationInfo=useSelector(Selectlocationinfo)
 const [userss,loading]=useAuthState(auth)
 
+let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
  
   let handleSignin=()=>{
     dispatch(
@@ -44,6 +45,23 @@ let path=(window.location.pathname.split('/'))
 // let a=false;
 
 // console.log(userss.phoneNumber)
+
+let handleEraceLocation=()=>{
+  localStorage.clear('Swiggy_Clone_location')
+  window.location.reload()
+}
+
+let handleNewSearch=()=>{
+  // alert('clicked')
+  // setNewsearch(true)
+  // window.document.body.scroll='hidden'
+  // document.body.
+  document.body.style.overflowY = "hidden";
+
+  dispatch(newLocationSearchAction(true))
+
+}
+
   return (
     <div className='Header1'>
 
@@ -61,7 +79,18 @@ let path=(window.location.pathname.split('/'))
           </Link>
 
            <span>{path[1]==='support'? 'HELP': 
-            location}</span>
+           <b
+           onClick={handleNewSearch}
+           > 
+            {locationEntered} </b>
+           }</span>
+
+          <span className='Header1_clear_location' 
+          onClick={handleEraceLocation}>X
+          
+          <small className='Header1_clear_location_indicator'
+          >Clear the location {locationEntered}</small>
+          </span>
 
            {userss?.phoneNumber==='+919705442192'
            

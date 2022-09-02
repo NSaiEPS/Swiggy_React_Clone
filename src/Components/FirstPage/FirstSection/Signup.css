@@ -35,13 +35,16 @@
     min-width: 460px;
     /* color: black !important; */
     /* display: none; */
-    animation: rightanimation 1s linear;
+    animation: rightanimation 1s;
     margin-left: auto;
+    transform: translateX(0px);
 }
 
 @keyframes rightanimation{
     0%{
-        min-width: 0px;
+        /* min-width: 0px; */
+    transform: translateX(460px);
+
     }
     /* 25% {
         min-width: 50px;
@@ -51,7 +54,9 @@
 
     } */
     100% {
-    min-width: 460px;
+    /* min-width: 460px; */
+    transform: translateX(0px);
+
 
     }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Selectcityinfo } from '../../../Redux_toolkit/Redux_Slice'
+import { useDispatch, useSelector } from 'react-redux'
+import { newLocationSearchAction, Selectcityinfo } from '../../../Redux_toolkit/Redux_Slice'
 import ClearIcon from '@mui/icons-material/Clear';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
@@ -10,6 +10,8 @@ const CitiesSearcher = () => {
 let selectCityInfo=useSelector(Selectcityinfo)
 let [newsearch,setNewsearch]=useState(false)
 let [focus,setFocus]=useState(false)
+
+let dispatch=useDispatch()
 
 let [inputval,setInputval]=useState({
   inptext:'',
@@ -23,11 +25,14 @@ let handleClicksearch=()=>{
   // document.body.
   document.body.style.overflowY = "hidden";
 
+  // dispatch(newLocationSearchAction(true))
 
 }
 let handleEracenewSeacrh=()=>{
   setNewsearch(false)
   document.body.style.overflowY = "scroll";
+  // dispatch(newLocationSearchAction(false))
+
 
 
 }

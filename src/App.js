@@ -5,7 +5,7 @@ import Signup from './Components/FirstPage/FirstSection/Signup';
 import FirstPage from './Components/FirstPage/FirstPage';
 import CombineFooter from './Components/Footer/CombineFooter';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterInfoAction, Selectcityinfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo } from './Components/Redux_toolkit/Redux_Slice';
+import { filterInfoAction, newLocationSearchAction, Selectcityinfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
 import Header2 from './Components/Inside/Header/Header2';
 import { useEffect, useState } from 'react';
@@ -24,7 +24,8 @@ import { auth } from './Firebase';
 import Spinner from 'react-spinkit'
 import Dashboard from './Components/Dashboard/Dashboard';
 import Filters from './Components/Inside/Filters/Filters';
-
+import ClearIcon from '@mui/icons-material/Clear';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
 function App() {
 
@@ -36,6 +37,13 @@ function App() {
 let selectMoreInfo=useSelector(Selectmoreinfo)
 
 const [userss,loading]=useAuthState(auth)
+let [focus,setFocus]=useState(false)
+
+let handlefocus=(a)=>{
+
+
+  a==='focus'? setFocus(true):setFocus(false)
+}
 
 
 let selectFilterInfo=useSelector(SelectFilterInfo)
@@ -44,10 +52,15 @@ let selectFilterInfo=useSelector(SelectFilterInfo)
 
   let selectLogininfo=useSelector(Selectlogininfo)
   let selectLocationInfo=useSelector(Selectlocationinfo)
+  let selectnewLocationSearch=useSelector(SelectnewLocationSearch)
   
 let firstchange=false;
   firstchange=selectLocationInfo?.active
+  // localStorage.setItem('Swiggy_Clone_location', JSON.stringify(reqlocation))
  
+let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
+// console.log(locationEntered)
+
   let signup=selectLogininfo?.status;
 
 
@@ -69,6 +82,29 @@ document.body.style.overflowY='scroll'
 
 }
 
+let [inputval,setInputval]=useState({
+  inptext:'',
+  location:''
+})
+
+let handleEracenewSeacrh=()=>{
+  // setNewsearch(false)
+  document.body.style.overflowY = "scroll";
+  dispatch(newLocationSearchAction(false))
+
+
+
+}
+
+let handleInputChange=(e)=>{
+  setInputval({
+  
+    ...inputval,
+    inptext:(e.target.value)
+    
+          })
+}
+
 if(loading){
   return(
   <div className='loading_app'>
@@ -77,7 +113,7 @@ if(loading){
     <img className='Logo_App'  
       src='https://anujbansal16.github.io/images/logos/swiggy.svg' alt='Devi restarent'/>
  
- <Spinner name="circle" color="blue"/>
+ <Spinner name="pacman" color="blue"/>
     
 
   </div>
@@ -121,7 +157,7 @@ if(loading){
          <InsideCombine/> } */}
       <Routes>
       <Route path='/' element={
-        firstchange ?
+       (locationEntered|| firstchange) ?
       <InsideCombine/>:<FirstPage/>
     }/>
 
@@ -166,6 +202,79 @@ style={{
 
             </div>
         </div>}
+
+
+
+
+        {
+          selectnewLocationSearch &&
+
+ <div className='CitiesSearcher_newSearch_App'>
+  {/* search */}
+  <div className='CitiesSearcher_newSearch_left'
+  >
+  
+  <div className='CitiesSearcher_newSearch_left_inside'>
+    <div>
+    <ClearIcon 
+  onClick={handleEracenewSeacrh}
+  style={{
+    cursor:'pointer'
+  }}
+  />
+      </div>
+
+
+      <div className={focus? 'CitiesSearcher_newSearch_left_inside_input CitiesSearcher_newSearch_left_inside_input_focus':
+      'CitiesSearcher_newSearch_left_inside_input'}>
+        <input placeholder='Search for area, street name..'
+        
+        onChange={
+        handleInputChange
+      }
+        value={inputval.inptext}
+        
+        onFocus={()=>handlefocus('focus')}
+        onBlur={()=>handlefocus('blur')}
+        autoFocus
+        />
+{inputval.inptext &&
+  <span
+  onClick={()=>{
+    setInputval({
+      ...inputval,
+      inptext:""
+    })
+
+  }}
+  >
+          clear
+        </span>}
+        
+        </div>
+        <div className='CitiesSearcher_newSearch_left_inside_GPS'>
+          <div><GpsFixedIcon
+          className='CitiesSearcher_newSearch_left_inside_GPS_icon'
+          />
+            </div>
+            <div>
+              <span>Get current location</span>
+              <br/>
+              <p>Using GPS
+            
+              </p>
+              </div>
+          </div>
+    </div>
+  </div>
+
+  <div className='CitiesSearcher_newSearch_right'
+  onClick={handleEracenewSeacrh}
+  >
+  </div>
+        </div>
+        
+        }
 
     </div>
   );
