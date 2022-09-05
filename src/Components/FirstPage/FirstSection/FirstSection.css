@@ -11,6 +11,8 @@
 
 .FirstSection_inside_Locationpart {
     width: 55%;
+    /* background-color: red; */
+    /* min-width: 705px; */
     /* align-items: center; */
 }
 
@@ -21,7 +23,7 @@
     background-image: url('https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq');
     /* https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq */
     position: absolute;
-    left: calc(50% + 75px);
+    width: calc(100% - 65%);
     right: 0;
     background-repeat: no-repeat;
     background-size: cover;
@@ -30,3 +32,49 @@
     /* width: 50%; */
 }
 
+/* @media (max-width:850px){
+.FirstSection_inside_Locationpart {
+
+max-width: 80% ;
+background-color: red;
+}
+    
+} */
+
+@media (max-width:650px){
+
+.FirstSection_inside_Locationpart {
+   width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.FirstSection_inside_imgpart {
+width: 0%;
+}
+
+}
+
+@media (max-width:500px){
+
+    .FirstSection_inside_Locationpart {
+      width: 90% !important;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+
+
+}
+
+@media (max-width:415px){
+    .FirstSection_inside_Locationpart {
+        width: 95% !important;
+         /* margin-left: auto;
+         margin-right: auto; */
+         /* background-color: blue; */
+         margin-left: auto;
+     
+     }
+}

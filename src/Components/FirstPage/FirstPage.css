@@ -1,6 +1,6 @@
 .FirstPage_inside_Firstsection {
     height: 535px;
-   
+   /* display: none; */
 
     /* border-bottom: 2px solid lightgray; */
 }
@@ -8,9 +8,27 @@
 .FirstPage_inside_SecondSection {
     background: #2b1e16;
     height: 403px;
+    /* min-height: fit-content; */
 }
 
 .FirstPage_inside_ThirdSection {
     height: 570px;
     border-bottom: 2px solid lightgray;
+
 }
+
+@media (max-width:500px){
+    .FirstPage_inside_SecondSection {
+        /* background: #2b1e16; */
+        height: 800px;
+        /* min-height: fit-content !important; */
+        
+    }
+
+}
+@media (max-width:850px){
+    .FirstPage_inside_ThirdSection {
+        height: 430px;
+        /* border-bottom: 2px solid lightgray; */
+    }
+} 

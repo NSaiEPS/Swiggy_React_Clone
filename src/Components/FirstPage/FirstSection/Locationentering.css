@@ -1,5 +1,5 @@
 /* .Locationentering_inside {
-    
+background-color: red;    
 } */
 
 .Locationentering_inside_top {
@@ -404,3 +404,170 @@ font-size: 16px;
     /* align-items: center; */
     padding-top: 25px;
   }
+
+
+
+
+  @media (max-width:1000px){
+ .Locationentering_inside_input  input{
+    width:400px;
+ 
+}
+
+.Locationentering_inside_input_findfoodbtn {
+    width: 250px;
+    font-size: 10px ;
+   
+     
+}
+
+.Locationentering_inside_input_findfoodbtn button{
+ 
+    font-size: 11px;
+
+    
+        
+    
+     }
+
+}
+
+
+@media (max-width:935px){
+    .Locationentering_inside_input  input{
+       width:300px;
+    
+   }
+   
+   .Locationentering_inside_input_findfoodbtn {
+       width: 200px !important;
+    
+   }
+   
+
+   }
+
+
+   @media (max-width:750px){
+    .Locationentering_inside_input  input{
+       width:250px;
+    
+   }
+   
+   .Locationentering_inside_input_findfoodbtn {
+       width: 150px !important;
+    
+   }
+   
+
+   }
+
+   /* @media (max-width:500px){
+    .Locationentering_inside_input  input{
+       width:250px;
+    
+   }
+   
+   .Locationentering_inside_input_findfoodbtn {
+       width: 150px !important;
+    
+   }
+   
+
+   } */
+
+@media (max-width:650px){
+
+.Locationentering_inside_top img{
+       
+padding-left: 0px;
+    
+    }
+    .Locationentering_inside_Changing {
+margin-left: 0px;}
+
+
+
+.Locationentering_inside_cities {
+margin-left: 0px;}
+
+
+ .Locationentering_inside_input {
+
+margin-left: 0px;}
+
+
+.Locationentering_inside_info {
+    margin-left:0px;
+
+   margin-top: -8px;
+   font-size:22px;
+
+ }
+ .Locationentering_inside >div:nth-last-child(2){
+    margin-left: 0px;}
+
+    .Locationentering_inside_top div:nth-last-child(1){
+   
+        padding-right: 0px;
+      
+    
+    }
+}
+
+
+
+@media (max-width:455px){
+    .Locationentering_inside_input  input{
+        width:200px !important;
+     
+    }
+    
+    .Locationentering_inside_input_findfoodbtn {
+        width: 150px !important;
+     
+    }
+    
+}
+/* 
+
+.Locationentering_inside_Changing {
+    background-color: yellow;
+}
+
+.Locationentering_inside_info {
+    background-color: blue;
+}
+
+.Locationentering_inside_input {
+    background-color: #fa4a5b !important;
+}
+
+.Locationentering_inside_input_input {
+    background-color: #fa4a5b !important;
+
+}
+.Locationentering_inside_input_findfoodbtn {
+    background-color: pink;
+}
+
+.Locationentering_inside_cities {
+    background-color: aqua;
+}
+
+.Locationentering_inside >div:nth-last-child(2){
+    background-color: rgb(255, 187, 0);} */
+
+
+    @media (max-width:350px){
+        .Locationentering_inside_top img{
+            width: 150px;
+        }
+
+        .Locationentering_inside_Changing h1{
+           /* background-color: yellow; */
+           font-size: 27px !important;
+        
+        }
+        
+    }
