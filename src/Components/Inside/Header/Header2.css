@@ -70,3 +70,36 @@
     border-bottom: 1px solid black !important;
     color: black !important;
 }
+
+
+@media (max-width:750px){
+    .Header2_inside_left {
+        width: 20%;
+        /* text-align: start; */
+    }
+    
+    .Header2_inside_right {
+        width: 80%;
+   
+    }
+}
+
+@media (max-width:675px){
+    .Header2_inside {
+      
+        display: flex;
+        flex-direction: column;
+
+    
+    }
+    .Header2_inside_left {
+        width: 100%;
+        /* text-align: start; */
+        justify-content: center;
+    }
+    
+    .Header2_inside_right {
+        width: 100%;
+   
+    }
+}

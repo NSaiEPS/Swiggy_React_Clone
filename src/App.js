@@ -20,7 +20,7 @@ import Help_Support from './Components/Inside/InsideMaincontent/MoreInfo/Helppag
 import Search from './Components/Inside/InsideMaincontent/MoreInfo/Search/Search';
 import Offers from './Components/Inside/InsideMaincontent/MoreInfo/Offers';
 import {useAuthState} from 'react-firebase-hooks/auth'
-import { auth } from './Firebase';
+import { auth, db } from './Firebase';
 import Spinner from 'react-spinkit'
 import Dashboard from './Components/Dashboard/Dashboard';
 import Filters from './Components/Inside/Filters/Filters';
@@ -60,12 +60,35 @@ let reqlocation=false;
   // localStorage.setItem('Swiggy_Clone_location', JSON.stringify(reqlocation))
  
 let locationEntered=""
-// locationEntered= (JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
-// console.log(locationEntered)
+locationEntered= (JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
+console.log(userss)
 
   let signup=selectLogininfo?.status;
   let location=selectLocationInfo?.location
   // console.log(location)
+
+  let [userInfo,setUserInfo]=useState([])
+
+  let getUserFunction=()=>{
+    db.collection('user').onSnapshot((item)=>{
+      setUserInfo((item.docs.map((data)=>({
+        id:data.id,
+        data:data.data()
+  
+      }))))
+  
+    })
+  
+  }
+
+  console.log(userInfo)
+  // console.log(userss?.phoneNumber)
+
+  userInfo.map((item)=>{
+    if(userss?.phoneNumber===`+91${item.data.phoneNumber}`){
+      // alert(item.data.name)
+    }
+  })
 
 useEffect(()=>{
 // let locationEntered=JSON.parse(localStorage.getItem('Swiggy_Clone_location'))
@@ -80,11 +103,7 @@ dispatch(
 
   )
 
-  // return ()=>{
-  //   if(reqlocation){
-  //   localStorage.setItem('Swiggy_Clone_location',JSON.stringify(reqlocation))}
-  // }
-
+  getUserFunction()
 
 
 },[])

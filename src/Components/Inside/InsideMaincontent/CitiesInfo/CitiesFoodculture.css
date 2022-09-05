@@ -19,3 +19,12 @@ font-size: 20px;
     color: #282c3f;
     /* font-family: ProximaNova,arial,Helvetica Neue,sans-serif; */
 }
+
+
+@media (max-width:900px){
+.CitiesFoodculture p{
+
+    padding-right: 0px;
+
+}
+}

@@ -26,8 +26,46 @@ const Signup = () => {
   let [checkloginbtn,setCheckloginbtn]=useState(false)
   let [otpCondition,setOTPcondition]=useState(false)
 
+
+  let [userInfo,setUserInfo]=useState([])
+  let phonenumb=[]
   
 
+
+  let getUserFunction=()=>{
+    db.collection('user').onSnapshot((item)=>{
+      setUserInfo((item.docs.map((data)=>({
+        id:data.id,
+        data:data.data()
+  
+      }))))
+  
+    })
+  
+  }
+
+useEffect(()=>{
+// db.collection('user').onSnapshot((doc)=>{
+
+// setUserInfo((doc.docs.map((item)=>({
+//   id:item.id,
+//   data:item.data()
+  
+// })))
+
+//   )})
+
+getUserFunction()
+
+},[])
+
+
+Array.isArray(userInfo) && userInfo.map((item)=>{
+  phonenumb.push(item.data.phoneNumber)
+})
+
+
+console.log(phonenumb)
   // let signup=selectLogininfo?.status;
 
 
@@ -85,21 +123,7 @@ const Signup = () => {
   let handleinputchange=(e)=>{
     let name=e.target.name
     let val=e.target.value
-  //   if (name==='phonenumber'){
-  //     console.log('phonenumber',val)
-  //     let rv=parseInt(val) 
-  //     rv!==NaN &&
-  //     setInputVal({
-  //       ...inputval,
-  //       [name]:val
-  //     })
-  //   }
-  //   else {
-  //   setInputVal({
-  //     ...inputval,
-  //     [name]:val
-  //   })
-  // }
+
 
   setInputVal({
         ...inputval,
@@ -528,6 +552,8 @@ window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
 
 }
 
+
+
 let otpfunction =()=>  {
 
   const phoneNumber ="+91" +(inputval.phonenumber);
@@ -578,13 +604,23 @@ window.confirmationResult.confirm(code).then((result) => {
     })
 
     // window.location.reload()
-    
+    if(!phonenumb.includes((inputval.phonenumber))){
+      alert('not there')
+  db.collection('user').add({
+    phoneNumber:(inputval.phonenumber),
+    name:(inputval.name),
+    email:(inputval.email)
 
-  auth.updateProfile({
-    displayName:inputval.name,
-    email:inputval.email,
+  })}
+
+  // auth.updateProfile({
+  //   displayName:inputval.name,
+  //   email:inputval.email,
     
-  })
+  // })
+
+// window.location.reload()
+  
 
    
   //     result.user.updateProfile({

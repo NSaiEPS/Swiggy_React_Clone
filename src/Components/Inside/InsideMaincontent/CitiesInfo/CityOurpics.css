@@ -67,3 +67,12 @@
 
 
 }
+
+@media (max-width:800px){
+.CityOurpics_inside_imgpart {
+justify-content: space-around;
+}
+.CityOurpics {
+text-align: center;
+}
+}

@@ -527,7 +527,16 @@ margin-left: 0px;}
         width: 150px !important;
      
     }
+    .Locationentering_inside_top_signupbtn {
+     
+        width: 90px;
+   
+        font-size: 14px;
     
+    }
+    .Locationentering_inside_top img{
+        width: 150px;
+    }
 }
 /* 
 
@@ -561,7 +570,7 @@ margin-left: 0px;}
 
     @media (max-width:350px){
         .Locationentering_inside_top img{
-            width: 150px;
+            width: 120px;
         }
 
         .Locationentering_inside_Changing h1{
@@ -569,5 +578,11 @@ margin-left: 0px;}
            font-size: 27px !important;
         
         }
+        .Locationentering_inside_top_signupbtn {
+     
+            width: 75px;
+       
+            font-size: 12.5px;
         
+        }
     }

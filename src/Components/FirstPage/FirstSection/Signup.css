@@ -27,12 +27,13 @@
     /* min-width: ; */
 
 }
+
 .Signup_Inside_right {
     background-color: white;
     /* width: 35%; */
     color: black;
     /* transform: */
-    min-width: 460px;
+    width: 460px;
     /* color: black !important; */
     /* display: none; */
     animation: rightanimation 1s;
@@ -286,4 +287,40 @@ input[type="number"]::-webkit-calendar-picker-indicator {
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
+}
+
+@media (max-width:460px){
+.Signup_Inside_right {
+    max-width: 85% !important;
+    /* overflow-x: scroll !important; */
+    /* background-color: red; */
+}
+
+.Signup_Inside_left{
+    /* background-color: red; */
+    width: 15%;
+  
+
+}
+
+
+.Signup_Inside_right_inside_signup input{
+   
+    width: 95% !important;
+  
+
+
+}
+
+.Signup_btn_Submit {
+    width: 95% !important;
+
+}
+
+.Signup_Inside_right_inside >div:nth-last-child(1){
+    width: 95% !important;
+
+}
+
+
 }

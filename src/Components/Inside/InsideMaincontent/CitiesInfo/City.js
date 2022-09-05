@@ -65,7 +65,7 @@ let handleGoHome=()=>{
           <CitiesFindItem/>
         </div>
 
-      {selectCityInfo}
+      {/* {selectCityInfo} */}
       </div>
     </div>
   )

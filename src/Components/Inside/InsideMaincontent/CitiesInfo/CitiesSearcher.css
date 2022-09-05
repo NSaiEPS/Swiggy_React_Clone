@@ -80,7 +80,7 @@ justify-content: space-between;
 .CitiesSearcher_newSearch_left {
     background-color: white;
     color: black;
-    min-width: 457px;
+    width: 457px;
     overflow-y: scroll;
     transform: translateX(0px);
     animation:  gpsSearchanimation 1s ;
@@ -211,4 +211,57 @@ justify-content: space-between;
     font-size: smaller;
     color: #818389;
 
+ }
+
+ @media (max-width:500px){
+    .CitiesSearcher_inside_Input>button {
+       
+        width: 95px;}
+        
+        .CitiesSearcher_inside_Input {
+        
+            width: 300px;
+           
+        }    
+        .CitiesSearcher_inside_Input input{
+            width: 225px;
+        
+           
+            }
+
+
+ .CitiesSearcher_newSearch_left {
+
+width: 90%;
+ 
+}
+.CitiesSearcher_newSearch_right {
+  
+    width: 10%;
+   
+    
+
+}
+            
+ }
+
+
+ @media (max-width:400px){
+    .CitiesSearcher_inside_Input>button {
+       
+        width: 75px;}
+        
+        .CitiesSearcher_inside_Input {
+        
+            width: 210px;
+           
+        }    
+        .CitiesSearcher_inside_Input input{
+            width: 155px;
+        
+           
+            }
+
+            .City_inside_citiesSearch {
+                padding: 0 20px;}
  }

@@ -38,3 +38,24 @@ font-weight: 500;
     color: black;
 
  }
+
+ @media (max-width:400px){
+  
+    .CitiesFindItem_inside_locations {
+        /* width: 20px; */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+    height: fit-content;
+
+       
+    }
+
+    .CitiesFindItem_inside_locations span{
+
+        width: 30%;
+    
+    
+    }
+ }

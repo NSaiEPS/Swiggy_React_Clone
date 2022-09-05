@@ -62,3 +62,38 @@
     align-items: center !important;
 
 }
+
+
+
+@media (max-width:550px){
+    .CityHeader_inside_right .Header1_inside_right_divs:nth-child(2)  {
+        /* color: red; */
+        margin-right: 20px;
+    }
+    /* .CityHeader_inside_right */
+    
+    .CityHeader_inside_right_help {
+        margin-right: 20px;
+    }
+    
+}
+
+@media (max-width:450px){
+    
+    .CityHeader_inside {
+        /* display: flex; */
+        flex-direction: column;
+        /* justify-content: center !important; */
+        /* background-color: rebeccapurple; */
+    
+    }
+    .CityHeader_inside_right, .CityHeader_inside_left {
+        justify-content: center;
+    }
+    /* .CityHeader_inside_left {
+        justify-content: center;
+
+    } */
+    
+}
+

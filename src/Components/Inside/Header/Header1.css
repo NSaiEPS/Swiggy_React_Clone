@@ -160,3 +160,43 @@ background-color: rgb(217, 41, 223);
     display: block;
 
  }
+
+ @media (max-width:1000px){
+    .Header1_inside_left {
+
+        width: 30%;
+    
+      
+    
+    
+    }
+    .Header1_inside_right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 65%;
+    
+    }
+ }
+
+ @media (max-width:700px){
+
+
+    .Header1_inside {
+        display: flex;
+    flex-direction: column;}
+
+    .Header1_inside_left {
+
+        width: 100%;
+          justify-content: center;    
+      
+    
+    
+    }
+    .Header1_inside_right {
+      
+        width: 100%;
+    
+    }
+ }
