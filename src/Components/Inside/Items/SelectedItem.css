@@ -1,6 +1,8 @@
 .SelectedItem_Inside_mainContent {
     background-color: #171a29;
   color: white;
+  position: sticky;
+  top: 0px;
 }
 
 .SelectedItem_Inside_mainContent_Inside {
@@ -214,5 +216,120 @@ text-align: center;
 
 .SelectesItem_InfoaboutCart {
     position: absolute;
-    bottom: -50px;
+    bottom: -70px;
+    display: flex;
+}
+
+.SelectesItem_InfoaboutCart button{
+    background-color: white;
+    border: none;
+    height: 35px;
+    margin-left: 10px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 2px rgba(110, 104, 104,0.5);
+    font-weight: 600;
+}
+
+.SelectedItem_Inside_cart_info {
+    margin-top: 35px;
+    min-height: 225px;
+    width: 350px;
+    /* border: 1px solid saddlebrown; */
+    margin-left: auto;
+    text-align: start;
+    color: rgb(166, 156, 156);
+    margin-bottom: 50px;
+}
+/* .SelectedItem_Inside_cart_info { */
+
+.SelectedItem_Inside_cart_info img {
+    width: 80%;
+    /* margin-left: auto !important; */
+    /* margin-right: auto; */
+
+}
+
+.SelectesItem_InfoaboutCart_btnADD {
+    color: green;
+}
+
+.SelectesItem_InfoaboutCart_btnFavorite:hover{
+    color: rgb(220, 69, 119);
+}
+
+.SelectesItem_InfoaboutCart_btnADD_more {
+    /* display: flex;
+    justify-content: space-between !important; */
+    color: green;
+    font-weight: 600;
+}
+
+.SelectesItem_InfoaboutCart_subshow {
+color: black;
+/* font-size: larger; */
+}
+
+.SelectesItem_InfoaboutCart_numbershow {
+    font-size: larger;
+}
+
+.SelectedItem_Inside_cart_info_items_map {
+    display: flex;
+    /* flex-direction: column; */
+    padding-top: 15px;
+    justify-content: space-between;
+    width: 90%;
+    /* border: 1px solid black; */
+}
+
+.SelectedItem_Inside_cart_info_items_map div {
+    /* flex: 1; */
+    width: 33%;
+    /* justify-items: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    /* text-align: start !important; */
+    color: rgb(80, 78, 78);
+}
+
+.SelectesItem_InfoaboutCart_btnADD_more {
+    border: 1px solid lightgray;
+    background-color: white;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.SelectedItem_Inside_cart_info_checkout {
+    background-color: #60B246;
+    color: white;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 7px;
+}
+
+.SelectedItem_Inside_cart_info_SubTotal {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.SelectedItem_Inside_cart_info_items_map_names {
+    display: flex;
+    flex-direction: column;
+    /* text-align: start; */
+    justify-content: flex-start !important;
+    align-items: flex-start;
 }

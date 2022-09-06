@@ -1,17 +1,142 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { SelectedItemInfo } from '../../Redux_toolkit/Redux_Slice'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { logininfoAction, SelectedItemInfo, SelectLoginUserInfo } from '../../Redux_toolkit/Redux_Slice'
 import Header1 from '../Header/Header1'
 import './SelectedItem.css'
 import StarIcon from '@mui/icons-material/Star';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import { db } from '../../../Firebase'
+import { Link } from 'react-router-dom'
 
 const SelectedItem = () => {
 
     let selectedItemInfo=useSelector(SelectedItemInfo)
-    console.log(selectedItemInfo.cuponcode)
+let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+// console.log(selectLoginUserInfo)
+    // console.log(selectedItemInfo)
+
+    let [cartnumb,setCartNumb]=useState(0)
+    let dispatch=useDispatch()
+
+
+    let handleAddToCard=()=>{
+      if(Array.isArray(selectLoginUserInfo)){
+      dispatch(
+        logininfoAction(
+          {name:'login',
+           status:true,
+        }
+        )
+      )}
+      else {
+      setCartNumb(cartnumb+1)
+    
+      db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').add({
+        bookerid:(selectLoginUserInfo.id),
+        itemid:(selectedItemInfo.id),
+        number:1,
+        type:(selectedItemInfo.type),
+        name:((selectedItemInfo.name)),
+        price:((selectedItemInfo.price)),
+        discount:((selectedItemInfo.discount)),
+        peopleNum:((selectedItemInfo.numofpeople)),
+        freedelivery:((selectedItemInfo.freedelivery))
+      })
+    }
+    }
+let handleDeletenum=({id,num})=>{
+  // console.log(id,num)
+
+  // setCartNumb(cartnumb-1)
+
+//   if(cartnumb===0){
+//       // db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').delete()
+
+// }
+if(num!==1){
+let reqnum=num-1;
+  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
+  number:reqnum
+  })}
+
+
+}
+let handleAddnum=({id,num})=>{
+  // console.log(id,num)
+  // setCartNumb(cartnumb+1)
+  let reqnum=num+1;
+  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
+  number:reqnum
+  })
+
+
+}
+
+
+
+
+
+let handleFavouriteClick=()=>{
+  if(Array.isArray(selectLoginUserInfo)){
+    dispatch(
+      logininfoAction(
+        {name:'login',
+         status:true,
+      }
+      )
+    )}
+    else {
+    alert('added to favorite')
+  
+  }
+}
+
+let [cartItems,setCartItems]=useState([])
+
+let getCartData=()=>{
+  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').onSnapshot((data)=>{
+    setCartItems((data.docs.map((item)=>({
+      id:item.id,
+data:item.data()
+
+
+
+    }))))
+  })
+}
+useEffect(()=>{
+  getCartData()
+
+},[])
+
+// console.log(cartItems)
+let [cartItemId,setcartItemid]=useState([])
+let [itemAdded,setItemAdded]=useState(false)
+useEffect(()=>{
+cartItems.map((item)=>{
+  // console.log((item.data.itemid))
+  let id=(item.data.itemid)
+  // if(!cartItemId.includes(id)){
+  // setcartItemid([
+  //   ...cartItemId,
+  //   id
+  // ])}
+
+  if(id===(selectedItemInfo.id)){
+    setItemAdded(true)
+  }
+})
+
+
+},[cartItems])
+
+// console.log(itemAdded)
+
+
+
   return (
     <div className='SelectedItem'>
       
@@ -66,7 +191,27 @@ const SelectedItem = () => {
 
             </div>
             <div className='SelectesItem_InfoaboutCart'>
-              Info about Cart
+              <div>
+              {/* {!cartItemId.includes((selectedItemInfo.id))? */}
+              {!itemAdded?
+              <button className='SelectesItem_InfoaboutCart_btnADD'
+              
+              onClick={handleAddToCard}
+              >ADD</button>:
+              <button className='SelectesItem_InfoaboutCart_btnADD_more'>
+                
+                 ADDED
+              </button>  }
+              </div>
+              <div>
+              <button className='SelectesItem_InfoaboutCart_btnFavorite'
+              onClick={handleFavouriteClick}
+              >
+                 <FavoriteBorderIcon/> Favourite</button>
+              </div>
+              
+
+              
             </div>
             </div>
 
@@ -106,6 +251,103 @@ className='SelectedItem_Inside_mainContent_Inside_offerpart_icon'
 
         </div>
 
+        {/* <div className='SelectedItem_Inside_cart'> */}
+
+        
+
+        <div className='SelectedItem_Inside_cart_info'>
+        {cartItems.length===0 ?
+          <>
+           
+           <h1>Cart Empty</h1>
+           <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_480/Cart_empty_-_menu_2x_ejjkf2' alt='img'/>
+        <br/>
+        <h4>Good food is always cooking! Go ahead, order some yummy items from the menu.</h4></>
+        
+        :
+      //  Map if have the cart
+       
+       <div className='SelectedItem_Inside_cart_info_items'>
+           <h1>Cart </h1>
+           <span>{cartItems.length}  ITEMS</span>
+
+        {cartItems.map((item,indx)=>{
+          return(
+            <div key={item.id}
+            className='SelectedItem_Inside_cart_info_items_map'
+            >
+               <div className='SelectedItem_Inside_cart_info_items_map_names'>
+              <span>{item.data.name}</span>   
+              <span>{item.data.type}</span>
+                
+               </div>
+               <div>
+               <button className='SelectesItem_InfoaboutCart_btnADD_more'>
+
+<span
+className='SelectesItem_InfoaboutCart_subshow'
+>
+  <RemoveIcon
+onClick={ ()=>{ handleDeletenum(
+  {
+    id:item.id,
+    num:item.data.number
+  }
+)}}
+  />
+  </span> 
+
+<span
+className='SelectesItem_InfoaboutCart_numbershow'
+
+>{(item.data.number)}</span> 
+
+
+<span
+className='SelectesItem_InfoaboutCart_Addshow'
+
+>
+  <AddIcon
+  
+onClick={()=>{ handleAddnum(
+  {
+    id:item.id,
+    num:item.data.number
+  }
+)}}
+/>
+
+</span>
+</button> 
+               </div>
+               <div>₹ {
+                (item.data.price)*(item.data.number)
+                }</div>
+
+              </div>
+          )
+          
+        })}
+        
+        <div className='SelectedItem_Inside_cart_info_SubTotal'>
+          <div> 
+            <span>Subtotal</span> <br/>
+            <small>Extre charges may apply</small>
+          </div>
+          <div> ₹  Total</div>
+          </div>
+          <Link to='/cart'>
+        <div className='SelectedItem_Inside_cart_info_checkout'>
+          CHECKOUT ---
+          </div>
+          </Link>
+          </div>
+        
+        
+        
+        }
+        </div>
+        {/* </div> */}
       </div>
     </div>
   )
