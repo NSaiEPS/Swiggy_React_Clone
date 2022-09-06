@@ -155,6 +155,16 @@ background-color: rgb(217, 41, 223);
     border-radius: 10px;
 }
 
+.Header1_showingName {
+    position: absolute;
+    top: 0px;
+    
+    margin-left: auto;
+    background-color: black;
+    border: 2px solid salmon;
+    color: white;
+ }
+
 
 .Header1_clear_location:hover .Header1_clear_location_indicator {
     display: block;
@@ -199,4 +209,14 @@ background-color: rgb(217, 41, 223);
         width: 100%;
     
     }
+
+    .Header1_showingName{
+        left: 10px;
+        top: 15px ;
+        padding: 7px;
+
+    }
  }
+
+ 
+

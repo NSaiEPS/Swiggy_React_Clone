@@ -56,7 +56,7 @@ let handlefocus=(a)=>{
 let handleSubmitForm=()=>{
   if((inputval.inptext)){
     localStorage.setItem('Swiggy_Clone_location',JSON.stringify(inputval.inptext))
-window.location.reload()
+// window.location.reload()
 
 // dispatch(
 //   locationAction(

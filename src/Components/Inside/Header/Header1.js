@@ -6,7 +6,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { useDispatch, useSelector } from 'react-redux';
-import { logininfoAction, moreInfoAction, newLocationSearchAction, Selectlocationinfo } from '../../Redux_toolkit/Redux_Slice';
+import { logininfoAction, moreInfoAction, newLocationSearchAction, Selectlocationinfo, SelectLoginUserInfo } from '../../Redux_toolkit/Redux_Slice';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,6 +17,7 @@ const Header1 = () => {
   let dispatch=useDispatch()
   let selectLocationInfo=useSelector(Selectlocationinfo)
 const [userss,loading]=useAuthState(auth)
+let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
 
 let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
  
@@ -63,6 +64,12 @@ let handleNewSearch=()=>{
 
   return (
     <div className='Header1'>
+      
+{selectLoginUserInfo?.name &&
+      <button
+      className='Header1_showingName'
+      > {selectLoginUserInfo?.name}</button>}
+
 
       <div className='Header1_inside'>
         <div className='Header1_inside_left'>

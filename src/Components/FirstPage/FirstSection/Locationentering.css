@@ -586,3 +586,14 @@ margin-left: 0px;}
         
         }
     }
+
+.Locationentering_inside_showingName {
+    background-color: black;
+    /* border: none; */
+    color: white;
+    padding: 7px;
+    position:absolute;
+    top: 0px;
+    margin-top: 5px;
+    border: 2px solid salmon;
+}

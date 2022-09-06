@@ -65,7 +65,7 @@ Array.isArray(userInfo) && userInfo.map((item)=>{
 })
 
 
-console.log(phonenumb)
+// console.log(phonenumb)
   // let signup=selectLogininfo?.status;
 
 

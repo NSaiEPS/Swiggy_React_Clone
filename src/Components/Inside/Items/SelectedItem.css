@@ -1,0 +1,218 @@
+.SelectedItem_Inside_mainContent {
+    background-color: #171a29;
+  color: white;
+}
+
+.SelectedItem_Inside_mainContent_Inside {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.SelectedItem_Inside_locationIndicator {
+    padding: 7px;
+}
+
+
+.SelectedItem_Inside_mainContent_Inside_imgpart img{
+width: 254px;
+height: 165px;
+}
+
+.SelectedItem_Inside_mainContent_Inside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.SelectedItem_Inside_mainContent {
+    min-height: 245px;
+    display: flex;
+}
+
+.SelectedItem_Inside_mainContent_Inside_infoPart {
+    /* border: 1px solid white; */
+    width: 45%;
+    text-align: start;
+    position: relative;
+}
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_inside {
+    width: 65%;
+}
+
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_Name span:nth-child(1){
+    /* color: red; */
+    font-size: 25px;
+    /* padding-bottom: 5px; */
+
+}
+
+.SelectedItem_Inside_mainContent_Inside_offerpart {
+    border:  1px solid white;
+    width: 24.5%;
+    min-height: 131px;
+    /* align-self: flex-end; */
+    margin-top: 33px;
+    /* min-height: ; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: start;
+    padding: 25px;
+    padding-left: 45px;
+    box-sizing: border-box;
+    /* align-items: center; */
+}
+
+
+.SelectedItem_Inside_mainContent_Inside_offerpart_icon {
+    /* color: red; */
+    align-self: center;
+    /* padding-top: 5px; */
+    position: absolute;
+    left: 15px;
+    /* top: ; */
+    /* font-size: small; */
+}
+
+.SelectedItem_Inside_mainContent_Inside_offerpart_showOff {
+    position: absolute;
+    top: -10px;
+    left: -8px;
+    background-color: #171a29;
+    width: 80px;
+    font-weight: 500;
+    font-size: 19px;
+}
+
+
+
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo {
+    display: flex;
+    padding-top: 35px;
+    justify-content: space-between;
+}
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo div {
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+justify-content: center;
+
+}
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo div span:nth-last-child(1){
+    /* color: red; */
+    font-size: small;
+    /* margin-top: 5px; */
+    color: rgb(195, 184, 184);
+
+}
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo div{
+    width: 33%;
+
+}
+
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo div:nth-last-child(2){
+/* color: red ; */
+border-left: 0.1px solid rgb(110, 104, 104);
+border-right: 0.1px solid rgb(110, 104, 104);
+/* padding: 15px; */
+text-align: center;
+}
+
+.SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo div:nth-last-child(1){
+    text-align: center;
+
+}
+
+
+
+@media (max-width:1000px){
+    .SelectedItem_Inside_mainContent_Inside_infoPart {
+   
+        width: 45%;
+        /* border:  1px solid white; */
+       
+    }
+    
+    .SelectedItem_Inside_mainContent_Inside_infoPart_inside {
+        width: 100%;
+    }
+}
+
+
+
+@media (max-width:800px){
+    .SelectedItem_Inside_mainContent_Inside {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .SelectedItem_Inside_mainContent_Inside_infoPart {
+        border-top: 1px solid rgb(94, 91, 91);
+        width: 75%;
+        /* border:  1px solid white; */
+        padding-top: 25px;
+        margin-top: 10px;
+       
+    }
+    
+    .SelectedItem_Inside_mainContent_Inside_infoPart_inside {
+        width: 100%;
+    }
+    .SelectedItem_Inside_mainContent_Inside_imgpart {
+        padding-top: 25px;
+
+    }
+
+
+.SelectedItem_Inside_mainContent_Inside_offerpart {
+   
+    width: 50%;
+    margin: 25px;
+}
+}
+
+
+
+@media (max-width:400px){
+  
+
+    .SelectedItem_Inside_mainContent_Inside_infoPart {
+   
+        width: 95%;
+        
+        padding-top: 25px;
+        
+        
+    }
+
+.SelectedItem_Inside_mainContent_Inside_offerpart {
+    
+    width: 75%;
+    
+}
+}
+
+
+
+@media (max-width:300px){
+
+.SelectedItem_Inside_mainContent_Inside_offerpart {
+    
+    width: 95%;
+    
+}
+}
+
+
+.SelectesItem_InfoaboutCart {
+    position: absolute;
+    bottom: -50px;
+}

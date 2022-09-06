@@ -1,6 +1,9 @@
 import React from 'react'
 import './Items.css'
 import StarIcon from '@mui/icons-material/Star';
+import { Link } from 'react-router-dom';
+import { selectItemInfoAction } from '../../Redux_toolkit/Redux_Slice';
+import { useDispatch } from 'react-redux';
 const Items = ({id,imgurl,name,type,rating,discount,price,numofpeople,minites,cuponcode,freedelivery,promoted,index}) => {
 
    
@@ -8,8 +11,32 @@ const Items = ({id,imgurl,name,type,rating,discount,price,numofpeople,minites,cu
 // let ratingreq=rating;
 // ratingreq= (parseFloat(ratingreq))
 
+let splitName=name.split(' ')
+// console.log(splitName)
+let reqName=splitName.join('-')
+// console.log(reqName)
+let dispatch=useDispatch()
+
+let handleGoItemPage=()=>{
+   dispatch(
+      selectItemInfoAction(
+
+   {id,imgurl,name,type,rating,discount,reqName
+      ,price,numofpeople,minites,cuponcode,freedelivery,promoted,index}
+
+      )
+   )
+
+   window.scrollTo(0,0)
+}
+
   return (
-  <div className='Items'>
+  <div className='Items'
+  onClick={handleGoItemPage}
+  >
+   <Link to={`restaurants/${reqName}`}
+   
+   >
     <div className='Items_inside'>
 {/* {name} */}
 
@@ -76,7 +103,7 @@ parseFloat(rating)<2.5 && 'Items_inside_rating_div_BelowAvgbtn'
  </div>
 }
     </div>
-
+    </Link>
   </div>
   )
 

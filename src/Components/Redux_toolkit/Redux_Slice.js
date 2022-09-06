@@ -13,7 +13,9 @@ export const Redux_Slice=createSlice({
         reqFilter:'',
         filtersInfo:{},
         filterData:{},
-        newLocationSearch:false
+        newLocationSearch:false,
+        selectIteminfo:[]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 
     }),
 
@@ -42,6 +44,13 @@ export const Redux_Slice=createSlice({
         },
         newLocationSearchAction:(state,action)=>{
             state.newLocationSearch=action.payload
+        },
+
+        loginUserInfoAction:(state,action)=>{
+            state.loginuserinfo=action.payload
+        },
+        selectItemInfoAction:(state,action)=>{
+            state.selectIteminfo=action.payload
         }
     }),
 
@@ -50,7 +59,7 @@ export const Redux_Slice=createSlice({
 
 export const {logininfoAction,locationAction,cityAction,
     moreInfoAction,reqFilterAction,filterInfoAction,filterDataInfoAction,
-    newLocationSearchAction}=Redux_Slice.actions
+    newLocationSearchAction,loginUserInfoAction,selectItemInfoAction}=Redux_Slice.actions
 
 export const Selectlogininfo=(store)=>store.redux_store.logininfo
 export const Selectlocationinfo=(store)=>store.redux_store.locationinfo
@@ -60,6 +69,8 @@ export const SelectreqFilter=(store)=>store.redux_store.reqFilter
 export const SelectFilterInfo=(store)=>store.redux_store.filtersInfo
 export const SelectDataFilterInfo=(store)=>store.redux_store.filterData
 export const SelectnewLocationSearch=(store)=>store.redux_store.newLocationSearch
+export const SelectLoginUserInfo=(store)=>store.redux_store.loginuserinfo
+export const SelectedItemInfo=(store)=>store.redux_store.selectIteminfo
 
 
 

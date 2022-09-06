@@ -5,7 +5,7 @@ import Signup from './Components/FirstPage/FirstSection/Signup';
 import FirstPage from './Components/FirstPage/FirstPage';
 import CombineFooter from './Components/Footer/CombineFooter';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterInfoAction, locationAction, newLocationSearchAction, Selectcityinfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
+import { filterInfoAction, locationAction, loginUserInfoAction, newLocationSearchAction, Selectcityinfo, SelectedItemInfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
 import Header2 from './Components/Inside/Header/Header2';
 import { useEffect, useState } from 'react';
@@ -27,6 +27,7 @@ import Filters from './Components/Inside/Filters/Filters';
 import ClearIcon from '@mui/icons-material/Clear';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import { ControlPointDuplicate } from '@mui/icons-material';
+import SelectedItem from './Components/Inside/Items/SelectedItem';
 
 function App() {
 
@@ -54,6 +55,7 @@ let selectFilterInfo=useSelector(SelectFilterInfo)
   let selectLogininfo=useSelector(Selectlogininfo)
   let selectLocationInfo=useSelector(Selectlocationinfo)
   let selectnewLocationSearch=useSelector(SelectnewLocationSearch)
+  let selectedItemInfo=useSelector(SelectedItemInfo)
   
 let reqlocation=false;
   reqlocation=selectLocationInfo?.location
@@ -61,7 +63,7 @@ let reqlocation=false;
  
 let locationEntered=""
 locationEntered= (JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
-console.log(userss)
+// console.log(userss)
 
   let signup=selectLogininfo?.status;
   let location=selectLocationInfo?.location
@@ -81,14 +83,10 @@ console.log(userss)
   
   }
 
-  console.log(userInfo)
+  // console.log(userInfo)
   // console.log(userss?.phoneNumber)
 
-  userInfo.map((item)=>{
-    if(userss?.phoneNumber===`+91${item.data.phoneNumber}`){
-      // alert(item.data.name)
-    }
-  })
+
 
 useEffect(()=>{
 // let locationEntered=JSON.parse(localStorage.getItem('Swiggy_Clone_location'))
@@ -105,8 +103,34 @@ dispatch(
 
   getUserFunction()
 
-
+  
 },[])
+
+
+
+useEffect(()=>{
+  userInfo.map((item)=>{
+    if(userss?.phoneNumber===`+91${item.data.phoneNumber}`){
+      dispatch(
+      loginUserInfoAction(
+        {
+          id:(item.id),
+          phoneNumber:(item.data.phoneNumber),
+          name:(item.data.name),
+          email:(item.data.email)
+        }
+      ))
+    }
+  })
+},[userInfo])
+
+
+
+
+
+
+
+
 
 useEffect(()=>{
 
@@ -162,7 +186,7 @@ let handleSubmitForm=()=>{
     
     //   )
     localStorage.setItem('Swiggy_Clone_location',JSON.stringify(inputval.inptext))
-window.location.reload()
+// window.location.reload()
   }
 }
 
@@ -202,21 +226,7 @@ if(loading){
       > <Signup/>
       </div>}
 
-      {/* <div className='App_Maincontent_inside'>
-        {specialheader && reqlocation &&
-        
-        <div className='App_Maincontent_inside_header2'>
-        <Header2/>
-        </div>
-        }
-      
-
-      
-       
-
-      </div> */}
-       {/* {reqlocation &&
-         <InsideCombine/> } */}
+ 
       <Routes>
       <Route path='/' element={
        (locationEntered|| reqlocation) ?
@@ -225,14 +235,20 @@ if(loading){
 
         <Route path={`city/${selectCityInfo}`} element={<City/>}/>
         <Route path={`moreinfo`} element={<Moreinfo/>}/>
-        {/* <Route path={`moreinfo/${selectMoreInfo}`} element={<Moreinfo/>}/> */}
         <Route path='support' element={<Help_Support/>}/>
         <Route path='cart' element={<Cart/>}/>
         <Route path='search' element={<Search/>}/>
         <Route path='offers' element={<Offers/>}/>
         <Route path='dashboard' element={<Dashboard/>}/>
     
-    {/* offers */}
+        <Route path={`restaurants/${selectedItemInfo?.reqName}`} element={
+          <SelectedItem/>
+        }/>
+
+{/* <Route path={`restaurants/Cakestry`} element={
+          <SelectedItem/>
+        }/> */}
+
     
       </Routes>
          
@@ -240,7 +256,12 @@ if(loading){
     
       </div>
 
-      {selectFilterInfo.active &&
+
+
+
+
+
+   {selectFilterInfo.active &&
         <div className='InsideCombine_Filtering_page'>
           <div className='InsideCombine_Filtering_page_inside'>
 
@@ -272,7 +293,7 @@ style={{
           selectnewLocationSearch &&
 
  <div className='CitiesSearcher_newSearch_App'>
-  {/* search */}
+ 
   <div className='CitiesSearcher_newSearch_left'
   >
   

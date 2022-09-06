@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { LocationCities } from '../../../LocationCities'
-import { cityAction, locationAction, logininfoAction } from '../../Redux_toolkit/Redux_Slice'
+import { cityAction, locationAction, logininfoAction, SelectLoginUserInfo } from '../../Redux_toolkit/Redux_Slice'
 import './Locationentering.css'
 // import MyLocationTwoToneIcon from '@mui/icons-material/MyLocationTwoTone';
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
@@ -18,7 +18,7 @@ const Locationentering = () => {
   let [location,setLocation]=useState('')
   let [locationfalseCheck,setLocationfalseCheck]=useState(false)
   let [inputFocus,setInputFocus]=useState(false)
-
+let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
   let dispatch=useDispatch()
  
   let handleLogin=()=>{
@@ -150,6 +150,11 @@ let reqlocation=''
     
     >
       <div className='Locationentering_inside'>
+{selectLoginUserInfo?.name &&
+      <button
+      className='Locationentering_inside_showingName'
+      > {selectLoginUserInfo?.name}</button>}
+
       <div className='Locationentering_inside_top'>
         <div>
 
