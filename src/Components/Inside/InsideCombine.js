@@ -13,7 +13,7 @@ import { filterInfoAction, SelectDataFilterInfo, SelectFilterInfo, SelectreqFilt
 // import Filters from './Filters/Filters'
 
 
-const InsideCombine = () => {
+const InsideCombine = ({dashboard}) => {
   let [items,setItems]=useState([])
   let [specialheader,setSpecialheader]=useState(false)
   // let [filteredData,setFilteredData]=useState([])
@@ -805,13 +805,23 @@ return (
         
 
         <div className='InsideCombine_inside'>
+        
+        
           <div className='InsideCombine_inside_headerpart'>
+          
+        {!dashboard &&<>
+          
             <div className='InsideCombine_inside_headerpart_header1'>
             <Header1/>
             </div>
+
             <div className='InsideCombine_inside_headerpart_headerbetween'>
            <HeaderBtween/>
             </div>
+
+            </> }
+
+
             <div className='InsideCombine_inside_headerpart_header2'>
 
 
@@ -832,7 +842,9 @@ return (
            
            
       <div className='App_Maincontent_inside'>
-        {specialheader &&
+      {!dashboard &&
+        
+        (specialheader &&
         
         <div className='App_Maincontent_inside_header2'>
 
@@ -848,7 +860,7 @@ return (
 
        
           </div>
-        }
+        )}
       
 
 <div className='App_Maincontent_inside_items_map'>
@@ -889,7 +901,7 @@ imgurl={item.data.imgurl} name={item.data.name} type={item.data.type}
 rating={item.data.rating} discount={item.data.discount} price={item.data.price}
 numofpeople={item.data.numofpeople}  minites={item.data.minites}
 cuponcode={item.data.cuponcode}  freedelivery={item.data.freedelivery}
-promoted={item.data.promoted} index={indx}
+promoted={item.data.promoted} index={indx} dashboard={dashboard}
 
 
 />

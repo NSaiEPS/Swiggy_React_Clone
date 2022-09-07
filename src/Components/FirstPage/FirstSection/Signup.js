@@ -619,7 +619,7 @@ window.confirmationResult.confirm(code).then((result) => {
     
   // })
 
-// window.location.reload()
+window.location.reload()
   
 
    

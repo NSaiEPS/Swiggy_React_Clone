@@ -25,3 +25,19 @@
     flex-direction: column;
     font-size: 14px;
 }
+
+.SelectedItem_Inside_cart_info_items_map_names {
+    /* text-align: start !important; */
+    display: flex;
+    /* flex-direction: row !important; */
+    /* color: red !important; */
+    align-items: flex-start  !important;
+}
+
+.SelectedItem_Inside_cart_info_items_mapDiv {
+    height: 225px;
+    overflow-y: scroll;
+    margin-right: 15px;
+    border-left: 3px solid black;
+    padding-left: 5px;
+}

@@ -218,5 +218,60 @@ background-color: rgb(217, 41, 223);
     }
  }
 
- 
+.Header1_inside_right_divs_cart {
+    position: relative;
+} 
 
+.Header_inside_show_number {
+    background-color: palevioletred;
+    /* background-color: red; */
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    /* height: 25px; */
+   position: absolute;
+   top: -10px;
+   /* left: 5px; */
+
+   animation: cartnumanimation 3s infinite;
+}
+
+
+
+@keyframes cartnumanimation{
+    0%{
+        top: -25px;
+    }
+    5% {
+        top: 10px;
+    }
+    10% {
+        top:15px;
+    }
+    15%{
+        top: 20px;
+    }
+    20%{
+        top: 25px;
+    }
+    25%{
+        top: 30px;
+    }
+
+    30%{
+        top: -20px;
+    }
+    45%{
+        top: -10px;
+    }
+    50%{
+        top: -20px;
+    }
+    60%{
+        top: -10px;
+
+    }
+    100%{
+        top: -10px;
+    }
+}

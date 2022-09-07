@@ -52,3 +52,94 @@
     cursor: pointer;
 
  }
+
+ .Cart_inside_carts {
+    /* margin-top: 25px; */
+    padding-top: 25px;
+    min-height: 250px;
+    background-color: #e9ecee;
+    padding-bottom: 25px;
+
+ }
+
+ .Cart_inside_carts_inside {
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 250px;
+ }
+
+ .Cart_inside_carts_inside_mapinside {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+
+ }
+
+ .Cart_inside_carts_inside_mapinside div {
+ flex: 1;
+}
+
+.Cart_inside_carts_inside_mapinside_namesdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start ;
+    font-size: 15px;
+}
+
+.Cart_inside_carts_inside_maping {
+    margin-top: 35px;
+ 
+    border-left: 3px solid black;
+    height: 200px;
+    overflow-y: scroll;
+    width: 90%;
+    margin-left: auto;
+  margin-right: auto
+}
+
+.Cart_inside_carts_inside_totalprice {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.Cart_inside_carts_inside_mapinside_numbersdiv {
+    background-color: white;
+    border: 1px solid lightgrey;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    /* font-size: large !important; */
+    /* align-items: center !important; */
+    padding: 3px;
+
+}
+
+.Cart_inside_carts_inside_mapinside_numbersdiv button{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    color: green;
+   font-size: medium;
+   font-weight: 600;
+
+}
+
+.Cart_inside_carts_inside_mapinside_numbersdiv button:nth-child(1)
+
+{
+color: black;
+}
+
+.Cart_inside_carts_inside_number {
+    padding-top: 15px;
+}

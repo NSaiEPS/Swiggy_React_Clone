@@ -179,3 +179,14 @@ background-color: #db7c38 !important;
 .Items_inside_rating_div_BelowAvgbtn {
     background-color: #e1b055 !important;
 }
+
+
+
+/* For editing */
+
+.Items_ForDashBoard_Editing {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+}

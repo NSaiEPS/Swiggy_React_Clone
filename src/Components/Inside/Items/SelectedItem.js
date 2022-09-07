@@ -10,13 +10,15 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { db } from '../../../Firebase'
 import { Link } from 'react-router-dom'
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+// import RemoveIcon from '@mui/icons-material/Remove';
 
 const SelectedItem = () => {
 
     let selectedItemInfo=useSelector(SelectedItemInfo)
 let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
-// console.log(selectLoginUserInfo)
-    // console.log(selectedItemInfo)
+console.log(selectedItemInfo.id)
 
     let [cartnumb,setCartNumb]=useState(0)
     let dispatch=useDispatch()
@@ -48,25 +50,23 @@ let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
     }
     }
 let handleDeletenum=({id,num})=>{
-  // console.log(id,num)
+  
+  let number=num-1
+  if(number===0){
+    db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).delete()
+  }
 
-  // setCartNumb(cartnumb-1)
-
-//   if(cartnumb===0){
-//       // db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').delete()
-
-// }
-if(num!==1){
-let reqnum=num-1;
+  else{
   db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
-  number:reqnum
+    number:number
   })}
+
+
 
 
 }
 let handleAddnum=({id,num})=>{
-  // console.log(id,num)
-  // setCartNumb(cartnumb+1)
+
   let reqnum=num+1;
   db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
   number:reqnum
@@ -90,6 +90,8 @@ let handleFavouriteClick=()=>{
     )}
     else {
     alert('added to favorite')
+
+
   
   }
 }
@@ -115,6 +117,8 @@ useEffect(()=>{
 // console.log(cartItems)
 let [cartItemId,setcartItemid]=useState([])
 let [itemAdded,setItemAdded]=useState(false)
+let [totalprice,setToralPrice]=useState(0)
+
 useEffect(()=>{
 cartItems.map((item)=>{
   // console.log((item.data.itemid))
@@ -127,14 +131,42 @@ cartItems.map((item)=>{
 
   if(id===(selectedItemInfo.id)){
     setItemAdded(true)
+
   }
 })
+
+
+
+for (let i=0;i<cartItems.length;i++){
+  console.log(cartItems[i])
+  
+     setToralPrice(totalprice+(parseInt((cartItems[i].data.price))*(cartItems[i].data.number)))
+    
+  
+  }
 
 
 },[cartItems])
 
 // console.log(itemAdded)
+// useEffect(()=>{
+// //   cartItems.forEach((item)=>{
+// // console.log((item.data.price))
 
+// //     setToralPrice(totalprice+(parseInt((item.data.price))*(item.data.number)))
+// //   })
+
+// for (let i=0;i<cartItems.length;i++){
+// console.log(cartItems[i])
+
+//    setToralPrice(totalprice+(parseInt((cartItems[i].data.price))*(cartItems[i].data.number)))
+  
+
+// }
+
+// },[cartItems])
+
+console.log(totalprice)
 
 
   return (
@@ -270,7 +302,7 @@ className='SelectedItem_Inside_mainContent_Inside_offerpart_icon'
        <div className='SelectedItem_Inside_cart_info_items'>
            <h1>Cart </h1>
            <span>{cartItems.length}  ITEMS</span>
-
+  <div className='SelectedItem_Inside_cart_info_items_mapDiv'>
         {cartItems.map((item,indx)=>{
           return(
             <div key={item.id}
@@ -328,17 +360,27 @@ onClick={()=>{ handleAddnum(
           )
           
         })}
+
+</div>
+
         
         <div className='SelectedItem_Inside_cart_info_SubTotal'>
           <div> 
             <span>Subtotal</span> <br/>
             <small>Extre charges may apply</small>
           </div>
-          <div> ₹  Total</div>
+          <div> ₹  {totalprice}</div>
           </div>
-          <Link to='/cart'>
+          <Link to='/cart'
+          onClick={()=>{
+            window.scrollTo(0,0)
+          }}
+          >
         <div className='SelectedItem_Inside_cart_info_checkout'>
-          CHECKOUT ---
+          CHECKOUT   
+          <ArrowRightAltIcon/> 
+         
+          {/* <RemoveIcon/><ArrowForwardIosIcon/> */}
           </div>
           </Link>
           </div>

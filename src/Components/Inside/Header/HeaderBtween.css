@@ -104,6 +104,24 @@ position: relative;
 
 }
 
+.HeaderBtween_inside_3 {
+    transform: translateX(-925px);
+    transition: 1s;
+}
+
+.HeaderBtween_inside_4 {
+    transform: translateX(-1235px);
+
+}
+
+.HeaderBtween_inside_5 {
+    transform: translateX(-1525px);
+
+}
+
+
+
+
 .HeaderBtween_inside_gorightbtn_icon {
     position: absolute;
     top: 25%;
@@ -127,4 +145,34 @@ position: relative;
     left: 10%;
     transition: 1s;
 
+}
+
+@media (max-width:850px){
+    .HeaderBtween_inside_gorightbtn {
+        left:  92%;}
+}
+
+@media (max-width:650px){
+    .HeaderBtween_inside_gorightbtn {
+        left:  90%;}
+}
+
+@media (max-width:500px){
+    .HeaderBtween_inside_gorightbtn {
+        left:  87%;}
+}
+
+@media (max-width:400px){
+    .HeaderBtween_inside_gorightbtn {
+        left:  84%;}
+}
+
+@media (max-width:300px){
+    .HeaderBtween_inside_gorightbtn {
+        left:  78%;}
+}
+
+@media (max-width:250px){
+    .HeaderBtween_inside_gorightbtn {
+        left:  75%;}
 }

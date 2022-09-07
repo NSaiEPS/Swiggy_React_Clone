@@ -1,0 +1,45 @@
+.Dashboard_users {
+    background-color: #e9ecee;
+    padding-top: 25px;
+
+}
+
+.Dashboard_users_inside {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 15px;
+}
+
+.Dashboard_users_inside_names {
+    display: flex;
+    /* justify-content: space-between; */
+    border: 1px solid lightgray;
+    padding: 5px;
+
+}
+.Dashboard_users_inside_names div{
+    width: 25%;
+
+
+}
+.Dashboard_users_inside_insideMap {
+    /* display: flex;
+    justify-content: space-between; */
+    color: white;
+    width: 100%;
+}
+
+/* .Dashboard_users_inside_insideMap div{
+    flex: 1;
+    width: 30%;
+    margin-top: 7px;
+    background-color: green;
+    padding: 5px;
+    margin: 1px;
+    margin-bottom: 5px;
+    margin-top: 7px;
+
+
+} */

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import Header2 from '../Inside/Header/Header2'
 import Items from '../Inside/Items/Items'
 import { db } from '../../Firebase'
+import InsideCombine from '../Inside/InsideCombine'
 
 const Dashboard = () => {
   let [items,setItems]=useState([])
@@ -68,12 +69,12 @@ const Dashboard = () => {
                 <button name='items'
                 onClick={handleselect}
 
-                className={adminselet.items && 'btnselected'}
+                className={adminselet.items ? 'btnselected':undefined}
                 
                 >Items</button>
                 <button
                 onClick={handleselect}
-                className={adminselet.users && 'btnselected'}
+                className={adminselet.users ? 'btnselected':undefined}
 
 
                 name='users'
@@ -97,9 +98,16 @@ const Dashboard = () => {
 
             <div className='Dashboard_inside_adminselectbtn_display'>
                 {adminselet.items?
-            <Dashboard_Items/>:
-            adminselet.users?
-            <Dashboard_users/>:'select any'    
+
+                <>
+            <Dashboard_Items/>
+      <InsideCombine dashboard={true} />
+
+
+                </>
+            :
+            adminselet.users &&
+            <Dashboard_users/>
             }
 
             </div>
@@ -107,7 +115,9 @@ const Dashboard = () => {
        
       
 
-        <div className='DashBoard_item_render'>
+
+
+        {/* <div className='DashBoard_item_render'>
           <Header2/>
 
           <div className='App_Maincontent_inside_items_map_inside'>
@@ -130,7 +140,7 @@ promoted={item.data.promoted} index={indx}
   )
  })}
        </div>
-        </div>
+        </div> */}
 
         </div>
 

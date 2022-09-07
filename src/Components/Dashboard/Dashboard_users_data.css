@@ -1,0 +1,44 @@
+.Dashboard_users_data_inside {
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+    /* width: 24; */
+    /* background-color: red; */
+    background-color: salmon;
+    margin-top: 15px;
+    padding: 7px;
+  align-items: center;
+}
+
+.Dashboard_users_data_inside div{
+width: 25%;
+
+}
+
+.Dashboard_users_data_inside_icon {
+    cursor: pointer;
+    display: flex;
+    /* align-items: center !important; */
+    position: relative;
+    top: 6px;
+    /* padding-top: 5px; */
+}
+
+.Dashboard_users_data_moreinfo {
+    color: black;
+}
+
+.Dashboard_users_data_moreinfo_mappinginside {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.Dashboard_users_data_moreinfo_mappinginside div{
+display: flex;
+flex-direction: column;
+margin-top: 10px;
+width: calc(80% /4);
+text-align: start;
+}

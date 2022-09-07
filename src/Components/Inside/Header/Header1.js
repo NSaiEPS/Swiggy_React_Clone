@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header1.css'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SupportIcon from '@mui/icons-material/Support';
@@ -8,7 +8,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { useDispatch, useSelector } from 'react-redux';
 import { logininfoAction, moreInfoAction, newLocationSearchAction, Selectlocationinfo, SelectLoginUserInfo } from '../../Redux_toolkit/Redux_Slice';
 import { Link } from 'react-router-dom';
-import { auth } from '../../../Firebase';
+import { auth, db } from '../../../Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 
@@ -18,6 +18,28 @@ const Header1 = () => {
   let selectLocationInfo=useSelector(Selectlocationinfo)
 const [userss,loading]=useAuthState(auth)
 let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+
+let [cartItems,setCartItems]=useState([])
+
+let getCartData=()=>{
+  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').onSnapshot((data)=>{
+    setCartItems((data.docs.map((item)=>({
+      id:item.id,
+data:item.data()
+
+
+
+    }))))
+  })
+}
+useEffect(()=>{
+  getCartData()
+  // alert(cartItems.length)
+
+},[])
+
+
+
 
 let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
  
@@ -42,9 +64,7 @@ let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
 
   }
 let path=(window.location.pathname.split('/'))
-// let a=false;
 
-// console.log(userss.phoneNumber)
 
 let handleEraceLocation=()=>{
   localStorage.clear('Swiggy_Clone_location')
@@ -52,10 +72,7 @@ let handleEraceLocation=()=>{
 }
 
 let handleNewSearch=()=>{
-  // alert('clicked')
-  // setNewsearch(true)
-  // window.document.body.scroll='hidden'
-  // document.body.
+  
   document.body.style.overflowY = "hidden";
 
   dispatch(newLocationSearchAction(true))
@@ -113,7 +130,9 @@ let handleNewSearch=()=>{
 
 
               </Link>
-              </button>}
+              </button>
+              
+              }
 
            </div>
         <div className='Header1_inside_right'>
@@ -191,11 +210,15 @@ let handleNewSearch=()=>{
            </div>
            <Link to='/cart'>
 
-           <div className='Header1_inside_right_divs Header1_inside_right_divs_small'>
+           <div className='Header1_inside_right_divs Header1_inside_right_divs_small Header1_inside_right_divs_cart'>
             <span>
               <AddShoppingCartIcon/>
             </span>
             <span>Cart</span>
+            <span
+            className='Header_inside_show_number'
+            
+            >{cartItems.length}</span>
            </div>
            </Link>
         </div>
