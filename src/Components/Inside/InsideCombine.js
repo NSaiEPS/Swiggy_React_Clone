@@ -10,6 +10,7 @@ import Items from './Items/Items'
 // import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useDispatch, useSelector } from 'react-redux'
 import { filterInfoAction, SelectDataFilterInfo, SelectFilterInfo, SelectreqFilter } from '../Redux_toolkit/Redux_Slice'
+import { Boostrap_Header } from './Header/Boostrap_Header2'
 // import Filters from './Filters/Filters'
 
 
@@ -835,6 +836,10 @@ return (
 <Header2
     show={false} lenght=
    {items.length}
+    />
+    <Boostrap_Header  
+      show={false} lenght=
+      {items.length}
     />
   
             </div>
