@@ -137,14 +137,21 @@ cartItems.map((item)=>{
 
 
 
-for (let i=0;i<cartItems.length;i++){
-  console.log(cartItems[i])
+// for (let i=0;i<cartItems.length;i++){
+//   console.log(cartItems[i])
   
-     setToralPrice(totalprice+(parseInt((cartItems[i].data.price))*(cartItems[i].data.number)))
+//      setToralPrice(totalprice+(parseInt((cartItems[i].data.price))*(cartItems[i].data.number)))
     
   
-  }
+//   }
 
+let price=0;
+cartItems.forEach((items)=>{
+  price+=parseInt(items.data.price)*parseInt(items.data.number)
+})
+
+setToralPrice(price
+  )
 
 },[cartItems])
 

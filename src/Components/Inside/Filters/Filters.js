@@ -9,9 +9,12 @@ const Filters = () => {
   // let [items,setItems]=useState(
    
   //   Input_Selectors.typeofResipe.map((item)=>({
+  let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
      
 
+  console.log((selectDataFilterInfo?.rating))
 
+    
   //    item
 
       
@@ -200,6 +203,8 @@ window.scrollTo(0,0)
 // console.log(cuisinesName)
 
 }
+
+let a=false;
   return (
     <div
     className='Filters'
@@ -222,11 +227,20 @@ onClick={handleEraseFilteringPage}
         {Input_Selectors.typeofResipe.map((item,indx)=>{
           return(
             <div key={item}>
+              {selectDataFilterInfo?.cuisines?.includes(item)
+              ? <input  type='checkbox'
+              name={item}
+              checked
+               onChange={handleChangeCuisines}
+               
+               />:
+
+              
               <input  type='checkbox'
               name={item}
                onChange={handleChangeCuisines}
                
-               />
+               />}
 
                {/* onChange={()=>handleChange(item)}/> */}
              <span> {item}</span>
@@ -245,10 +259,19 @@ onClick={handleEraseFilteringPage}
  {Input_Selectors.ratings.map((item,indx)=>{
           return(
             <div key={item}>
+              {(selectDataFilterInfo?.rating)===item
+              ?
               <input  type='checkbox'
                name={item}
                onChange={handleChangeRating}
+               checked
               />
+            :
+            <input  type='checkbox'
+            name={item}
+            onChange={handleChangeRating}
+           />
+            }
             <span>  {item}</span>
 
               </div>
@@ -261,20 +284,52 @@ onClick={handleEraseFilteringPage}
         </div>
 
      <div className='Filters_inside_middle_freeDelivery'>
+     
+     {selectDataFilterInfo?.freedelvery ?
        <input
       
        
        type='checkbox'
        name='freedelvery'
        onChange={handleChangeRemain}
+       
+    //  {...a && checked}
+    checked
 
+       />
+       
+       
+       :
 
-       /><h4>FREE DElivery</h4>
+<input
+      
+       
+      type='checkbox'
+      name='freedelvery'
+      onChange={handleChangeRemain}
+      
+  
+
+      />
+       
+      }<h4>FREE DElivery</h4>
+
+      {(selectDataFilterInfo?.offers)?
+      
          <input
        name='offers'
        onChange={handleChangeRemain}
+       checked
+       type='checkbox'/>
+       :
+       <input
+       name='offers'
+       onChange={handleChangeRemain}
+       type='checkbox'/>
        
-       type='checkbox'/><h4>OFFERS</h4>
+      }
+       
+       <h4>OFFERS</h4>
 
      </div>
 

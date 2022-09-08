@@ -38,7 +38,10 @@ useEffect(()=>{
 
 },[])
 
+// useEffect(()=>{
+//   localStorage.setItem('Swiggy_Clone_Cart_Lenght',JSON.stringify(cartItems.length))
 
+// },[cartItems])
 
 
 let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
@@ -215,10 +218,11 @@ let handleNewSearch=()=>{
               <AddShoppingCartIcon/>
             </span>
             <span>Cart</span>
+            {cartItems.length>0 &&
             <span
             className='Header_inside_show_number'
             
-            >{cartItems.length}</span>
+            >{cartItems.length}</span>}
            </div>
            </Link>
         </div>

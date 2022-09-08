@@ -385,6 +385,12 @@ let handlesubmit=()=>{
   }
   }
   else{
+    if(!phonenumb.includes((inputval.phonenumber))){
+      alert('You have to create your account first!')
+      // alert('not there')
+              
+}
+  else {
     if(( conditionCheck.phonenumber )){
 
       setOTPcondition(true)
@@ -396,7 +402,7 @@ let handlesubmit=()=>{
       // alert('condition not satisfied')
     setOTPcondition(false)
 
-    }
+    }}
   }
 
 
@@ -605,7 +611,7 @@ window.confirmationResult.confirm(code).then((result) => {
 
     // window.location.reload()
     if(!phonenumb.includes((inputval.phonenumber))){
-      alert('not there')
+      // alert('not there')
   db.collection('user').add({
     phoneNumber:(inputval.phonenumber),
     name:(inputval.name),

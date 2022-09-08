@@ -33,6 +33,7 @@ const HeaderBtween = () => {
            : gonumber===3 ? 'HeaderBtween_inside HeaderBtween_inside_3'
            : gonumber===4 ? 'HeaderBtween_inside HeaderBtween_inside_4'
            : gonumber===5 ? 'HeaderBtween_inside HeaderBtween_inside_5'
+           : gonumber===6 ? 'HeaderBtween_inside HeaderBtween_inside_6'
            
            :'HeaderBtween_inside '
            } >
@@ -42,8 +43,10 @@ const HeaderBtween = () => {
       
       
       
-      
+      {/* https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/lori508m4xps01tnywxf */}
         <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep' alt='offer.img'/>
+        <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/lori508m4xps01tnywxf' alt='offer.img'/>
+       
         <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/zpkkdkmvlj5cuvqbc50t' alt='offer.img'/>
        <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/ehchczipeejs7qrk82u6' alt='offer.img'/>
         <img src='https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/s5ug2key6e2sptaxku5v' alt='offer.img'/>
@@ -53,7 +56,7 @@ const HeaderBtween = () => {
          
         </div>
 
-        {gonumber <4 &&
+        {gonumber <5 &&
         <div className='HeaderBtween_inside_gorightbtn'
         
         

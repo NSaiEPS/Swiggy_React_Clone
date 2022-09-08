@@ -39,6 +39,8 @@ const Dashboard = () => {
         users:true
       })
   }
+
+  window.scrollTo(0,0)
     }
 
 

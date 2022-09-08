@@ -60,7 +60,7 @@ useEffect(()=>{
 useEffect(()=>
 {
 
-  // console.log('renderd')
+  console.log('renderd')
 
   if(selectDataFilterInfo && Object.keys(selectDataFilterInfo).length !== 0){
   // console.log('renderd inside object')
@@ -102,8 +102,10 @@ if(selectReqFilter==='deliveryTime'){
   }
 
   else {
+    console.log('rendered outside objects')
  
   if(selectReqFilter==='rating'){
+    // console.log('rating')
     db.collection('items').orderBy('rating','desc').onSnapshot((item)=>{
       setItems((item.docs.map((data)=>({
         id:data.id,
@@ -112,6 +114,8 @@ if(selectReqFilter==='deliveryTime'){
       }))))
   
     })
+
+
   
    }
 
@@ -153,6 +157,7 @@ if(selectReqFilter==='deliveryTime'){
 
 
 },[selectReqFilter])
+// console.log(selectReqFilter)
 
 
 
@@ -791,7 +796,8 @@ else {
 }
 
 
-},[selectDataFilterInfo])
+// },[selectDataFilterInfo])
+},[selectDataFilterInfo, selectReqFilter])
 
 
 

@@ -58,7 +58,7 @@
     padding-top: 25px;
     min-height: 250px;
     background-color: #e9ecee;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
 
  }
 
@@ -68,6 +68,7 @@
     margin-left: auto;
     margin-right: auto;
     min-height: 250px;
+    padding-bottom: 15px;
  }
 
  .Cart_inside_carts_inside_mapinside {
@@ -104,12 +105,27 @@
 }
 
 .Cart_inside_carts_inside_totalprice {
-    padding-top: 15px;
+    /* padding-top: 10px; */
+    margin-top: 25px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 80%;
     margin-left: auto;
     margin-right: auto;  
+    background-color: rgb(37, 37, 95);
+    /* background-image: linear-gradient(rgb(229, 54, 31),blue,rgb(241, 128, 128)); */
+    padding: 10px;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.Cart_inside_carts_inside_totalprice span{
+    background-color: rgb(247, 13, 13);
+    /* background-image: linear-gradient(red,rgb(29, 2, 37)); */
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+
 }
 
 .Cart_inside_carts_inside_mapinside_numbersdiv {
@@ -142,4 +158,12 @@ color: black;
 
 .Cart_inside_carts_inside_number {
     padding-top: 15px;
+}
+
+.Cart_inside_carts_inside_totalprice_div {
+    border: 1px solid lightgray;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }

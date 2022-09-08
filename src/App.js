@@ -5,7 +5,7 @@ import Signup from './Components/FirstPage/FirstSection/Signup';
 import FirstPage from './Components/FirstPage/FirstPage';
 import CombineFooter from './Components/Footer/CombineFooter';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterInfoAction, locationAction, loginUserInfoAction, newLocationSearchAction, Selectcityinfo, SelectedItemInfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
+import { filterInfoAction, locationAction, loginUserInfoAction, newLocationSearchAction, Selectcityinfo, SelectedItemInfo, SelectFilterInfo, Selectlocationinfo, Selectlogininfo, SelectLoginUserInfo, Selectmoreinfo, SelectnewLocationSearch } from './Components/Redux_toolkit/Redux_Slice';
 import InsideCombine from './Components/Inside/InsideCombine';
 import Header2 from './Components/Inside/Header/Header2';
 import { useEffect, useState } from 'react';
@@ -33,6 +33,7 @@ function App() {
 
   let selectCityInfo=useSelector(Selectcityinfo)
   let dispatch=useDispatch()
+  let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
 
   // console.log(selectCityInfo)
   let navigate=useNavigate()
@@ -189,6 +190,42 @@ let handleSubmitForm=()=>{
 // window.location.reload()
   }
 }
+
+
+
+// let [cartItems,setCartItems]=useState([])
+
+// let getCartData=()=>{
+//   db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').onSnapshot((data)=>{
+//     setCartItems((data.docs.map((item)=>({
+//       id:item.id,
+// data:item.data()
+
+
+
+//     }))))
+//   })
+// }
+// useEffect(()=>{
+//   getCartData()
+//   // alert(cartItems.length)
+
+// },[])
+
+// useEffect(()=>{
+//   if(cartItems.length>0){
+//   localStorage.setItem('Swiggy_Clone_Cart_Lenght',JSON.stringify(cartItems.length))
+//   }
+//   else 
+//   {
+//   localStorage.setItem('Swiggy_Clone_Cart_Lenght',JSON.stringify(cartItems.length))
+
+//   }
+// },[cartItems])
+
+
+
+
 
 
 if(loading){

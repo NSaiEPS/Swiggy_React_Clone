@@ -4,7 +4,7 @@
     /* width: 100%; */
     /* width: 24; */
     /* background-color: red; */
-    background-color: salmon;
+     background-image: linear-gradient(red,indigo);
     margin-top: 15px;
     padding: 7px;
   align-items: center;
@@ -26,6 +26,8 @@ width: 25%;
 
 .Dashboard_users_data_moreinfo {
     color: black;
+    max-height: 500px;
+    /* background-color: red !important; */
 }
 
 .Dashboard_users_data_moreinfo_mappinginside {
@@ -41,4 +43,39 @@ flex-direction: column;
 margin-top: 10px;
 width: calc(80% /4);
 text-align: start;
+}
+
+.Dashboard_users_data_moreinfo {
+    /* background-color: #171a29; */
+    background-image:linear-gradient( #171a29, rgb(98, 37, 98));
+    color: white;
+    /* padding: 5px; */
+    padding-left: 15px;
+    padding-bottom: 15px;
+}
+
+
+
+
+
+.Dashboard_users_data_priceindicator {
+    margin-top: 25px;
+    width: 200px;
+
+    color: black;
+    background-color: white;
+    padding: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    border:3px solid #171a29;
+    cursor: pointer;
+    background-image: linear-gradient(rgb(1, 91, 226),red);
+    color: white;
+}
+
+.Dashboard_users_data_moreinfo {
+    /* color: red; */
+    max-height: 350px;
+    overflow-y: auto;
+
 }

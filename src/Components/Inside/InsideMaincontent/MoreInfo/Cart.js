@@ -31,25 +31,34 @@ const Cart = () => {
   },[])
 
 
-  let [totalprice,setToralPrice]=useState(0)
-  useEffect(()=>{
-  //   cartItems.forEach((item)=>{
-  // console.log((item.data.price))
-
-  //     setToralPrice(totalprice+(parseInt((item.data.price))*(item.data.number)))
-  //   })
-
-  for (let i=0;i<cartItems.length;i++){
-  // console.log(cartItems[i])
+// for (let i=0;i<cartItems.length;i++){
+  // // console.log(cartItems[i])
  
-     setToralPrice(totalprice+(parseInt((cartItems[i].data.price))*(cartItems[i].data.number)))
+  //    setToralPrice(totalprice+(parseInt((cartItems[i].data.price))*(cartItems[i].data.number)))
     
 
-  }
+  // }
+  // console.log((item.data.price))
 
+
+
+  let [totalprice,setToralPrice]=useState(0)
+
+  let total=0;
+
+  useEffect(()=>{
+   
+  cartItems.map((item)=>{
+    // debugger
+    total+=parseInt( item.data.price)* parseInt(item.data.number)
+  // setToralPrice(total)
+  
+  })
+  setToralPrice(total)
   },[cartItems])
 
-  // console.log(totalprice)
+
+
 
 let handleSubstractbtn=({id,number})=>{
   let num=number-1
@@ -163,11 +172,13 @@ SEE RESTAURANTS NEAR YOU
             })}
             </div>
 
+
+           <div className='Cart_inside_carts_inside_totalprice_div'>
             <div className='Cart_inside_carts_inside_totalprice'>
               <span>TO PAY</span>
             <span>₹  {totalprice} </span>
               </div>
-           
+           </div>
             </div>
 
           </div>

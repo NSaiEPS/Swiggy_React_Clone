@@ -16,7 +16,9 @@
     display: flex;
     /* justify-content: space-between; */
     border: 1px solid lightgray;
-    padding: 5px;
+    background-image: linear-gradient(rgb(220, 11, 171),red);
+    padding: 7px;
+    color: white;
 
 }
 .Dashboard_users_inside_names div{

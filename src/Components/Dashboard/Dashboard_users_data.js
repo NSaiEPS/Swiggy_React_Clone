@@ -31,6 +31,24 @@ db.collection('user').doc(id).collection('cart').onSnapshot((data)=>{
     },[])
 
     // console.log(cartdata)
+
+    // console.log(`yes use ${false ? '1':'2'}`)
+
+
+  let [totalprice,setToralPrice]=useState(0)
+
+  let total=0;
+
+  useEffect(()=>{
+   
+    cartdata.map((item)=>{
+    // debugger
+    total+=parseInt( item.data.price)* parseInt(item.data.number)
+  // setToralPrice(total)
+  
+  })
+  setToralPrice(total)
+  },[cartdata])
   return (
     <div className='Dashboard_users_data'>
 
@@ -71,12 +89,12 @@ db.collection('user').doc(id).collection('cart').onSnapshot((data)=>{
                     </div>
                      
                      <div>
-                     {item.data.number}
+                    Items :  {item.data.number}
                         </div>
 
                     <div>
                     <span>₹   {item.data.price}</span>
-                       <span>   for{item.data.peopleNum}</span>
+                       <span>   for {item.data.peopleNum}</span>
                       
                     </div>
                     <div>
@@ -91,7 +109,16 @@ db.collection('user').doc(id).collection('cart').onSnapshot((data)=>{
         })}
 
 
+        
+
+
+
     </div>}
+    {moreinfo &&
+    <div className='Dashboard_users_data_priceindicator'>
+
+        Total Amount: <b>₹  {totalprice}</b>
+            </div>}
     </div>
 
   )

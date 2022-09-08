@@ -2,6 +2,7 @@
     position: sticky;
     top: 0px;
     background-color: white;
+    /* background-color: red !important; */
     z-index: 1;
 }
 
@@ -22,6 +23,7 @@
 
 .App_Maincontent_inside_items_map {
     margin-top: 25px;
+    /* background-color: red; */
    
 }
 

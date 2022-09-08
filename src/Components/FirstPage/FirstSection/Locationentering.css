@@ -132,6 +132,8 @@ background-color: red;
 }
 .noFocusClass {
     border: 1px solid lightgray;
+    /* outline: 1px solid lightgray */
+
     
 
 }
@@ -147,7 +149,7 @@ background-color: red;
     width: 140px;
     /* border: 5px solid #FC8019; */
     height: 59px;
-    margin-top: -1.5px;
+    margin-top: -1px;
    /* box-sizing: content-box; */
    display: flex;
    justify-content: center;
