@@ -167,3 +167,38 @@ color: black;
     margin-right: auto;
     margin-top: 10px;
 }
+
+@media (max-width:950px){
+    .Cart_inside_carts_inside {
+        background-color: white;
+        width: 65%;
+    }
+}
+
+@media (max-width:800px){
+    .Cart_inside_carts_inside {
+        background-color: white;
+        width: 75%;
+    }
+}
+
+
+@media (max-width:500px){
+    .Cart_inside_carts_inside {
+        background-color: white;
+        width: 90%;
+        /* font-size: small; */
+    }
+    .Cart_inside_carts_inside_mapinside_namesdiv {
+
+        font-size: small;
+    }
+}
+
+@media (max-width:400px){
+    .Cart_inside_carts_inside {
+        background-color: white;
+        width: 95%;
+
+    }
+}

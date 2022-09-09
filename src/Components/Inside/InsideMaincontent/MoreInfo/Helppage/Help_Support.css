@@ -111,3 +111,22 @@ top: 80px;
     color: #fc8019;
 
 }
+
+@media (max-width:600px){
+    .Help_Support_inside_FAQpart {
+        
+        flex-direction: column;
+       
+    }
+
+.Help_Support_inside_FAQpart_left_inside {
+flex-direction: row;
+min-height: 100px !important;
+position: sticky;
+top: 100px;}
+
+
+.Help_Support_inside_FAQpart_right h2 {
+    text-align: center !important;
+}}
+

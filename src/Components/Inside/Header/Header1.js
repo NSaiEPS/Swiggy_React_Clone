@@ -122,14 +122,16 @@ let handleBlurMoreOption=()=>{
            > 
             {locationEntered} </b>
            }</span>
-
+            {
+              locationEntered &&
+            
           <span className='Header1_clear_location' 
           onClick={handleEraceLocation}>X
           
           <small className='Header1_clear_location_indicator'
           >Clear the location {locationEntered}</small>
           </span>
-
+}
            {userss?.phoneNumber==='+919705442192'
            
            &&

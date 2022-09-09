@@ -112,3 +112,49 @@
     height: 30px;
     width: 75px;
 }
+
+@media (max-width:900px){
+    .Dashboard_Items_addItemForm form{
+        
+        width: 65%;
+       
+    
+    
+    }
+}
+
+@media (max-width:600px){
+    .Dashboard_Items_addItemForm form{
+        
+        width: 80%;
+       
+    
+    
+    }
+
+   
+}
+
+@media (max-width:450px){
+    .Dashboard_Items_addItemForm form{
+        
+        width: 90%;
+       
+    
+    
+    }
+
+   
+}
+
+@media (max-width:350px){
+    .Dashboard_Items_addItemForm form{
+        
+        width: 95%;
+       
+    
+    
+    }
+
+   
+}

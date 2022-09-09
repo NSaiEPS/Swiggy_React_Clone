@@ -72,4 +72,16 @@ width: 90%;
     
     
     }
+    .Dashboard_users_inside_names div:nth-child(1){
+        width: 37%;
+    
+    
+    }
+}
+
+@media (max-width:450px){
+    .Dashboard_users_inside {
+        width: 92%;
+        
+        } 
 }

@@ -186,7 +186,14 @@ setToralPrice(price
 
         </div>
         <div className='SelectedItem_Inside_locationIndicator'>
-  <span>Home</span>
+  <span>
+    
+    <Link to='/'>
+
+    Home
+
+    </Link>
+    </span>
         </div>
 
 

@@ -140,10 +140,11 @@ box-shadow: none;
 
 @media (max-width:500px){
     
-.Dashboard_users_data_inside div{
+.Dashboard_users_data_inside div:nth-child(1){
     width: 50%;
     
     }
+
     .Dashboard_users_data_moreinfo_mappinginside div:nth-child(1){
         
         width: 200% !important;}
@@ -167,3 +168,4 @@ box-shadow: none;
                     }
                     
 }
+

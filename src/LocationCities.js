@@ -145,7 +145,7 @@ export const LocationCities=({
 'Chandigarh',
 'Chandrapur',
 'Changanassery',
-'Charkhi-Dadri_perm_closed_8june22',
+// 'Charkhi-Dadri_perm_closed_8june22',
 'Chengannur',
 'Chennai',
 'Chhapra',
