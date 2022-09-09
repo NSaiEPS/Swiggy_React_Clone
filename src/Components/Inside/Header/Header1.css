@@ -192,7 +192,7 @@ background-color: rgb(217, 41, 223);
  @media (max-width:700px){
 
 
-    .Header1_inside {
+    /* .Header1_inside {
         display: flex;
     flex-direction: column;}
 
@@ -208,14 +208,14 @@ background-color: rgb(217, 41, 223);
       
         width: 100%;
     
-    }
+    } */
 
-    .Header1_showingName{
+    /* .Header1_showingName{
         left: 10px;
         top: 15px ;
         padding: 7px;
 
-    }
+    } */
  }
 
 .Header1_inside_right_divs_cart {
@@ -274,4 +274,48 @@ background-color: rgb(217, 41, 223);
     100%{
         top: -10px;
     }
+}
+
+
+.Header_inside_right_for_Responsive{
+    display: none;
+    position: relative;
+}
+
+@media (max-width:900px){
+    .Header1_inside_right {
+        display: none;
+    }
+    .Header_inside_right_for_Responsive {
+        display: block;
+    }
+    .Header1_inside {
+        display: flex;
+        justify-content: space-between;
+       align-items: center;
+    }
+}
+
+.Header_inside_right_for_Responsive_moreoptions {
+    position: absolute;
+    top: 15px;
+    right: 17px;
+    background-color: white;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* justify-content: center; */
+    height: 250px;
+    /* border: 1px solid lightgray; */
+   border-radius: 5px;
+   box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
+   /* background-color: #171a29;
+   color: white !important; */
+
+}
+
+.Header_inside_moreOptions_icon {
+    cursor: pointer;
 }

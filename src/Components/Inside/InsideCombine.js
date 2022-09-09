@@ -61,7 +61,7 @@ useEffect(()=>{
 useEffect(()=>
 {
 
-  console.log('renderd')
+  // console.log('renderd')
 
   if(selectDataFilterInfo && Object.keys(selectDataFilterInfo).length !== 0){
   // console.log('renderd inside object')
@@ -103,7 +103,7 @@ if(selectReqFilter==='deliveryTime'){
   }
 
   else {
-    console.log('rendered outside objects')
+    // console.log('rendered outside objects')
  
   if(selectReqFilter==='rating'){
     // console.log('rating')
@@ -260,7 +260,7 @@ useEffect(()=>{
 // console.log(selectDataFilterInfo)
 
 if(!selectDataFilterInfo ){
-  console.log('no data')
+  // console.log('no data')
 
   getDataFunction()
 
@@ -278,7 +278,7 @@ if(selectDataFilterInfo?.cuisines?.length>0)
 
   if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)&& (selectDataFilterInfo?.rating)  ){
     if(parseInt(selectDataFilterInfo?.rating)===5){
-      console.log('rating 5')
+      // console.log('rating 5')
 
     
   setItems(items?.filter((item)=>(
@@ -299,7 +299,7 @@ if(selectDataFilterInfo?.cuisines?.length>0)
 
     else
     {
-      console.log('rating less than 5')
+      // console.log('rating less than 5')
       setItems(items?.filter((item)=>(
   
         selectDataFilterInfo?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
@@ -351,7 +351,7 @@ else  {
 
 
     if(parseInt(selectDataFilterInfo?.rating)===5){
-      console.log('rating 5')
+      // console.log('rating 5')
 
     
   setItems(items?.filter((item)=>(
@@ -368,7 +368,7 @@ else  {
 
     else
     {
-      console.log('rating less than 5')
+      // console.log('rating less than 5')
       setItems(items?.filter((item)=>(
   
         selectDataFilterInfo?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
@@ -392,7 +392,7 @@ else  {
 
 
     if(parseInt(selectDataFilterInfo?.rating)===5){
-      console.log('rating 5')
+      // console.log('rating 5')
 
     
   setItems(items?.filter((item)=>(
@@ -495,7 +495,7 @@ if((selectDataFilterInfo?.offers) ||(selectDataFilterInfo?.rating) || (selectDat
 
 
   if(parseInt(selectDataFilterInfo?.rating)===5){
-    console.log('rating 5')
+    // console.log('rating 5')
 
   
 setItems(items?.filter((item)=>(
@@ -569,7 +569,7 @@ else {
 
   if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)&& (selectDataFilterInfo?.rating)  ){
     if(parseInt(selectDataFilterInfo?.rating)===5){
-      console.log('rating 5')
+      // console.log('rating 5')
 
     
   setItems(items?.filter( (data)=>(data.data?.freedelivery)
@@ -587,7 +587,7 @@ else {
 
     else
     {
-      console.log('rating less than 5')
+      // console.log('rating less than 5')
       setItems(items?.filter((data)=>(data.data?.freedelivery)
           ==='true'
         ).filter((data)=>
@@ -639,7 +639,7 @@ else {
 
 
     if(parseInt(selectDataFilterInfo?.rating)===5){
-      console.log('rating 5')
+      // console.log('rating 5')
 
     
   setItems(items?.filter( (data)=>(data.data?.freedelivery)
@@ -653,7 +653,7 @@ else {
 
     else
     {
-      console.log('rating less than 5')
+      // console.log('rating less than 5')
       setItems(items?.filter((data)=>(data.data?.freedelivery)
           ==='true'
         ).filter((data)=>parseFloat(data.data?.rating)
@@ -675,7 +675,7 @@ else {
 
 
     if(parseInt(selectDataFilterInfo?.rating)===5){
-      console.log('rating 5')
+      // console.log('rating 5')
 
     
   setItems(items?.filter(
@@ -749,7 +749,7 @@ else {
     
     
       if(parseInt(selectDataFilterInfo?.rating)===5){
-        console.log('rating 5')
+        // console.log('rating 5')
     
       
     setItems(items?.filter(   (data)=>
@@ -831,16 +831,24 @@ return (
 
             <div className='InsideCombine_inside_headerpart_header2'>
 
-
+{/* {
+  window.innerWidth>=900 ? */}
 
 <Header2
     show={false} lenght=
    {items.length}
     />
-    <Boostrap_Header  
-      show={false} lenght=
-      {items.length}
-    />
+    
+{/* //     :
+//     <Boostrap_Header  
+//     show={false} lenght=
+//     {items.length}
+//   />
+
+// } */}
+
+
+  
   
             </div>
           
@@ -857,19 +865,26 @@ return (
         
         (specialheader &&
         
-        <div className='App_Maincontent_inside_header2'>
+        <div className='App_Maincontent_inside_header2'
+        
+       
+        >
 
 
+{/* {window.innerWidth>=900 ? */}
 
 
         <Header2
     show={true} lenght=
     {items.length} 
     />
+{/* : */}
 
-
-
-       
+{/* <Boostrap_Header  
+    show={true} lenght=
+    {items.length}
+  />
+} */}
           </div>
         )}
       

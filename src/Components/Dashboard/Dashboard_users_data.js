@@ -93,7 +93,7 @@ db.collection('user').doc(id).collection('cart').onSnapshot((data)=>{
                         </div>
 
                     <div>
-                    <span>₹   {item.data.price}</span>
+                    <span>₹   {item.data.price}</span> {` `}
                        <span>   for {item.data.peopleNum}</span>
                       
                     </div>

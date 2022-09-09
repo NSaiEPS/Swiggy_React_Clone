@@ -5,7 +5,7 @@
     /* width: 24; */
     /* background-color: red; */
      background-image: linear-gradient(red,indigo);
-    margin-top: 15px;
+    margin-top: 17px;
     padding: 7px;
   align-items: center;
 }
@@ -33,25 +33,63 @@ width: 25%;
 .Dashboard_users_data_moreinfo_mappinginside {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 98%;
     margin-top: 10px;
+    background-color: rgb(11, 11, 98);
+    /* height: 50px; */
+    /* border: 2px solid white; */
+    border: 2px solid white;
+    /* border-right: none; */
+   border-radius: 17px 17px 17px 17px;
+
+}
+
+.Dashboard_users_data_moreinfo_mappinginside div:nth-child(1){
+   border-radius:0px;
+   border: none;
+    
+
+
 }
 
 .Dashboard_users_data_moreinfo_mappinginside div{
 display: flex;
-flex-direction: column;
-margin-top: 10px;
-width: calc(80% /4);
+/* flex-direction: column; */
+/* margin-top: 10px; */
+width: calc(1000% /4);
 text-align: start;
+font-size: 15px;
+ 
+   align-items: center;
+   padding: 7px;
+   height: 35px;
+   border-radius: 17px 0px 0px 17px;
+   border-left: 2px solid white;
+   /* box-shadow: ; */
+   /* box-shadow: 1px 0px 42px 42px rgba(18, 18, 71, 0.4); */
+
+   box-shadow: -10px 0px 10px 1px rgb(28, 12, 29);
 }
+
+.Dashboard_users_data_moreinfo_mappinginside div:nth-last-child(1){
+
+    border-radius: 17px 17px 17px 17px;
+    border-left: 2px solid white;
+    background-color: #17122f;
+    /* border-right-; */
+}
+.Dashboard_users_data_moreinfo_mappinginside div:nth-child(1){
+box-shadow: none;
+}
+
 
 .Dashboard_users_data_moreinfo {
     /* background-color: #171a29; */
     background-image:linear-gradient( #171a29, rgb(98, 37, 98));
     color: white;
     /* padding: 5px; */
-    padding-left: 15px;
-    padding-bottom: 15px;
+    padding-left: 17px;
+    padding-bottom: 17px;
 }
 
 
@@ -78,4 +116,54 @@ text-align: start;
     max-height: 350px;
     overflow-y: auto;
 
+}
+
+@media (max-width:800px){
+    .Dashboard_users_data_moreinfo_mappinginside div{
+ 
+        font-size: 13px;}
+
+}
+
+
+
+@media (max-width:600px){
+    .Dashboard_users_data_inside {
+        font-size: small;
+    }
+    .Dashboard_users_data_moreinfo_mappinginside div{
+ 
+        font-size: 11px;
+
+    }
+}
+
+@media (max-width:500px){
+    
+.Dashboard_users_data_inside div{
+    width: 50%;
+    
+    }
+    .Dashboard_users_data_moreinfo_mappinginside div:nth-child(1){
+        
+        width: 200% !important;}
+
+        .Dashboard_users_data_moreinfo_mappinginside div:nth-child(2){
+        
+            width: 80% !important;}
+
+            .Dashboard_users_data_moreinfo_mappinginside div:nth-child(3){
+        
+                width: 100% !important;}
+
+                .Dashboard_users_data_moreinfo_mappinginside div:nth-child(4){
+        
+                    width: 150% !important;}
+.Dashboard_users_data_moreinfo {
+                       
+                   
+                        padding-left: 1px;
+                        
+                    }
+                    
 }

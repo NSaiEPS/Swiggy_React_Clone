@@ -45,3 +45,31 @@
 
 
 } */
+
+@media (max-width:700px){
+.Dashboard_users_inside {
+width: 90%;
+}
+}
+
+@media (max-width:630px){
+    .Dashboard_users_inside {
+        width: 93%;
+        
+        } 
+}
+
+@media (max-width:600px){
+    .Dashboard_users_inside_names {
+        font-size: small;
+    
+    }
+}
+
+@media (max-width:500px){
+    .Dashboard_users_inside_names div{
+        width: 27%;
+    
+    
+    }
+}

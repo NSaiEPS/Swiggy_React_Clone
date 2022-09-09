@@ -18,7 +18,7 @@ const SelectedItem = () => {
 
     let selectedItemInfo=useSelector(SelectedItemInfo)
 let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
-console.log(selectedItemInfo.id)
+// console.log(selectedItemInfo.id)
 
     let [cartnumb,setCartNumb]=useState(0)
     let dispatch=useDispatch()
@@ -173,7 +173,7 @@ setToralPrice(price
 
 // },[cartItems])
 
-console.log(totalprice)
+// console.log(totalprice)
 
 
   return (

@@ -259,7 +259,7 @@ className= {selectReqFilter==='costHightoLow' ? 'Header2_inside_right_span' :und
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} bgcolor="error.main">
       <AppBar position="static">
         <Toolbar>
           {/* <IconButton
