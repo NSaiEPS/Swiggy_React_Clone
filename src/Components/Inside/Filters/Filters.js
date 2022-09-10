@@ -9,10 +9,11 @@ const Filters = () => {
   // let [items,setItems]=useState(
    
   //   Input_Selectors.typeofResipe.map((item)=>({
-  let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
+  // let selectDataFilterInforedux=useSelector(SelectDataFilterInfo)
+  let selectDataFilterInforedux=useSelector(store=>store.info.filterData)
      
 
-  console.log((selectDataFilterInfo?.rating))
+  console.log((selectDataFilterInforedux?.rating))
 
     
   //    item
@@ -21,9 +22,9 @@ const Filters = () => {
   //   }))
   //  )
 
-  // let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
+  // let selectDataFilterInforedux=useSelector(SelectDataFilterInfo)
   
-  //   console.log(selectDataFilterInfo)
+  //   console.log(selectDataFilterInforedux)
   
 
   // console.log(items)
@@ -34,6 +35,13 @@ const Filters = () => {
     dispatch(filterInfoAction({
       active:false
     }))
+
+    dispatch({
+      type:'filterInfoAction',
+      payload:{
+        active:false
+      }
+    })
   document.body.style.overflowY='scroll'
 
 
@@ -98,6 +106,13 @@ let handleClearFilter=()=>{
   dispatch(filterInfoAction({
     active:false
   }))
+  dispatch({
+    type:'filterInfoAction',
+    payload:{
+      active:false
+    }
+  })
+
   document.body.style.overflowY='scroll'
 }
 
@@ -172,6 +187,13 @@ let handleSubmitFilter=()=>{
   dispatch(filterInfoAction({
     active:false
   }))
+
+  dispatch({
+    type:'filterInfoAction',
+    payload:{
+      active:false
+    }
+  })
   document.body.style.overflowY='scroll'
 window.scrollTo(0,0)
 // console.log(reqrating)
@@ -187,6 +209,18 @@ window.scrollTo(0,0)
 
   ))
 
+dispatch({
+  type:'filterDataInfoAction',
+  payload:{
+    cuisines:cuisinesName,
+    freedelvery:(filterremData.freedelvery),
+    offers:(filterremData.offers),
+    rating:reqrating
+
+  }
+})
+
+
 }
 
   else {
@@ -198,6 +232,16 @@ window.scrollTo(0,0)
     }
   
     ))
+
+    dispatch({
+      type:'filterDataInfoAction',
+      payload:{
+        cuisines:cuisinesName,
+        freedelvery:(filterremData.freedelvery),
+        offers:(filterremData.offers)
+     
+      }
+    })
 
   }
 // console.log(cuisinesName)
@@ -227,7 +271,7 @@ onClick={handleEraseFilteringPage}
         {Input_Selectors.typeofResipe.map((item,indx)=>{
           return(
             <div key={item}>
-              {selectDataFilterInfo?.cuisines?.includes(item)
+              {selectDataFilterInforedux?.cuisines?.includes(item)
               ? <input  type='checkbox'
               name={item}
               checked
@@ -259,7 +303,7 @@ onClick={handleEraseFilteringPage}
  {Input_Selectors.ratings.map((item,indx)=>{
           return(
             <div key={item}>
-              {(selectDataFilterInfo?.rating)===item
+              {(selectDataFilterInforedux?.rating)===item
               ?
               <input  type='checkbox'
                name={item}
@@ -285,7 +329,7 @@ onClick={handleEraseFilteringPage}
 
      <div className='Filters_inside_middle_freeDelivery'>
      
-     {selectDataFilterInfo?.freedelvery ?
+     {selectDataFilterInforedux?.freedelvery ?
        <input
       
        
@@ -314,7 +358,7 @@ onClick={handleEraseFilteringPage}
        
       }<h4>FREE DElivery</h4>
 
-      {(selectDataFilterInfo?.offers)?
+      {(selectDataFilterInforedux?.offers)?
       
          <input
        name='offers'

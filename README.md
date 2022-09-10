@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<!-- The vercel link online -->
+https://vercel.com/new/success?developer-id=&external-id=&redirect-url=&branch=main&deploymentUrl=swiggy-react-clone-ayjm6w6bx-nsaieps.vercel.app&projectName=swiggy-react-clone
+
+
+<!-- The Actual link -->
+https://swiggy-react-clone.vercel.app/

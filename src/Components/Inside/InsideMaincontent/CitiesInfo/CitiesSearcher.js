@@ -7,7 +7,8 @@ import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import './CitiesSearcher.css'
 
 const CitiesSearcher = () => {
-let selectCityInfo=useSelector(Selectcityinfo)
+// let selectCityInforedux=useSelector(Selectcityinfo)
+let selectCityInforedux=useSelector(store=>store.info.city)
 let [newsearch,setNewsearch]=useState(false)
 let [focus,setFocus]=useState(false)
 
@@ -75,7 +76,7 @@ let handleSubmitForm=()=>{
     <div className='CitiesSearcher'>
       <div className='CitiesSearcher_inside'>
       
-      <h1>Great restaurants in {selectCityInfo}, delivering to you</h1>
+      <h1>Great restaurants in {selectCityInforedux}, delivering to you</h1>
       <span>Set exact location to find the right restaurants near you.</span>
      
      <div className='CitiesSearcher_inside_Input'

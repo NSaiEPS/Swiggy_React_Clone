@@ -29,10 +29,27 @@ let handleGoItemPage=()=>{
       selectItemInfoAction(
 
    {id,imgurl,name,type,rating,discount,reqName
-      ,price,numofpeople,minites,cuponcode,freedelivery,promoted,index}
+      ,price,numofpeople,minites,cuponcode,freedelivery,promoted,index
+    
+    
+    }
 
       )
+
+
+    
+
    )
+
+   dispatch({
+    type:'selectItemInfoAction',
+    payload:{
+        id,imgurl,name,type,rating,discount,reqName
+        ,price,numofpeople,minites,cuponcode,freedelivery,promoted,index
+      
+      
+    }
+   })
 
    window.scrollTo(0,0)
 }

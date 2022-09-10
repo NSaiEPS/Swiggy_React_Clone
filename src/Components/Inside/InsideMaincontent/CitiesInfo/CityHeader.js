@@ -20,6 +20,14 @@ const CityHeader = () => {
       )
     )
 
+    dispatch({
+      type:'logininfoAction',
+      payload:{
+        name:'login',
+         status:true,
+      }
+    })
+
   }
 
   let onClickhelp=()=>{

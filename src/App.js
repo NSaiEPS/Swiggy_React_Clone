@@ -31,13 +31,18 @@ import SelectedItem from './Components/Inside/Items/SelectedItem';
 
 function App() {
 
-  let selectCityInfo=useSelector(Selectcityinfo)
+  // let selectCityInforedux=useSelector(Selectcityinfo)
+  let selectCityInforedux=useSelector(store=>store.info.city)
+  
+  
   let dispatch=useDispatch()
-  let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+  // let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+  let selectLoginUserInforedux=useSelector(store=>store.info.loginuserinfo)
 
-  // console.log(selectCityInfo)
+  // console.log(selectCityInforedux)
   let navigate=useNavigate()
-let selectMoreInfo=useSelector(Selectmoreinfo)
+// let selectMoreInfo=useSelector(Selectmoreinfo)
+let selectMoreInforedux=useSelector(store=>store.info.moreinfo)
 
 const [userss,loading]=useAuthState(auth)
 let [focus,setFocus]=useState(false)
@@ -49,25 +54,37 @@ let handlefocus=(a)=>{
 }
 
 
-let selectFilterInfo=useSelector(SelectFilterInfo)
+// let selectFilterInforedux=useSelector(SelectFilterInfo)
+let selectFilterInforedux=useSelector(store=>store.info.filtersInfo)
   
   
 
-  let selectLogininfo=useSelector(Selectlogininfo)
-  let selectLocationInfo=useSelector(Selectlocationinfo)
-  let selectnewLocationSearch=useSelector(SelectnewLocationSearch)
-  let selectedItemInfo=useSelector(SelectedItemInfo)
+  // let selectLogininforedux=useSelector(Selectlogininfo)
+  let selectLogininforedux=useSelector(store=>store.info.logininfo)
+
+
+  // let selectLocationInforedux=useSelector(Selectlocationinfo)
+  let selectLocationInforedux=useSelector(store=>store.info.locationinfo)
+
+
+  // let selectnewLocationSearchredux=useSelector(SelectnewLocationSearch)
+  let selectnewLocationSearchredux=useSelector(store=>store.info.newLocationSearch)
+
+
+
+  // let selectedItemInforedux=useSelector(SelectedItemInfo)
+  let selectedItemInforedux=useSelector(store=>store.info.selectIteminfo)
   
 let reqlocation=false;
-  reqlocation=selectLocationInfo?.location
+  reqlocation=selectLocationInforedux?.location
   // localStorage.setItem('Swiggy_Clone_location', JSON.stringify(reqlocation))
  
 let locationEntered=""
 locationEntered= (JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
 // console.log(userss)
 
-  let signup=selectLogininfo?.status;
-  let location=selectLocationInfo?.location
+  let signup=selectLogininforedux?.status;
+  let location=selectLocationInforedux?.location
   // console.log(location)
 
   let [userInfo,setUserInfo]=useState([])
@@ -101,11 +118,29 @@ dispatch(
   )
 
   )
+   
+
+  dispatch({
+    type:'locationAction',
+  
+     
+    payload:  {
+        active:true,
+        location:(locationEntered)
+      }
+    }
+    )
+  
+    
 
   getUserFunction()
 
   
 },[])
+
+
+
+
 
 
 
@@ -121,6 +156,28 @@ useEffect(()=>{
           email:(item.data.email)
         }
       ))
+
+
+dispatch({
+  type:'loginUserInfoAction',
+  payload: {
+    id:(item.id),
+    phoneNumber:(item.data.phoneNumber),
+    name:(item.data.name),
+    email:(item.data.email)
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
     }
   })
 },[userInfo])
@@ -135,17 +192,29 @@ useEffect(()=>{
 
 useEffect(()=>{
 
-  (!selectCityInfo) && navigate('/')
+  (!selectCityInforedux) && navigate('/')
 
-},[selectCityInfo])
+},[selectCityInforedux])
 
 
 let handleEraseFilteringPage=()=>{
 
  
-  dispatch(filterInfoAction({
+  dispatch(filterInfoAction(
+    {
     active:false
-  }))
+  }
+  
+  ))
+
+dispatch({
+  type:'filterInfoAction',
+  payload:    {
+    active:false
+  }
+})
+
+
 document.body.style.overflowY='scroll'
 
 
@@ -160,6 +229,11 @@ let handleEracenewSeacrh=()=>{
   // setNewsearch(false)
   document.body.style.overflowY = "scroll";
   dispatch(newLocationSearchAction(false))
+
+  dispatch({
+    type:'newLocationSearchAction',
+    payload:false
+  })
 
 
 
@@ -270,7 +344,7 @@ if(loading){
       <InsideCombine/>:<FirstPage/>
     }/>
 
-        <Route path={`city/${selectCityInfo}`} element={<City/>}/>
+        <Route path={`city/${selectCityInforedux}`} element={<City/>}/>
         <Route path={`moreinfo`} element={<Moreinfo/>}/>
         <Route path='support' element={<Help_Support/>}/>
         <Route path='cart' element={<Cart/>}/>
@@ -278,7 +352,7 @@ if(loading){
         <Route path='offers' element={<Offers/>}/>
         <Route path='dashboard' element={<Dashboard/>}/>
     
-        <Route path={`restaurants/${selectedItemInfo?.reqName}`} element={
+        <Route path={`restaurants/${selectedItemInforedux?.reqName}`} element={
           <SelectedItem/>
         }/>
 
@@ -298,7 +372,7 @@ if(loading){
 
 
 
-   {selectFilterInfo.active &&
+   {selectFilterInforedux.active &&
         <div className='InsideCombine_Filtering_page'>
           <div className='InsideCombine_Filtering_page_inside'>
 
@@ -327,7 +401,7 @@ style={{
 
 
         {
-          selectnewLocationSearch &&
+          selectnewLocationSearchredux &&
 
  <div className='CitiesSearcher_newSearch_App'>
  

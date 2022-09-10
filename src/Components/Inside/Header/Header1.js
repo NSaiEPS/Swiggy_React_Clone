@@ -15,14 +15,16 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Header1 = () => {
   let dispatch=useDispatch()
-  let selectLocationInfo=useSelector(Selectlocationinfo)
+  // let selectLocationInforedux=useSelector(Selectlocationinfo)
+  let selectLocationInforedux=useSelector(store=>store.info.locationinfo)
 const [userss,loading]=useAuthState(auth)
-let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+// let selectLoginUserInforedux=useSelector(SelectLoginUserInfo)
+let selectLoginUserInforedux=useSelector(store=>store.info.loginuserinfo)
 
 let [cartItems,setCartItems]=useState([])
 
 let getCartData=()=>{
-  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').onSnapshot((data)=>{
+  db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').onSnapshot((data)=>{
     setCartItems((data.docs.map((item)=>({
       id:item.id,
 data:item.data()
@@ -55,12 +57,27 @@ let locationEntered=(JSON.parse(localStorage.getItem('Swiggy_Clone_location')))
       )
     )
 
+
+
+    dispatch({
+      type:'logininfoAction',
+      payload:{
+        name:'login',
+         status:true,
+      }
+    })
+
   }
 
   let handleDispatchcity=(city)=>{
     dispatch(moreInfoAction(
       city
     ))
+
+    dispatch({
+      type:'moreInfoAction',
+      payload: city
+    })
 
     window.scrollTo(0,0)
 
@@ -80,6 +97,11 @@ let handleNewSearch=()=>{
 
   dispatch(newLocationSearchAction(true))
 
+  dispatch({
+    type:'newLocationSearchAction',
+    payload:true
+  })
+
 }
 
 let [moreOption,setMoreOption]=useState(false)
@@ -97,10 +119,10 @@ let handleBlurMoreOption=()=>{
   return (
     <div className='Header1'>
       
-{selectLoginUserInfo?.name &&
+{selectLoginUserInforedux?.name &&
       <button
       className='Header1_showingName'
-      > {selectLoginUserInfo?.name}</button>}
+      > {selectLoginUserInforedux?.name}</button>}
 
 
       <div className='Header1_inside'>

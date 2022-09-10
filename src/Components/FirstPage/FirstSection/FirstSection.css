@@ -41,6 +41,19 @@ background-color: red;
     
 } */
 
+@media (max-width:1150px){
+    .FirstSection_inside_Locationpart {
+        width: 65%;
+        
+    }
+    
+    .FirstSection_inside_imgpart {
+        width: calc(100% - 65%);
+       
+    }
+    
+}
+
 @media (max-width:650px){
 
 .FirstSection_inside_Locationpart {
@@ -78,3 +91,4 @@ width: 0%;
      
      }
 }
+

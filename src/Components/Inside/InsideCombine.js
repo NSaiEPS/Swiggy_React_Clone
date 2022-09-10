@@ -19,13 +19,18 @@ const InsideCombine = ({dashboard}) => {
   let [specialheader,setSpecialheader]=useState(false)
   // let [filteredData,setFilteredData]=useState([])
  
-  let selectReqFilter=useSelector(SelectreqFilter)
+  // let selectReqFilter=useSelector(SelectreqFilter)
+  let selectReqFilterredux=useSelector(store=>store.info.reqFilter)
   // let dispatch=useDispatch()
-  let selectFilterInfo=useSelector(SelectFilterInfo)
-  let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
-  // console.log(selectDataFilterInfo)
+  // let selectFilterInfo=useSelector(SelectFilterInfo)
+  let selectFilterInforedux=useSelector(store=>store.info.filtersInfo)
+ 
+ 
+  // let selectDataFilterInfo=useSelector(SelectDataFilterInfo)
+  let selectDataFilterInforedux=useSelector(store=>store.info.filterData)
+  // console.log(selectDataFilterInforedux)
 
-// console.log(selectDataFilterInfo)
+// console.log(selectDataFilterInforedux)
 
 
 
@@ -63,10 +68,10 @@ useEffect(()=>
 
   // console.log('renderd')
 
-  if(selectDataFilterInfo && Object.keys(selectDataFilterInfo).length !== 0){
+  if(selectDataFilterInforedux && Object.keys(selectDataFilterInforedux).length !== 0){
   // console.log('renderd inside object')
 
-  if(selectReqFilter==='rating'){
+  if(selectReqFilterredux==='rating'){
   // console.log('renderd inside object rating')
 
   
@@ -74,18 +79,18 @@ useEffect(()=>
   
   }
   
- if(selectReqFilter==='costLowtoHign'){
+ if(selectReqFilterredux==='costLowtoHign'){
   
   items.sort((a,b)=>parseFloat(a.data.price) -parseFloat(b.data.price) )
 
 }
 
-if(selectReqFilter==='costHightoLow'){
+if(selectReqFilterredux==='costHightoLow'){
   
   items.sort((a,b)=>parseFloat(a.data.price) -parseFloat(b.data.price) ).reverse()
 
 }
-if(selectReqFilter==='deliveryTime'){
+if(selectReqFilterredux==='deliveryTime'){
   items.sort((a,b)=>parseFloat(a.data.minites) -parseFloat(b.data.minites) )
 
   
@@ -105,8 +110,8 @@ if(selectReqFilter==='deliveryTime'){
   else {
     // console.log('rendered outside objects')
  
-  if(selectReqFilter==='rating'){
-    // console.log('rating')
+  if(selectReqFilterredux==='rating'){
+    console.log('rating')
     db.collection('items').orderBy('rating','desc').onSnapshot((item)=>{
       setItems((item.docs.map((data)=>({
         id:data.id,
@@ -120,7 +125,7 @@ if(selectReqFilter==='deliveryTime'){
   
    }
 
- if(selectReqFilter==='costLowtoHign'){
+ if(selectReqFilterredux==='costLowtoHign'){
   db.collection('items').orderBy('price','asc').onSnapshot((item)=>{
     setItems((item.docs.map((data)=>({
       id:data.id,
@@ -132,7 +137,7 @@ if(selectReqFilter==='deliveryTime'){
 
  }
 
- if(selectReqFilter==='costHightoLow'){
+ if(selectReqFilterredux==='costHightoLow'){
   db.collection('items').orderBy('price','desc').onSnapshot((item)=>{
     setItems((item.docs.map((data)=>({
       id:data.id,
@@ -144,7 +149,7 @@ if(selectReqFilter==='deliveryTime'){
 
  }
 
- if(selectReqFilter==='deliveryTime'){
+ if(selectReqFilterredux==='deliveryTime'){
   db.collection('items').orderBy('minites','asc').onSnapshot((item)=>{
     setItems((item.docs.map((data)=>({
       id:data.id,
@@ -157,12 +162,12 @@ if(selectReqFilter==='deliveryTime'){
  }}
 
 
-},[selectReqFilter])
-// console.log(selectReqFilter)
+},[selectReqFilterredux])
+console.log(selectReqFilterredux)
 
 
 
-if(selectFilterInfo.active){
+if(selectFilterInforedux.active){
   document.body.style.overflow='hidden'
 }
 
@@ -205,32 +210,32 @@ if(selectFilterInfo.active){
 useEffect(()=>{
 
 
-//   if(selectDataFilterInfo?.cuisines?.length>0)
+//   if(selectDataFilterInforedux?.cuisines?.length>0)
 // {
 
 //   setItems(items?.filter((item)=>(
   
-//     selectDataFilterInfo?.cuisines.includes(item.data.type)))
+//     selectDataFilterInforedux?.cuisines.includes(item.data.type)))
 //     )
 
 // }
 
 
-// if( selectDataFilterInfo?.rating ){
-//   console.log(selectDataFilterInfo?.rating )
+// if( selectDataFilterInforedux?.rating ){
+//   console.log(selectDataFilterInforedux?.rating )
 
-//   let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
-//   console.log(parseInt(selectDataFilterInfo?.rating))
+//   let val=parseFloat((selectDataFilterInforedux?.rating)?.split('>')[1])
+//   console.log(parseInt(selectDataFilterInforedux?.rating))
 
 
-//   if(parseInt(selectDataFilterInfo?.rating)===5){
-//     console.log(parseInt(selectDataFilterInfo?.rating),'here if')
+//   if(parseInt(selectDataFilterInforedux?.rating)===5){
+//     console.log(parseInt(selectDataFilterInforedux?.rating),'here if')
 //     setItems(items?.filter((data)=>parseFloat(data.data?.rating)
-//     ===parseInt(selectDataFilterInfo?.rating))
+//     ===parseInt(selectDataFilterInforedux?.rating))
 //       )
 //   }
 //   else {
-//     console.log(parseInt(selectDataFilterInfo?.rating),'here else')
+//     console.log(parseInt(selectDataFilterInforedux?.rating),'here else')
 
 //   setItems(items?.filter((data)=>parseFloat(data.data?.rating)
 //   >=val)
@@ -238,28 +243,28 @@ useEffect(()=>{
 // }
 
 
-// if(selectDataFilterInfo?.freedelvery){
+// if(selectDataFilterInforedux?.freedelvery){
 //   setItems(items?.filter((data)=>(data.data?.freedelivery)
 //   ==='true'))
 // }
 
 
-// if(selectDataFilterInfo?.offers){
+// if(selectDataFilterInforedux?.offers){
 //   setItems(items?.filter((data)=>
 //   parseInt(data.data?.discount)!==0 )
 //   )
  
 // }
 
-// if(!selectDataFilterInfo){
+// if(!selectDataFilterInforedux){
 //   getDataFunction()
 // }
 
 
-// console.log(selectDataFilterInfo?.rating)
-// console.log(selectDataFilterInfo)
+// console.log(selectDataFilterInforedux?.rating)
+// console.log(selectDataFilterInforedux)
 
-if(!selectDataFilterInfo ){
+if(!selectDataFilterInforedux ){
   // console.log('no data')
 
   getDataFunction()
@@ -268,23 +273,23 @@ if(!selectDataFilterInfo ){
 }
 
 
-  let val=parseFloat((selectDataFilterInfo?.rating)?.split('>')[1])
+  let val=parseFloat((selectDataFilterInforedux?.rating)?.split('>')[1])
   // console.log(val)
 
 
-if(selectDataFilterInfo?.cuisines?.length>0)
+if(selectDataFilterInforedux?.cuisines?.length>0)
 {
 // When  causine , offers , freedeilvery & rating are clicked
 
-  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)&& (selectDataFilterInfo?.rating)  ){
-    if(parseInt(selectDataFilterInfo?.rating)===5){
+  if((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.offers)&& (selectDataFilterInforedux?.rating)  ){
+    if(parseInt(selectDataFilterInforedux?.rating)===5){
       // console.log('rating 5')
 
     
   setItems(items?.filter((item)=>(
     
    
-    selectDataFilterInfo?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
+    selectDataFilterInforedux?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
       ==='true'
     )
     
@@ -302,7 +307,7 @@ if(selectDataFilterInfo?.cuisines?.length>0)
       // console.log('rating less than 5')
       setItems(items?.filter((item)=>(
   
-        selectDataFilterInfo?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
+        selectDataFilterInforedux?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
           ==='true'
         ).filter((data)=>
           parseInt(data.data?.discount)!==0 ).filter((data)=>parseFloat(data.data?.rating)
@@ -316,23 +321,23 @@ if(selectDataFilterInfo?.cuisines?.length>0)
 
 else  {
 
-  if(  ((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)) ||
+  if(  ((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.offers)) ||
   
-  ((selectDataFilterInfo?.freedelvery)&& (selectDataFilterInfo?.rating)  )    ||
+  ((selectDataFilterInforedux?.freedelvery)&& (selectDataFilterInforedux?.rating)  )    ||
   (
-    (selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating) 
+    (selectDataFilterInforedux?.offers) && (selectDataFilterInforedux?.rating) 
   )
   )
   {
 // When just causine , offers & freedilivery are clicked
 
 
- if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)  ){
+ if((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.offers)  ){
    
   
     setItems(items?.filter((item)=>(
   
-      selectDataFilterInfo?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
+      selectDataFilterInforedux?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
         ==='true'
       )
       
@@ -347,17 +352,17 @@ else  {
   }
 // When just causine , freedelivery & rating are clicked
 
-  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.rating)){
+  if((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.rating)){
 
 
-    if(parseInt(selectDataFilterInfo?.rating)===5){
+    if(parseInt(selectDataFilterInforedux?.rating)===5){
       // console.log('rating 5')
 
     
   setItems(items?.filter((item)=>(
     
    
-    selectDataFilterInfo?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
+    selectDataFilterInforedux?.cuisines.includes(item.data.type))).filter( (data)=>(data.data?.freedelivery)
       ==='true'
     ).filter(   (data)=>
         parseInt(data.data?.rating)===5
@@ -371,7 +376,7 @@ else  {
       // console.log('rating less than 5')
       setItems(items?.filter((item)=>(
   
-        selectDataFilterInfo?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
+        selectDataFilterInforedux?.cuisines.includes(item.data.type))).filter((data)=>(data.data?.freedelivery)
           ==='true'
         ).filter((data)=>parseFloat(data.data?.rating)
             >=val)
@@ -388,17 +393,17 @@ else  {
 // When just causine , offers & rating are clicked
 
 
-  if((selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating)){
+  if((selectDataFilterInforedux?.offers) && (selectDataFilterInforedux?.rating)){
 
 
-    if(parseInt(selectDataFilterInfo?.rating)===5){
+    if(parseInt(selectDataFilterInforedux?.rating)===5){
       // console.log('rating 5')
 
     
   setItems(items?.filter((item)=>(
     
    
-    selectDataFilterInfo?.cuisines.includes(item.data.type))).filter(
+    selectDataFilterInforedux?.cuisines.includes(item.data.type))).filter(
       (data)=>
       parseInt(data.data?.discount)!==0 )
     
@@ -414,7 +419,7 @@ else  {
       // console.log('rating less than 5')
       setItems(items?.filter((item)=>(
   
-        selectDataFilterInfo?.cuisines.includes(item.data.type)))
+        selectDataFilterInforedux?.cuisines.includes(item.data.type)))
         
         .filter(
           (data)=>
@@ -448,18 +453,18 @@ else  {
 else {
 
 
-if((selectDataFilterInfo?.offers) ||(selectDataFilterInfo?.rating) || (selectDataFilterInfo?.freedelvery) )
+if((selectDataFilterInforedux?.offers) ||(selectDataFilterInforedux?.rating) || (selectDataFilterInforedux?.freedelvery) )
 {
  // When just causine & freedelivery are clicked
 
 
-  if(selectDataFilterInfo?.freedelvery){
+  if(selectDataFilterInforedux?.freedelvery){
   // console.log('free delivery')
 
 
     setItems(items?.filter((item)=>(
   
-      selectDataFilterInfo?.cuisines.includes(item.data.type))
+      selectDataFilterInforedux?.cuisines.includes(item.data.type))
       ).filter((data)=>(data.data?.freedelivery)
       ==='true'
     )
@@ -471,13 +476,13 @@ if((selectDataFilterInfo?.offers) ||(selectDataFilterInfo?.rating) || (selectDat
 
 // When just causine & offers are clicked
 
-  if(selectDataFilterInfo?.offers){
+  if(selectDataFilterInforedux?.offers){
     // console.log('free delivery')
   
   
       setItems(items?.filter((item)=>(
     
-        selectDataFilterInfo?.cuisines.includes(item.data.type))
+        selectDataFilterInforedux?.cuisines.includes(item.data.type))
         ).filter(
           (data)=>
           parseInt(data.data?.discount)!==0 )
@@ -490,18 +495,18 @@ if((selectDataFilterInfo?.offers) ||(selectDataFilterInfo?.rating) || (selectDat
 
 // When just causine & rating are clicked
 
-    if((selectDataFilterInfo?.rating) )
+    if((selectDataFilterInforedux?.rating) )
 {
 
 
-  if(parseInt(selectDataFilterInfo?.rating)===5){
+  if(parseInt(selectDataFilterInforedux?.rating)===5){
     // console.log('rating 5')
 
   
 setItems(items?.filter((item)=>(
   
  
-  selectDataFilterInfo?.cuisines.includes(item.data.type)))
+  selectDataFilterInforedux?.cuisines.includes(item.data.type)))
   
   .filter(   (data)=>
       parseInt(data.data?.rating)===5
@@ -515,7 +520,7 @@ setItems(items?.filter((item)=>(
     // console.log('rating less than 5')
     setItems(items?.filter((item)=>(
 
-      selectDataFilterInfo?.cuisines.includes(item.data.type)))
+      selectDataFilterInforedux?.cuisines.includes(item.data.type)))
 
       .filter((data)=>parseFloat(data.data?.rating)
           >=val)
@@ -537,7 +542,7 @@ else {
 
   setItems(items?.filter((item)=>(
 
-    selectDataFilterInfo?.cuisines.includes(item.data.type))))
+    selectDataFilterInforedux?.cuisines.includes(item.data.type))))
 
 }
 }
@@ -567,8 +572,8 @@ else {
   // WHen no causine selected & remiang are selected
 
 
-  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)&& (selectDataFilterInfo?.rating)  ){
-    if(parseInt(selectDataFilterInfo?.rating)===5){
+  if((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.offers)&& (selectDataFilterInforedux?.rating)  ){
+    if(parseInt(selectDataFilterInforedux?.rating)===5){
       // console.log('rating 5')
 
     
@@ -605,18 +610,18 @@ else {
 
 
 
-  if(  ((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)) ||
+  if(  ((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.offers)) ||
   
-  ((selectDataFilterInfo?.freedelvery)&& (selectDataFilterInfo?.rating)  )    ||
+  ((selectDataFilterInforedux?.freedelvery)&& (selectDataFilterInforedux?.rating)  )    ||
   (
-    (selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating) 
+    (selectDataFilterInforedux?.offers) && (selectDataFilterInforedux?.rating) 
   )
   )
   {
 // When no causine is selected , freedeivlery & offers are selected
 
 
- if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.offers)  ){
+ if((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.offers)  ){
    
   
     setItems(items?.filter( (data)=>(data.data?.freedelivery)
@@ -635,10 +640,10 @@ else {
 // When no causine is selected , freedeivlery & rating are selected
 
 
-  if((selectDataFilterInfo?.freedelvery) && (selectDataFilterInfo?.rating)){
+  if((selectDataFilterInforedux?.freedelvery) && (selectDataFilterInforedux?.rating)){
 
 
-    if(parseInt(selectDataFilterInfo?.rating)===5){
+    if(parseInt(selectDataFilterInforedux?.rating)===5){
       // console.log('rating 5')
 
     
@@ -671,10 +676,10 @@ else {
 
 
 
-  if((selectDataFilterInfo?.offers) && (selectDataFilterInfo?.rating)){
+  if((selectDataFilterInforedux?.offers) && (selectDataFilterInforedux?.rating)){
 
 
-    if(parseInt(selectDataFilterInfo?.rating)===5){
+    if(parseInt(selectDataFilterInforedux?.rating)===5){
       // console.log('rating 5')
 
     
@@ -694,7 +699,7 @@ else {
       // console.log('rating less than 5')
       setItems(items?.filter((item)=>(
   
-        selectDataFilterInfo?.cuisines.includes(item.data.type)))
+        selectDataFilterInforedux?.cuisines.includes(item.data.type)))
         
         .filter(
           (data)=>
@@ -713,7 +718,7 @@ else {
 
   else{
 // WHen just Free delivery clicked
-    if(selectDataFilterInfo?.freedelvery){
+    if(selectDataFilterInforedux?.freedelvery){
       // console.log('free delivery')
     
     
@@ -728,7 +733,7 @@ else {
     
     // When just causine & offers are clicked
     
-      if(selectDataFilterInfo?.offers){
+      if(selectDataFilterInforedux?.offers){
         // console.log('free delivery')
       
       
@@ -744,11 +749,11 @@ else {
     
     // When just causine & rating are clicked
     
-        if((selectDataFilterInfo?.rating) )
+        if((selectDataFilterInforedux?.rating) )
     {
     
     
-      if(parseInt(selectDataFilterInfo?.rating)===5){
+      if(parseInt(selectDataFilterInforedux?.rating)===5){
         // console.log('rating 5')
     
       
@@ -797,8 +802,8 @@ else {
 }
 
 
-// },[selectDataFilterInfo])
-},[selectDataFilterInfo, selectReqFilter])
+// },[selectDataFilterInforedux])
+},[selectDataFilterInforedux, selectReqFilterredux])
 
 
 

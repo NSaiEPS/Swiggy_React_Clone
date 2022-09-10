@@ -12,10 +12,11 @@ import RemoveIcon from '@mui/icons-material/Remove';
 const Cart = () => {
 
   let [cartItems,setCartItems]=useState([])
-  let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+  // let selectLoginUserInforedux=useSelector(SelectLoginUserInfo)
+  let selectLoginUserInforedux=useSelector(store=>store.info.loginuserinfo)
 
   let getCartData=()=>{
-    db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').onSnapshot((data)=>{
+    db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').onSnapshot((data)=>{
       setCartItems((data.docs.map((item)=>({
         id:item.id,
   data:item.data()
@@ -63,11 +64,11 @@ const Cart = () => {
 let handleSubstractbtn=({id,number})=>{
   let num=number-1
   if(num===0){
-    db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).delete()
+    db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').doc(id).delete()
   }
 
   else{
-  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
+  db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').doc(id).update({
     number:num
   })}
 
@@ -76,7 +77,7 @@ let handleSubstractbtn=({id,number})=>{
 let handleAdditionbtn=({id,number})=>{
   let num=number+1
 
-  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
+  db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').doc(id).update({
     number:num
   })
 }

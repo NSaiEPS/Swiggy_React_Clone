@@ -16,36 +16,73 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 const SelectedItem = () => {
 
-    let selectedItemInfo=useSelector(SelectedItemInfo)
-let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
-// console.log(selectedItemInfo.id)
+    // let selectedItemInfo=useSelector(SelectedItemInfo)
+    let selectedItemInforedux=useSelector(store=>store.info.selectIteminfo)
+
+
+// let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+let selectLoginUserInforedux=useSelector(store=>store.info.loginuserinfo)
+console.log(selectLoginUserInforedux)
+// console.log(selectedItemInforedux.id)
 
     let [cartnumb,setCartNumb]=useState(0)
     let dispatch=useDispatch()
 
 
     let handleAddToCard=()=>{
-      if(Array.isArray(selectLoginUserInfo)){
+    //   if(Array.isArray(selectLoginUserInforedux)){
+    //   dispatch(
+    //     logininfoAction(
+    //       {name:'login',
+    //        status:true,
+    //     }
+    //     )
+    //   )
+
+    //   dispatch({
+    //     type:'logininfoAction',
+    //     payload:{name:'login',
+    //     status:true,
+
+    //     }
+    //   })
+    
+    // }
+
+
+    if(!(selectLoginUserInforedux)){
       dispatch(
         logininfoAction(
           {name:'login',
            status:true,
         }
         )
-      )}
+      )
+
+      dispatch({
+        type:'logininfoAction',
+        payload:{name:'login',
+        status:true,
+
+        }
+      })
+    
+    }
+
+
       else {
       setCartNumb(cartnumb+1)
     
-      db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').add({
-        bookerid:(selectLoginUserInfo.id),
-        itemid:(selectedItemInfo.id),
+      db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').add({
+        bookerid:(selectLoginUserInforedux.id),
+        itemid:(selectedItemInforedux.id),
         number:1,
-        type:(selectedItemInfo.type),
-        name:((selectedItemInfo.name)),
-        price:((selectedItemInfo.price)),
-        discount:((selectedItemInfo.discount)),
-        peopleNum:((selectedItemInfo.numofpeople)),
-        freedelivery:((selectedItemInfo.freedelivery))
+        type:(selectedItemInforedux.type),
+        name:((selectedItemInforedux.name)),
+        price:((selectedItemInforedux.price)),
+        discount:((selectedItemInforedux.discount)),
+        peopleNum:((selectedItemInforedux.numofpeople)),
+        freedelivery:((selectedItemInforedux.freedelivery))
       })
     }
     }
@@ -53,11 +90,11 @@ let handleDeletenum=({id,num})=>{
   
   let number=num-1
   if(number===0){
-    db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).delete()
+    db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').doc(id).delete()
   }
 
   else{
-  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
+  db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').doc(id).update({
     number:number
   })}
 
@@ -68,7 +105,7 @@ let handleDeletenum=({id,num})=>{
 let handleAddnum=({id,num})=>{
 
   let reqnum=num+1;
-  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').doc(id).update({
+  db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').doc(id).update({
   number:reqnum
   })
 
@@ -80,14 +117,49 @@ let handleAddnum=({id,num})=>{
 
 
 let handleFavouriteClick=()=>{
-  if(Array.isArray(selectLoginUserInfo)){
+  // if(Array.isArray(selectLoginUserInforedux)){
+  //   dispatch(
+  //     logininfoAction(
+  //       {name:'login',
+  //        status:true,
+  //     }
+  //     )
+  //   )
+
+
+
+  //   dispatch({
+  //     type:"logininfoAction",
+  //     payload:{
+  //       name:'login',
+  //        status:true,
+  //     }
+  //   })
+  
+  
+  // }
+
+  if(!(selectLoginUserInforedux)){
     dispatch(
       logininfoAction(
         {name:'login',
          status:true,
       }
       )
-    )}
+    )
+
+
+
+    dispatch({
+      type:"logininfoAction",
+      payload:{
+        name:'login',
+         status:true,
+      }
+    })
+  
+  
+  }
     else {
     alert('added to favorite')
 
@@ -99,7 +171,7 @@ let handleFavouriteClick=()=>{
 let [cartItems,setCartItems]=useState([])
 
 let getCartData=()=>{
-  db.collection('user').doc((selectLoginUserInfo.id)).collection('cart').onSnapshot((data)=>{
+  db.collection('user').doc((selectLoginUserInforedux.id)).collection('cart').onSnapshot((data)=>{
     setCartItems((data.docs.map((item)=>({
       id:item.id,
 data:item.data()
@@ -129,7 +201,7 @@ cartItems.map((item)=>{
   //   id
   // ])}
 
-  if(id===(selectedItemInfo.id)){
+  if(id===(selectedItemInforedux.id)){
     setItemAdded(true)
 
   }
@@ -202,15 +274,15 @@ setToralPrice(price
             <div className='SelectedItem_Inside_mainContent_Inside'>
             
             <div className='SelectedItem_Inside_mainContent_Inside_imgpart'>
-                <img src={selectedItemInfo?.imgurl} alt='img'/>
+                <img src={selectedItemInforedux?.imgurl} alt='img'/>
             </div>
 
 
             <div className='SelectedItem_Inside_mainContent_Inside_infoPart'>
             <div className='SelectedItem_Inside_mainContent_Inside_infoPart_inside'>
            <div className='SelectedItem_Inside_mainContent_Inside_infoPart_Name'>
-            <span>{selectedItemInfo?.name}</span> <br/>
-            <span>{selectedItemInfo?.type}</span>
+            <span>{selectedItemInforedux?.name}</span> <br/>
+            <span>{selectedItemInforedux?.type}</span>
             
            </div>
            <div className='SelectedItem_Inside_mainContent_Inside_infoPart_moreInfo'>
@@ -218,19 +290,19 @@ setToralPrice(price
              <div>
                 <span> 
                     <StarIcon/>
-                    {selectedItemInfo?.rating} </span> <br/>
+                    {selectedItemInforedux?.rating} </span> <br/>
                 <span>Rating</span>
                 </div>
 
                 <div>
-                <span>{selectedItemInfo?.minites} mins</span> <br/>
+                <span>{selectedItemInforedux?.minites} mins</span> <br/>
                 <span>Delivery Time</span>
                 </div>
 
 
                 <div>
-                <span>₹ {selectedItemInfo?.price} </span> <br/>
-                <span>Cost for {selectedItemInfo?.numofpeople}</span>
+                <span>₹ {selectedItemInforedux?.price} </span> <br/>
+                <span>Cost for {selectedItemInforedux?.numofpeople}</span>
                 </div>
 
            </div>
@@ -238,7 +310,7 @@ setToralPrice(price
             </div>
             <div className='SelectesItem_InfoaboutCart'>
               <div>
-              {/* {!cartItemId.includes((selectedItemInfo.id))? */}
+              {/* {!cartItemId.includes((selectedItemInforedux.id))? */}
               {!itemAdded?
               <button className='SelectesItem_InfoaboutCart_btnADD'
               
@@ -265,20 +337,20 @@ setToralPrice(price
             <div className='SelectedItem_Inside_mainContent_Inside_offerpart'>
 
 
-{selectedItemInfo?.discount!=='0' &&
+{selectedItemInforedux?.discount!=='0' &&
 
 <div>
 <LocalOfferIcon
 className='SelectedItem_Inside_mainContent_Inside_offerpart_icon'
 
-/> {selectedItemInfo?.discount} % off
-{selectedItemInfo?.cuponcode ? ` Use cupon code ${selectedItemInfo?.cuponcode}`:
+/> {selectedItemInforedux?.discount} % off
+{selectedItemInforedux?.cuponcode ? ` Use cupon code ${selectedItemInforedux?.cuponcode}`:
 ` on all orders`
 }
 </div>
 }
 
-{selectedItemInfo?.freedelivery==="true"  &&
+{selectedItemInforedux?.freedelivery==="true"  &&
 <div>
 <LocalOfferIcon
 className='SelectedItem_Inside_mainContent_Inside_offerpart_icon'

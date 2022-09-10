@@ -11,6 +11,13 @@ let handlemoreinfo=(moreinfo)=>{
     moreinfo
   ))
 
+  dispatch(
+    {
+      type:'moreInfoAction',
+      payload:moreinfo
+    }
+  )
+
   window.scroll(0,0)
 
 }

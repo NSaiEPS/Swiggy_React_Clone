@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LocationCities } from '../../../LocationCities'
 import { cityAction, locationAction, logininfoAction, SelectLoginUserInfo } from '../../Redux_toolkit/Redux_Slice'
@@ -18,7 +18,8 @@ const Locationentering = () => {
   let [location,setLocation]=useState('')
   let [locationfalseCheck,setLocationfalseCheck]=useState(false)
   let [inputFocus,setInputFocus]=useState(false)
-let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
+// let selectLoginUserInforedux=useSelector(SelectLoginUserInfo)
+let selectLoginUserInforedux=useSelector(store=>store.info.loginuserinfo)
   let dispatch=useDispatch()
  
   let handleLogin=()=>{
@@ -29,6 +30,15 @@ let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
       }
       )
     )
+
+
+    dispatch({
+      type:'logininfoAction',
+      payload:  {name:'login',
+      status:true,
+   }
+
+    })
 
   }
 
@@ -41,6 +51,14 @@ let selectLoginUserInfo=useSelector(SelectLoginUserInfo)
       }
       )
     )
+
+    dispatch({
+      type:'logininfoAction',
+      payload:{name:'signup',
+      status:true,
+
+      }
+    })
 
   }
 
@@ -89,6 +107,18 @@ let reqlocation=''
       )
     
       )
+      
+      dispatch({
+        type:'locationAction',
+        payload:   {
+          active:true,
+          location:reqlocation
+        }
+      })
+
+
+
+
     localStorage.setItem('Swiggy_Clone_location', JSON.stringify(reqlocation))
 
 
@@ -127,7 +157,13 @@ let reqlocation=''
       dispatch(cityAction(
         city
       ))
-  
+    dispatch({
+      type:'cityAction',
+        
+        payload:city
+    })
+
+    console.log('dispatched')
   
     }
 
@@ -145,15 +181,20 @@ let reqlocation=''
     auth.signOut()
 
     }
+
+
+
+   
+
   return (
     <div className='Locationentering'
     
     >
       <div className='Locationentering_inside'>
-{selectLoginUserInfo?.name &&
+{selectLoginUserInforedux?.name &&
       <button
       className='Locationentering_inside_showingName'
-      > {selectLoginUserInfo?.name}</button>}
+      > {selectLoginUserInforedux?.name}</button>}
 
       <div className='Locationentering_inside_top'>
         <div>

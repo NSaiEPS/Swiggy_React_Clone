@@ -14,8 +14,9 @@ const City = () => {
 let navigate=useNavigate()
   
 
-let selectCityInfo=useSelector(Selectcityinfo)
-// console.log(selectCityInfo)
+// let selectCityInforedux=useSelector(Selectcityinfo)
+let selectCityInforedux=useSelector(store=>store.info.city)
+// console.log(selectCityInforedux)
 // useEffect(()=>{
 //   window.addEventListener(('scroll',()=>{
 //     window.scrollTo(0,0)
@@ -26,9 +27,9 @@ let selectCityInfo=useSelector(Selectcityinfo)
 
 useEffect(()=>{
 
-  !selectCityInfo && navigate('/')
+  !selectCityInforedux && navigate('/')
 
-},[selectCityInfo])
+},[selectCityInforedux])
 
 let handleGoHome=()=>{
   navigate('/')
@@ -49,7 +50,7 @@ let handleGoHome=()=>{
         <div className='City_inside_showhome'>
           <span
           onClick={handleGoHome}
-          >Home</span>/ <span>{selectCityInfo}</span>
+          >Home</span>/ <span>{selectCityInforedux}</span>
         </div>
 
         <div className='City_inside_citiesFoodCulture'>
@@ -65,7 +66,7 @@ let handleGoHome=()=>{
           <CitiesFindItem/>
         </div>
 
-      {/* {selectCityInfo} */}
+      {/* {selectCityInforedux} */}
       </div>
     </div>
   )

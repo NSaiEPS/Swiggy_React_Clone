@@ -19,9 +19,10 @@ const Signup = () => {
   // let signup=false;
 
 
-  let selectLogininfo=useSelector(Selectlogininfo)
+  // let selectLogininfo=useSelector(Selectlogininfo)
+  let selectLogininforedux=useSelector(store=>store.info.logininfo)
   
-  let signupname=selectLogininfo?.name;
+  let signupname=selectLogininforedux?.name;
   let dispatch=useDispatch()
   let [checkloginbtn,setCheckloginbtn]=useState(false)
   let [otpCondition,setOTPcondition]=useState(false)
@@ -66,7 +67,7 @@ Array.isArray(userInfo) && userInfo.map((item)=>{
 
 
 // console.log(phonenumb)
-  // let signup=selectLogininfo?.status;
+  // let signup=selectLogininforedux?.status;
 
 
   let [signup,setSignup]=useState(
@@ -258,6 +259,12 @@ let handleerasesignup=()=>{
     )
   )
 
+  dispatch({
+    type:'logininfoAction',
+  payload:{name:'',
+  status:false,
+}
+  })
 
   document.body.style.overflowY = "scroll";
 
@@ -297,17 +304,17 @@ useEffect(()=>{
 
 useEffect(()=>{
   // document.body.style.overflow = "hidden";
-  if(selectLogininfo.status){
+  if(selectLogininforedux.status){
       document.body.style.overflow = "hidden";
 
   }
  
 
 
-},[selectLogininfo])
+},[selectLogininforedux])
 
 // signupname
-// selectLogininfo
+// selectLogininforedux
 // console.log()
 // let [conditionCheck2,setConditionCheck2]=useState({
 

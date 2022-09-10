@@ -9,14 +9,20 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Header2 = ({show,lenght}) => {
-  let selectReqFilter=useSelector(SelectreqFilter)
-  // console.log(selectReqFilter)
+  // let selectReqFilterredux=useSelector(SelectreqFilter)
+  let selectReqFilterredux=useSelector(store=>store.info.reqFilter)
+  // console.log(selectReqFilterredux)
 
   let dispatch=useDispatch()
   // reqFilterAction
   // let num=10;
   let handleFilters=(req)=>
 {dispatch(reqFilterAction(req))
+
+  dispatch({
+    type:'reqFilterAction',
+    payload:req
+  })
 }
   
 
@@ -30,6 +36,13 @@ const Header2 = ({show,lenght}) => {
     dispatch(filterInfoAction({
       active:true
     }))
+
+    dispatch({
+      type:'filterInfoAction',
+      payload:{
+        active:true
+      }
+    })
   }
 
   let [moreOptions,setMoreOptions]=useState(false)
@@ -74,7 +87,7 @@ let handleMoreOptions=()=>{
 Search</span>
           </Link>
           <span
-          className= {selectReqFilter==='' ?  'Header2_inside_right_span' : undefined}
+          className= {selectReqFilterredux==='' ?  'Header2_inside_right_span' : undefined}
 
           onClick={()=>handleFilters('')}
          
@@ -83,7 +96,7 @@ Search</span>
 
           <span
 
-className= {selectReqFilter==='deliveryTime' ?  'Header2_inside_right_span':undefined}
+className= {selectReqFilterredux==='deliveryTime' ?  'Header2_inside_right_span':undefined}
 
           onClick={()=>handleFilters('deliveryTime')}
           
@@ -92,7 +105,7 @@ className= {selectReqFilter==='deliveryTime' ?  'Header2_inside_right_span':unde
 
 
           <span
-className= {selectReqFilter==='rating' ?  'Header2_inside_right_span': undefined}
+className= {selectReqFilterredux==='rating' ?  'Header2_inside_right_span': undefined}
 
           onClick={()=>handleFilters('rating')}
           
@@ -102,14 +115,14 @@ className= {selectReqFilter==='rating' ?  'Header2_inside_right_span': undefined
 
 
           <span
-className= {selectReqFilter==='costLowtoHign' ?  'Header2_inside_right_span' : undefined}  
+className= {selectReqFilterredux==='costLowtoHign' ?  'Header2_inside_right_span' : undefined}  
           onClick={()=>handleFilters('costLowtoHign')}
           >Cost: Low To High</span>
 
 
 
           <span
-className= {selectReqFilter==='costHightoLow' ? 'Header2_inside_right_span' :undefined}
+className= {selectReqFilterredux==='costHightoLow' ? 'Header2_inside_right_span' :undefined}
 
           onClick={()=>handleFilters('costHightoLow')}
 
@@ -167,7 +180,7 @@ className= {selectReqFilter==='costHightoLow' ? 'Header2_inside_right_span' :und
 Search</span>
           </Link>
           <span
-          className= {selectReqFilter==='' ?  'Header2_inside_right_span' : undefined}
+          className= {selectReqFilterredux==='' ?  'Header2_inside_right_span' : undefined}
 
           onClick={()=>handleFilters('')}
          
@@ -176,7 +189,7 @@ Search</span>
 
           <span
 
-className= {selectReqFilter==='deliveryTime' ?  'Header2_inside_right_span':undefined}
+className= {selectReqFilterredux==='deliveryTime' ?  'Header2_inside_right_span':undefined}
 
           onClick={()=>handleFilters('deliveryTime')}
           
@@ -185,7 +198,7 @@ className= {selectReqFilter==='deliveryTime' ?  'Header2_inside_right_span':unde
 
 
           <span
-className= {selectReqFilter==='rating' ?  'Header2_inside_right_span': undefined}
+className= {selectReqFilterredux==='rating' ?  'Header2_inside_right_span': undefined}
 
           onClick={()=>handleFilters('rating')}
           
@@ -195,14 +208,14 @@ className= {selectReqFilter==='rating' ?  'Header2_inside_right_span': undefined
 
 
           <span
-className= {selectReqFilter==='costLowtoHign' ?  'Header2_inside_right_span' : undefined}  
+className= {selectReqFilterredux==='costLowtoHign' ?  'Header2_inside_right_span' : undefined}  
           onClick={()=>handleFilters('costLowtoHign')}
           >Cost: Low To High</span>
 
 
 
           <span
-className= {selectReqFilter==='costHightoLow' ? 'Header2_inside_right_span' :undefined}
+className= {selectReqFilterredux==='costHightoLow' ? 'Header2_inside_right_span' :undefined}
 
           onClick={()=>handleFilters('costHightoLow')}
 

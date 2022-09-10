@@ -6,14 +6,15 @@ import CityHeader from '../../CitiesInfo/CityHeader'
 import './HelpContainer.css'
 
 function HelpContainer() {
-  let selectLocationInfo=useSelector(Selectlocationinfo)
+  // let selectLocationInfo=useSelector(Selectlocationinfo)
+  let selectLocationInforedux=useSelector(store=>store.info.locationinfo)
   // active:true,
-  // console.log(selectLocationInfo.active)
+  // console.log(selectLocationInforedux.active)
 
   return (
     <div className='HelpContainer'>
       <div className='City_inside_header'>
-        {selectLocationInfo.active ?   <Header1/>:
+        {selectLocationInforedux.active ?   <Header1/>:
         <CityHeader/>} 
       
         </div>

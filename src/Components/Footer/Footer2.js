@@ -14,6 +14,11 @@ const Footer2 = () => {
       city
     ))
 
+    dispatch({
+      type:'cityAction',
+      payload:city
+    })
+
     window.scrollTo(0,0)
 
 
