@@ -38,10 +38,13 @@ const Search = () => {
   useEffect(()=>{
     
     setFiltersData(items.filter((item)=>
-    item.data.type===imgSearchName
+    item.data.type.includes(imgSearchName.trim())
     
     ))
+    // console.log('rendered')
   },[imgSearchName])
+  // console.log(filtersData,imgSearchName)
+  // console.log( filtersData.length)
   return (
     <div
     className='Search'
@@ -156,7 +159,7 @@ const Search = () => {
             <div className='Search_outside_main_cuisines_searchedItems'>
              
 
-             {imgSearchName.length>3 &&
+             {imgSearchName &&
              (
              filtersData.length>0 ?(
              filtersData.map((item,indx)=>{
